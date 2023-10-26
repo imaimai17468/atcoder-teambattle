@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint --fix --ext .jsx,.js,.tsx,.ts .",
-    "format": "prettier  \"**/*\" --write --ignore-unknown",
+    "format": "prettier --write --ignore-path .gitignore './**/*.{js,jsx,ts,tsx,json}'",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -36,8 +36,8 @@
   },
   "lint-staged": {
     "*.{ts,tsx}": [
-      "bun run format",
-      "bun run lint"
+      "eslint --fix",
+      "prettier --write"
     ]
   }
 }
