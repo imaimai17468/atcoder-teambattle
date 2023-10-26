@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint --fix --ext .jsx,.js,.tsx,.ts .",
-    "format": "prettier  \"**/*\" --write --ignore-unknown"
+    "format": "prettier  \"**/*\" --write --ignore-unknown",
+    "prepare": "husky install"
   },
   "dependencies": {
     "react": "^18",
@@ -33,13 +34,10 @@
     "tailwindcss": "^3",
     "typescript": "^5"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "lint-staged": {
-    "**/*": "bun run format",
-    "*.{js,ts,tsx}": "bun run lint"
+    "*.{ts,tsx}": [
+      "bun run format",
+      "bun run lint"
+    ]
   }
 }
