@@ -10,6 +10,7 @@ module.exports = {
     "plugin:react-hooks/recommended",
     "plugin:react/recommended",
     "plugin:tailwindcss/recommended",
+    "plugin:jsx-a11y/recommended",
   ],
   globals: {
     Atomics: "readonly",
@@ -24,6 +25,6 @@ module.exports = {
     sourceType: "module",
     project: ["./tsconfig.json", "./postcss.config.js"],
   },
-  plugins: ["@typescript-eslint", "react", "tailwindcss"],
+  plugins: ["@typescript-eslint", "react", "tailwindcss", "jsx-a11y"],
   settings: { react: { version: "detect" } },
 };
