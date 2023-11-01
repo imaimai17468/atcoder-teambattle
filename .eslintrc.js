@@ -11,6 +11,7 @@ module.exports = {
     "plugin:react/recommended",
     "plugin:tailwindcss/recommended",
     "plugin:jsx-a11y/recommended",
+    "plugin:@next/next/recommended",
   ],
   globals: {
     Atomics: "readonly",
