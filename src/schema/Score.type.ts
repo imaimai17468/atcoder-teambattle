@@ -5,15 +5,18 @@ import { TeamSchema } from "./Team.type";
 
 export const ScoreSchema = z.object({
   team: TeamSchema,
-  totalScore: z.number(),
-  userScore: z.object({
-    user: UserSchema,
-    userTotalScore: z.number(),
-    problems: z.array(
-      z.object({
-        problem: ProblemSchema,
-        isCollect: z.boolean(),
-      }),
-    ),
-  }),
+  userScore: z.array(
+    z.object({
+      user: UserSchema,
+      problemWithCorrectness: z.array(
+        z.object({
+          problem: ProblemSchema,
+          isCollect: z.boolean(),
+          time: z.number(),
+        }),
+      ),
+    }),
+  ),
 });
+
+export type Score = z.infer<typeof ScoreSchema>;

@@ -5,3 +5,5 @@ export const ProblemSchema = z.object({
   score: z.number(),
   link: z.string(),
 });
+
+export type Problem = z.infer<typeof ProblemSchema>;
