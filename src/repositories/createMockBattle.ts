@@ -6,7 +6,7 @@ export const createMockBattle = (): Battle => {
   const id = faker.string.uuid();
   const title = faker.company.name();
   const description = faker.lorem.paragraph();
-  const scores = createMockScores(10);
+  const scores = createMockScores(faker.number.int({ min: 3, max: 10 }));
   const startDate = faker.date.past().getTime();
   const endDate = faker.date.future().getTime();
   const createdAt = faker.date.past().getTime();
