@@ -6,20 +6,17 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { createMockBattles } from "@/repositories/createMockBattle";
 import { Battle } from "@/schema/Battle.type";
-import { useState, useEffect } from "react";
 import { Progress } from "@/components/ui/progress";
 import dayjs from "dayjs";
 
-export const BattleListTable: React.FC = () => {
-  const [battles, setBattles] = useState<Battle[]>([]);
+type BattleListTableProps = {
+  battles: Battle[];
+};
 
-  useEffect(() => {
-    const battles = createMockBattles(5);
-    setBattles(battles);
-  }, []);
-
+export const BattleListTable: React.FC<BattleListTableProps> = ({
+  battles,
+}: BattleListTableProps) => {
   return (
     <Table>
       <TableHeader>
