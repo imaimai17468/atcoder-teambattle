@@ -34,7 +34,7 @@ export const DashBoard: React.FC<DashBoardProps> = ({
   return (
     <div className="flex flex-col gap-4 rounded-lg border bg-gray-50 p-4 shadow-md">
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-semibold">DashBoard</h1>
+        <h1 className="text-lg font-semibold sm:text-2xl">DashBoard</h1>
         <Button variant="outline" onClick={() => setIsOpen(!isOpen)}>
           <CaretSortIcon />
         </Button>
