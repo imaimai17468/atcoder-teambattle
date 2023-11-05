@@ -3,7 +3,7 @@ import { ExitIcon } from "@radix-ui/react-icons";
 
 export const Header: React.FC = () => {
   return (
-    <header className="flex items-center justify-between px-8 py-4">
+    <header className="sticky top-0 flex items-center justify-between bg-gray-200/10 px-8 py-4  backdrop-blur-md">
       <h1 className="text-2xl font-bold">AtCoder Team Battle</h1>
       <div className="flex gap-8">
         <Button variant="ghost">Battles</Button>
