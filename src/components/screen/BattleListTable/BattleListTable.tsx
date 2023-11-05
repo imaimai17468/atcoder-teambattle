@@ -9,6 +9,7 @@ import {
 import { Battle } from "@/schema/Battle.type";
 import { Progress } from "@/components/ui/progress";
 import dayjs from "dayjs";
+import { useState, useEffect } from "react";
 
 type BattleListTableProps = {
   battles: Battle[];
@@ -17,13 +18,24 @@ type BattleListTableProps = {
 export const BattleListTable: React.FC<BattleListTableProps> = ({
   battles,
 }: BattleListTableProps) => {
+  const [isSP, setIsSP] = useState(false);
+  useEffect(() => {
+    if (window.innerWidth < 640) {
+      setIsSP(true);
+    }
+  }, []);
+
   return (
     <Table>
       <TableHeader>
         <TableRow>
           <TableHead>Title</TableHead>
-          <TableHead>Description</TableHead>
-          <TableHead className="text-center">No. of Teams</TableHead>
+          {!isSP && (
+            <>
+              <TableHead>Description</TableHead>
+              <TableHead className="text-center">No. of Teams</TableHead>
+            </>
+          )}
           <TableHead className="text-center">Duration</TableHead>
         </TableRow>
       </TableHeader>
@@ -43,12 +55,16 @@ export const BattleListTable: React.FC<BattleListTableProps> = ({
               <TableCell className="w-1/5 font-semibold">
                 {battle.title}
               </TableCell>
-              <TableCell className="w-1/3">
-                <p className="line-clamp-2">{battle.description}</p>
-              </TableCell>
-              <TableCell className="w-1/5 text-center">
-                {battle.scores.length} Teams
-              </TableCell>
+              {!isSP && (
+                <>
+                  <TableCell className="w-1/3">
+                    <p className="line-clamp-2">{battle.description}</p>
+                  </TableCell>
+                  <TableCell className="w-1/5 text-center">
+                    {battle.scores.length} Teams
+                  </TableCell>
+                </>
+              )}
               <TableCell className="flex flex-col gap-1">
                 <div className="flex justify-between text-sm">
                   <div className="font-thin">
