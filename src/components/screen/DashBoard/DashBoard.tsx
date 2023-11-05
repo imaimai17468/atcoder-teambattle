@@ -32,20 +32,23 @@ export const DashBoard: React.FC<DashBoardProps> = ({
       <div className="grid grid-cols-3 gap-4">
         <Card>
           <CardHeader className="text-sm">Running Battles</CardHeader>
-          <CardContent className="text-xl font-bold">
-            {battles.length} Battles
+          <CardContent className="flex gap-2 text-xl font-bold">
+            <p className="text-emerald-400">{battles.length}</p>
+            <p> Battles</p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="text-sm">Active Teams</CardHeader>
-          <CardContent className="text-xl font-bold">
-            {activeTeams} Teams
+          <CardContent className="flex gap-2 text-xl font-bold">
+            <p className="text-emerald-400"> {activeTeams}</p>
+            <p>Teams</p>
           </CardContent>
         </Card>{" "}
         <Card>
           <CardHeader className="text-sm">Active Users</CardHeader>
-          <CardContent className="text-xl font-bold">
-            {activeUsers} Users
+          <CardContent className="flex gap-2 text-xl font-bold">
+            <p className="text-emerald-400"> {activeUsers}</p>
+            <p>Users</p>
           </CardContent>
         </Card>
       </div>
