@@ -43,7 +43,7 @@ export const DashBoard: React.FC<DashBoardProps> = ({
             <p className="text-emerald-400"> {activeTeams}</p>
             <p>Teams</p>
           </CardContent>
-        </Card>{" "}
+        </Card>
         <Card>
           <CardHeader className="text-sm">Active Users</CardHeader>
           <CardContent className="flex gap-2 text-xl font-bold">
