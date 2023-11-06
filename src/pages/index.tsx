@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Battle } from "@/schema/Battle.type";
 import { createMockAllTimeBattle } from "@/repositories/createMockBattle";
 import { DashBoard } from "@/components/screen/DashBoard";
+import { DoubleArrowDownIcon } from "@radix-ui/react-icons";
 
 const notoSansJP = Noto_Sans_JP({ subsets: ["latin"] });
 
@@ -42,11 +43,17 @@ export default function Home() {
             variant="running"
             isLoading={isLoading}
           />
+          <div className="my-8 flex w-full justify-center">
+            <DoubleArrowDownIcon className="-translate-y-1/2 animate-bounce" />
+          </div>
           <BattleListTable
             battles={AllBattles?.upcoming || null}
             variant="upcoming"
             isLoading={isLoading}
           />
+          <div className="my-8 flex w-full justify-center">
+            <DoubleArrowDownIcon className="-translate-y-1/2 animate-bounce" />
+          </div>
           <BattleListTable
             battles={AllBattles?.recent || null}
             variant="recent"
