@@ -11,7 +11,7 @@ export const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 flex items-center justify-between bg-gray-200/10 px-8 py-4  backdrop-blur-md">
+    <header className="sticky top-0 z-50 flex items-center justify-between bg-gray-200/10 px-8  py-4 backdrop-blur-md">
       <h1 className="text-xl font-bold sm:text-2xl">AtCoder Team Battle</h1>
       <div className="hidden gap-8 sm:flex">
         <Button variant="ghost" className="flex gap-2">
