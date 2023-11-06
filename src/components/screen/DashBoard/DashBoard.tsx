@@ -1,32 +1,42 @@
 import { Battle } from "@/schema/Battle.type";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { useMemo, useState } from "react";
-import { CaretSortIcon } from "@radix-ui/react-icons";
+import { CaretSortIcon, PieChartIcon } from "@radix-ui/react-icons";
 import { Button } from "@/components/ui/button";
 import clsx from "clsx";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { ExclamationTriangleIcon } from "@radix-ui/react-icons";
 
 type DashBoardProps = {
-  battles: Battle[];
+  battles: Battle[] | null;
+  isLoading: boolean;
 };
 
 export const DashBoard: React.FC<DashBoardProps> = ({
   battles,
+  isLoading,
 }: DashBoardProps) => {
   const activeTeams = useMemo(() => {
-    return battles.reduce((acc, battle) => {
-      return acc + battle.scores.length;
-    }, 0);
+    return (
+      battles &&
+      battles.reduce((acc, battle) => {
+        return acc + battle.scores.length;
+      }, 0)
+    );
   }, [battles]);
 
   const activeUsers = useMemo(() => {
-    return battles.reduce((acc, battle) => {
-      return (
-        acc +
-        battle.scores.reduce((acc, score) => {
-          return acc + score.userScore.length;
-        }, 0)
-      );
-    }, 0);
+    return (
+      battles &&
+      battles.reduce((acc, battle) => {
+        return (
+          acc +
+          battle.scores.reduce((acc, score) => {
+            return acc + score.userScore.length;
+          }, 0)
+        );
+      }, 0)
+    );
   }, [battles]);
 
   const [isOpen, setIsOpen] = useState(false);
@@ -39,34 +49,54 @@ export const DashBoard: React.FC<DashBoardProps> = ({
           <CaretSortIcon />
         </Button>
       </div>
-      <div
-        className={clsx(
-          "grid grid-cols-1 gap-4 sm:grid-cols-3",
-          isOpen ? "grid sm:hidden" : "hidden sm:grid",
-        )}
-      >
-        <Card>
-          <CardHeader className="text-sm">Running Battles</CardHeader>
-          <CardContent className="flex justify-center gap-2 text-xl font-bold sm:justify-start">
-            <p className="text-emerald-400">{battles.length}</p>
-            <p> Battles</p>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader className="text-sm">Active Teams</CardHeader>
-          <CardContent className="flex justify-center gap-2 text-xl font-bold sm:justify-start">
-            <p className="text-emerald-400"> {activeTeams}</p>
-            <p>Teams</p>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardHeader className="text-sm">Active Users</CardHeader>
-          <CardContent className="flex justify-center gap-2 text-xl font-bold sm:justify-start">
-            <p className="text-emerald-400"> {activeUsers}</p>
-            <p>Users</p>
-          </CardContent>
-        </Card>
-      </div>
+      {battles ? (
+        <div
+          className={clsx(
+            "grid grid-cols-1 gap-4 sm:grid-cols-3",
+            isOpen ? "grid sm:hidden" : "hidden sm:grid",
+          )}
+        >
+          <Card>
+            <CardHeader className="text-sm">Running Battles</CardHeader>
+            <CardContent className="flex justify-center gap-2 text-xl font-bold sm:justify-start">
+              <p className="text-emerald-400">{battles.length}</p>
+              <p>Battles</p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader className="text-sm">Active Teams</CardHeader>
+            <CardContent className="flex justify-center gap-2 text-xl font-bold sm:justify-start">
+              <p className="text-emerald-400"> {activeTeams}</p>
+              <p>Teams</p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader className="text-sm">Active Users</CardHeader>
+            <CardContent className="flex justify-center gap-2 text-xl font-bold sm:justify-start">
+              <p className="text-emerald-400"> {activeUsers}</p>
+              <p>Users</p>
+            </CardContent>
+          </Card>
+        </div>
+      ) : (
+        <>
+          {isLoading ? (
+            <Alert>
+              <ExclamationTriangleIcon />
+              <AlertTitle>Loading</AlertTitle>
+              <AlertDescription>
+                <PieChartIcon className="animate-spin" />
+              </AlertDescription>
+            </Alert>
+          ) : (
+            <Alert variant="destructive">
+              <ExclamationTriangleIcon />
+              <AlertTitle>Error</AlertTitle>
+              <AlertDescription>Failed to fetch data</AlertDescription>
+            </Alert>
+          )}
+        </>
+      )}
     </div>
   );
 };
