@@ -61,7 +61,7 @@ export const BattleListTable: React.FC<BattleListTableProps> = ({
               return (
                 <TableRow
                   key={battle.id}
-                  className="cursor-pointer hover:bg-gray-200"
+                  className="cursor-pointer hover:bg-gray-800/10"
                 >
                   <TableCell className="w-1/5 font-semibold">
                     {battle.title}
