@@ -1,12 +1,9 @@
-import { Noto_Sans_JP } from "next/font/google";
 import BattleListTable from "@/components/screen/BattleListTable/BattleListTable";
 import { useState, useEffect } from "react";
 import { Battle } from "@/schema/Battle.type";
 import { createMockAllTimeBattle } from "@/repositories/createMockBattle";
 import { DashBoard } from "@/components/screen/DashBoard";
 import { DoubleArrowDownIcon } from "@radix-ui/react-icons";
-
-const notoSansJP = Noto_Sans_JP({ subsets: ["latin"] });
 
 export default function Home() {
   const [AllBattles, setAllBattles] = useState<{
@@ -29,9 +26,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main
-      className={`flex min-h-screen flex-col items-center gap-8 ${notoSansJP.className}`}
-    >
+    <main className={`flex min-h-screen flex-col items-center gap-8`}>
       <div className="flex w-4/5 flex-col gap-8">
         <DashBoard
           battles={AllBattles?.running || null}
