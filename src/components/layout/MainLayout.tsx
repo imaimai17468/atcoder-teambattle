@@ -11,13 +11,15 @@ type Props = {
 
 export const MainLayout: React.FC<Props> = ({ children }: Props) => {
   return (
-    <main
+    <div
       className={`flex min-h-screen flex-col gap-4 text-gray-900 ${notoSansJP.className}`}
     >
       <Header />
-      {children}
+      <div className="flex min-h-screen flex-col items-center">
+        <div className="w-4/5">{children}</div>
+      </div>
       <BgBlur />
       <Footer />
-    </main>
+    </div>
   );
 };
