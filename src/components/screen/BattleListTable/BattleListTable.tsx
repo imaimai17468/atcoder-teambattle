@@ -12,6 +12,8 @@ import { Progress } from "@/components/ui/progress";
 import dayjs from "dayjs";
 import { useState, useEffect } from "react";
 import { ExclamationTriangleIcon, PieChartIcon } from "@radix-ui/react-icons";
+import { useRouter } from "next/router";
+import { CLIENT_PATH } from "@/constants/clientpath";
 
 type BattleListTableProps = {
   battles: Battle[] | null;
@@ -24,6 +26,7 @@ export const BattleListTable: React.FC<BattleListTableProps> = ({
   variant,
   isLoading,
 }: BattleListTableProps) => {
+  const router = useRouter();
   const [isSP, setIsSP] = useState(false);
   useEffect(() => {
     if (window.innerWidth < 640) {
@@ -62,6 +65,12 @@ export const BattleListTable: React.FC<BattleListTableProps> = ({
                 <TableRow
                   key={battle.id}
                   className="cursor-pointer hover:bg-gray-800/10"
+                  onClick={() => {
+                    router.push({
+                      pathname: CLIENT_PATH.BATTLE_DETAIL,
+                      query: { battleId: battle.id },
+                    });
+                  }}
                 >
                   <TableCell className="w-1/5 font-semibold">
                     {battle.title}

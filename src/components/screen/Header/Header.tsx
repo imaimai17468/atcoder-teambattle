@@ -6,15 +6,25 @@ import {
   RocketIcon,
 } from "@radix-ui/react-icons";
 import { useState } from "react";
+import { CLIENT_PATH } from "@/constants/clientpath";
+import { useRouter } from "next/router";
+import Link from "next/link";
 
 export const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const router = useRouter();
 
   return (
     <header className="sticky top-0 z-50 flex items-center justify-between bg-gray-200/10 px-8  py-4 backdrop-blur-md">
-      <h1 className="text-xl font-bold sm:text-2xl">AtCoder Team Battle</h1>
+      <Link className="text-xl font-bold sm:text-2xl" href={CLIENT_PATH.HOME}>
+        AtCoder Team Battle
+      </Link>
       <div className="hidden gap-8 sm:flex">
-        <Button variant="ghost" className="flex gap-2">
+        <Button
+          variant="ghost"
+          className="flex gap-2"
+          onClick={() => router.push(CLIENT_PATH.BATTLE)}
+        >
           <RocketIcon />
           Battles
         </Button>
