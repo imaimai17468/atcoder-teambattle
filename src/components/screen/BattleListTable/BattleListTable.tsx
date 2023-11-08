@@ -8,12 +8,11 @@ import {
 } from "@/components/ui/table";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Battle } from "@/schema/Battle.type";
-import { Progress } from "@/components/ui/progress";
-import dayjs from "dayjs";
 import { useState, useEffect } from "react";
 import { ExclamationTriangleIcon, PieChartIcon } from "@radix-ui/react-icons";
 import { useRouter } from "next/router";
 import { CLIENT_PATH } from "@/constants/clientpath";
+import { TimeProgress } from "@/components/common/TimeProgress";
 
 type BattleListTableProps = {
   battles: Battle[] | null;
@@ -55,12 +54,6 @@ export const BattleListTable: React.FC<BattleListTableProps> = ({
         <TableBody>
           {battles ? (
             battles.map((battle) => {
-              const progressPercentage = Math.floor(
-                ((new Date().getTime() - battle.startDate) /
-                  (battle.endDate - battle.startDate)) *
-                  100,
-              );
-
               return (
                 <TableRow
                   key={battle.id}
@@ -85,20 +78,10 @@ export const BattleListTable: React.FC<BattleListTableProps> = ({
                       </TableCell>
                     </>
                   )}
-                  <TableCell className="flex flex-col gap-1">
-                    <div className="flex justify-between text-sm">
-                      <div className="font-thin">
-                        <p>{dayjs(battle.startDate).format("YYYY MM DD")}</p>
-                        <p>{dayjs(battle.startDate).format("HH:mm")}</p>
-                      </div>
-                      <div className="text-right font-thin">
-                        <p>{dayjs(battle.endDate).format("YYYY MM DD")}</p>
-                        <p>{dayjs(battle.endDate).format("HH:mm")}</p>
-                      </div>
-                    </div>
-                    <Progress
-                      value={progressPercentage}
-                      className="bg-emerald-300"
+                  <TableCell>
+                    <TimeProgress
+                      startDate={battle.startDate}
+                      endDate={battle.endDate}
                     />
                   </TableCell>
                 </TableRow>
