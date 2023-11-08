@@ -4,8 +4,9 @@ import { Battle } from "@/schema/Battle.type";
 import { createMockAllTimeBattle } from "@/repositories/createMockBattle";
 import { DashBoard } from "@/components/screen/DashBoard";
 import { DoubleArrowDownIcon } from "@radix-ui/react-icons";
+import { NextPage } from "next";
 
-export default function Home() {
+export const Home: NextPage = () => {
   const [AllBattles, setAllBattles] = useState<{
     upcoming: Battle[];
     running: Battle[];
@@ -58,4 +59,6 @@ export default function Home() {
       </div>
     </main>
   );
-}
+};
+
+export default Home;
