@@ -1,6 +1,6 @@
 export const Footer: React.FC = () => {
   return (
-    <footer className="flex items-center gap-1 border-t px-8 py-4 text-sm text-gray-400">
+    <footer className="sticky top-[100vh] flex items-center gap-1 border-t px-8 py-4 text-sm text-gray-400">
       <p>Build by</p>
       <a
         href="https://github.com/imaimai17468"
