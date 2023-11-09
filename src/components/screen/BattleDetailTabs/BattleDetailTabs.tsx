@@ -1,13 +1,17 @@
 import { Battle } from "@/schema/Battle.type";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ErrorAlert } from "@/components/common/ErrorAlert";
+import { LoadingAlert } from "@/components/common/LoadingAlert";
+import ProblemListTable from "../ProblemListTable/ProblemListTable";
 
 type BattleDetailTabsProps = {
   battle: Battle | null;
+  isLoading: boolean;
 };
 
 export const BattleDetailTabs: React.FC<BattleDetailTabsProps> = ({
   battle,
+  isLoading,
 }: BattleDetailTabsProps) => {
   return (
     <Tabs defaultValue="problems">
@@ -16,15 +20,24 @@ export const BattleDetailTabs: React.FC<BattleDetailTabsProps> = ({
         <TabsTrigger value="standings">Standings</TabsTrigger>
         <TabsTrigger value="analytics">Analytics</TabsTrigger>
       </TabsList>
-      <TabsContent value="problems">
-        {!battle ? <ErrorAlert /> : <div>Problem</div>}
-      </TabsContent>
-      <TabsContent value="standings">
-        {!battle ? <ErrorAlert /> : <div>Standings</div>}
-      </TabsContent>
-      <TabsContent value="analytics">
-        {!battle ? <ErrorAlert /> : <div>Analytics</div>}
-      </TabsContent>
+      {!battle ? (
+        <>{isLoading ? <LoadingAlert /> : <ErrorAlert />}</>
+      ) : (
+        <>
+          <TabsContent value="problems">
+            <ProblemListTable
+              problems={battle.problems}
+              isLoading={isLoading}
+            />
+          </TabsContent>
+          <TabsContent value="standings">
+            <div>Standings</div>
+          </TabsContent>
+          <TabsContent value="analytics">
+            <div>Analytics</div>
+          </TabsContent>
+        </>
+      )}
     </Tabs>
   );
 };

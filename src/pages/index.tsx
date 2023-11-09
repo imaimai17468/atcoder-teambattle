@@ -15,7 +15,6 @@ export const Home: NextPage = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    setIsLoading(true);
     const { upcomingBattles, runningBattles, recentBattles } =
       createMockAllTimeBattle();
     setAllBattles({
