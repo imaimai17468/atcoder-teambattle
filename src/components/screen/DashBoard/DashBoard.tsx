@@ -1,11 +1,11 @@
 import { Battle } from "@/schema/Battle.type";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { useMemo, useState } from "react";
-import { CaretSortIcon, PieChartIcon } from "@radix-ui/react-icons";
+import { CaretSortIcon } from "@radix-ui/react-icons";
 import { Button } from "@/components/ui/button";
 import clsx from "clsx";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { ExclamationTriangleIcon } from "@radix-ui/react-icons";
+import { ErrorAlert } from "@/components/common/ErrorAlert";
+import { LoadingAlert } from "@/components/common/LoadingAlert/LoadingAlert";
 
 type DashBoardProps = {
   battles: Battle[] | null;
@@ -79,23 +79,7 @@ export const DashBoard: React.FC<DashBoardProps> = ({
           </Card>
         </div>
       ) : (
-        <>
-          {isLoading ? (
-            <Alert>
-              <ExclamationTriangleIcon />
-              <AlertTitle>Loading</AlertTitle>
-              <AlertDescription>
-                <PieChartIcon className="animate-spin" />
-              </AlertDescription>
-            </Alert>
-          ) : (
-            <Alert variant="destructive">
-              <ExclamationTriangleIcon />
-              <AlertTitle>Error</AlertTitle>
-              <AlertDescription>Failed to fetch data</AlertDescription>
-            </Alert>
-          )}
-        </>
+        <>{isLoading ? <LoadingAlert /> : <ErrorAlert />}</>
       )}
     </div>
   );

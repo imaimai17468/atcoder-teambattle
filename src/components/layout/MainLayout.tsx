@@ -1,6 +1,9 @@
 import { Header } from "@/components/screen/Header";
+import { Noto_Sans_JP } from "next/font/google";
 import { Footer } from "../screen/Footer";
-import BGBlur from "../ui/bgBlur";
+import { BgBlur } from "../common/BgBlur";
+
+const notoSansJP = Noto_Sans_JP({ subsets: ["latin"] });
 
 type Props = {
   children: React.ReactNode;
@@ -8,11 +11,15 @@ type Props = {
 
 export const MainLayout: React.FC<Props> = ({ children }: Props) => {
   return (
-    <main className="flex min-h-screen flex-col gap-4 text-gray-900">
+    <div
+      className={`flex min-h-screen flex-col gap-4 text-gray-900 ${notoSansJP.className}`}
+    >
       <Header />
-      {children}
-      <BGBlur />
+      <div className="flex min-h-screen flex-col items-center">
+        <div className="w-4/5">{children}</div>
+      </div>
+      <BgBlur />
       <Footer />
-    </main>
+    </div>
   );
 };

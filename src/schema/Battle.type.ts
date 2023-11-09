@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { ScoreSchema } from "./Score.type";
+import { ProblemSchema } from "./Problem.type";
 
 export const BattleSchema = z.object({
   id: z.string(),
@@ -8,6 +9,7 @@ export const BattleSchema = z.object({
   startDate: z.number(),
   endDate: z.number(),
   scores: z.array(ScoreSchema),
+  problems: z.array(ProblemSchema),
   createdAt: z.number(),
   updatedAt: z.number().nullable(),
   deletedAt: z.number().nullable(),
