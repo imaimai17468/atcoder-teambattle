@@ -6,13 +6,13 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Battle } from "@/schema/Battle.type";
 import { useState, useEffect } from "react";
-import { ExclamationTriangleIcon, PieChartIcon } from "@radix-ui/react-icons";
 import { useRouter } from "next/router";
 import { CLIENT_PATH } from "@/constants/clientpath";
 import { TimeProgress } from "@/components/common/TimeProgress";
+import { LoadingAlert } from "@/components/common/LoadingAlert";
+import { ErrorAlert } from "@/components/common/ErrorAlert";
 
 type BattleListTableProps = {
   battles: Battle[] | null;
@@ -90,21 +90,7 @@ export const BattleListTable: React.FC<BattleListTableProps> = ({
           ) : (
             <TableRow>
               <TableCell colSpan={isSP ? 2 : 4}>
-                {isLoading ? (
-                  <Alert>
-                    <ExclamationTriangleIcon />
-                    <AlertTitle>Loading</AlertTitle>
-                    <AlertDescription>
-                      <PieChartIcon className="animate-spin" />
-                    </AlertDescription>
-                  </Alert>
-                ) : (
-                  <Alert variant="destructive">
-                    <ExclamationTriangleIcon />
-                    <AlertTitle>Error</AlertTitle>
-                    <AlertDescription>Failed to fetch data</AlertDescription>
-                  </Alert>
-                )}
+                {isLoading ? <LoadingAlert /> : <ErrorAlert />}
               </TableCell>
             </TableRow>
           )}
