@@ -1,6 +1,7 @@
 import { createMockScores } from "./createMockScore";
 import { Battle } from "@/schema/Battle.type";
 import { faker } from "@faker-js/faker";
+import { createMockProblems } from "./createMockProblem";
 
 export const createMockBattle = ({
   variant,
@@ -11,6 +12,7 @@ export const createMockBattle = ({
   const title = faker.company.name();
   const description = faker.lorem.paragraph();
   const scores = createMockScores(faker.number.int({ min: 3, max: 10 }));
+  const problems = createMockProblems(faker.number.int({ min: 5, max: 10 }));
   const createdAt = faker.date.past().getTime();
 
   let startDate = faker.date.past().getTime();
@@ -31,6 +33,7 @@ export const createMockBattle = ({
     startDate,
     endDate,
     scores,
+    problems,
     createdAt,
     updatedAt: null,
     deletedAt: null,
