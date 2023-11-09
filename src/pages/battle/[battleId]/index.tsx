@@ -24,13 +24,13 @@ export const BattleDetailPage: NextPage = () => {
 
   return (
     <div className="flex flex-col gap-8">
-      <div className="flex items-start gap-8">
+      <div className="flex flex-col items-start gap-8 sm:flex-row">
         <h1 className="whitespace-nowrap text-2xl font-bold">
           {battle?.title}
         </h1>
         <h2>{battle?.description}</h2>
       </div>
-      <div className="flex items-end gap-16">
+      <div className="flex flex-col gap-8 sm:flex-row sm:items-end sm:gap-16">
         <div className="flex flex-col gap-4">
           <h2 className="text-xl font-bold">Participant</h2>
           <div className="flex gap-4">
@@ -48,7 +48,7 @@ export const BattleDetailPage: NextPage = () => {
             </div>
           </div>
         </div>
-        <div className="w-1/2">
+        <div className="sm:w-1/2">
           <TimeProgress
             startDate={battle?.startDate || 0}
             endDate={battle?.endDate || 0}
