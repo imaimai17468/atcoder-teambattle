@@ -13,7 +13,6 @@ export const BattleDetailTabs: React.FC<BattleDetailTabsProps> = ({
   battle,
   isLoading,
 }: BattleDetailTabsProps) => {
-  console.log(isLoading);
   return (
     <Tabs defaultValue="problems">
       <TabsList className="border">
