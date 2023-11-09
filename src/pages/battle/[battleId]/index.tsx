@@ -10,6 +10,7 @@ import { BattleDetailTabs } from "@/components/screen/BattleDetailTabs";
 
 export const BattleDetailPage: NextPage = () => {
   const [battle, setBattle] = useState<Battle | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const router = useRouter();
 
   useEffect(() => {
@@ -18,6 +19,7 @@ export const BattleDetailPage: NextPage = () => {
       router.push(CLIENT_PATH.NOT_FOUND);
     }
     setBattle(battle);
+    setIsLoading(false);
   }, []);
 
   return (
@@ -54,7 +56,7 @@ export const BattleDetailPage: NextPage = () => {
         </div>
       </div>
       <Separator className="bg-gray-300" />
-      <BattleDetailTabs battle={battle} />
+      <BattleDetailTabs battle={battle} isLoading={isLoading} />
     </div>
   );
 };
