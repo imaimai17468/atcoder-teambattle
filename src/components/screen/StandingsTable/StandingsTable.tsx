@@ -70,7 +70,6 @@ export const StandingsTable: React.FC<StandingsTableProps> = ({
     <Table>
       <TableHeader>
         <TableRow>
-          <TableHead className="w-1/12">Rank</TableHead>
           <TableHead>Team</TableHead>
           <TableHead className="w-1/12 text-center">Score</TableHead>
           {battle?.problems.map((problem, index) => {
@@ -99,9 +98,8 @@ export const StandingsTable: React.FC<StandingsTableProps> = ({
           battle.scores.map((score, index) => {
             return (
               <TableRow key={score.team.name}>
-                <TableCell>{index + 1}</TableCell>
                 <TableCell className="border-r">
-                  <div className="flex items-center justify-between gap-8">
+                  <div className="flex items-center gap-8">
                     <p className="whitespace-nowrap">{score.team.name}</p>
                     <div className="flex gap-4">
                       {score.team.members.map((member) => {
