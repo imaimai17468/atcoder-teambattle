@@ -11,8 +11,11 @@ export const createMockBattle = ({
   const id = faker.string.uuid();
   const title = faker.company.name();
   const description = faker.lorem.paragraph();
-  const scores = createMockScores(faker.number.int({ min: 3, max: 10 }));
   const problems = createMockProblems(faker.number.int({ min: 5, max: 10 }));
+  const scores = createMockScores({
+    count: faker.number.int({ min: 3, max: 10 }),
+    problems,
+  });
   const createdAt = faker.date.past().getTime();
 
   let startDate = faker.date.past().getTime();
