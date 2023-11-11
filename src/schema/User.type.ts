@@ -4,6 +4,7 @@ export const UserSchema = z.object({
   name: z.string(),
   color: z.string(),
   icon: z.string(),
+  bio: z.string(),
 });
 
 export type User = z.infer<typeof UserSchema>;
