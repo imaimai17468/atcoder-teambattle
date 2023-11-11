@@ -2,7 +2,8 @@ import { Battle } from "@/schema/Battle.type";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ErrorAlert } from "@/components/common/ErrorAlert";
 import { LoadingAlert } from "@/components/common/LoadingAlert";
-import ProblemListTable from "../ProblemListTable/ProblemListTable";
+import { ProblemListTable } from "../ProblemListTable";
+import { StandingsTable } from "../StandingsTable";
 
 type BattleDetailTabsProps = {
   battle: Battle | null;
@@ -31,7 +32,7 @@ export const BattleDetailTabs: React.FC<BattleDetailTabsProps> = ({
             />
           </TabsContent>
           <TabsContent value="standings">
-            <div>Standings</div>
+            <StandingsTable battle={battle} isLoading={isLoading} />
           </TabsContent>
           <TabsContent value="analytics">
             <div>Analytics</div>

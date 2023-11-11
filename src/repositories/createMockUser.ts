@@ -5,11 +5,13 @@ export const createMockUser = (): User => {
   const name = faker.person.fullName();
   const color = faker.internet.color();
   const icon = faker.image.avatar();
+  const bio = faker.lorem.paragraph();
 
   return {
     name,
     color,
     icon,
+    bio,
   };
 };
 

@@ -1,11 +1,14 @@
 import { createMockTeam } from "./createMockTeam";
-import { createMockProblems } from "./createMockProblem";
 import { Score } from "@/schema/Score.type";
 import { faker } from "@faker-js/faker";
+import { Problem } from "@/schema/Problem.type";
 
-export const createMockScore = (): Score => {
+export const createMockScore = ({
+  problems,
+}: {
+  problems: Problem[];
+}): Score => {
   const team = createMockTeam();
-  const problems = createMockProblems(5);
 
   const userScore = team.members.map((user) => {
     const problemWithCorrectness = problems.map((problem) => ({
@@ -26,6 +29,12 @@ export const createMockScore = (): Score => {
   };
 };
 
-export const createMockScores = (count: number): Score[] => {
-  return Array.from({ length: count }, createMockScore);
+export const createMockScores = ({
+  count,
+  problems,
+}: {
+  count: number;
+  problems: Problem[];
+}): Score[] => {
+  return Array.from({ length: count }, () => createMockScore({ problems }));
 };

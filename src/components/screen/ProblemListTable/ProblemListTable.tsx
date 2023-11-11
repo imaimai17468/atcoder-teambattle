@@ -25,7 +25,7 @@ export const ProblemListTable: React.FC<ProblemListTableProps> = ({
     <Table>
       <TableHeader>
         <TableRow>
-          <TableHead className="w-fit">index</TableHead>
+          <TableHead className="w-1/12">index</TableHead>
           <TableHead>Problem</TableHead>
           <TableHead className="text-center">Score</TableHead>
         </TableRow>
