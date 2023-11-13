@@ -6,8 +6,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { ErrorAlert } from "@/components/common/ErrorAlert";
-import { LoadingAlert } from "@/components/common/LoadingAlert";
 import { Battle } from "@/schema/Battle.type";
 import {
   Tooltip,
@@ -21,60 +19,88 @@ import {
   HoverCardContent,
   HoverCardTrigger,
 } from "@/components/ui/hovercard";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { User } from "@/schema/User.type";
+import clsx from "clsx";
+import { calcElapsedTime } from "@/utils/calcElapsedTime";
 
 type StandingsTableProps = {
-  battle: Battle | null;
-  isLoading: boolean;
+  battle: Battle;
+  startDate: number;
 };
 
 export const StandingsTable: React.FC<StandingsTableProps> = ({
   battle,
-  isLoading,
+  startDate,
 }: StandingsTableProps) => {
-  const teamScoreList = useMemo(() => {
-    if (!battle) return [];
+  const { teamScoreList, firstAcceptanceTimes } = useMemo(() => {
+    if (!battle) return { teamScoreList: [], firstAcceptanceTimes: [] };
     const problemLength = battle.problems.length;
-    return battle.scores.map((score) => {
-      const problemStatuses: ({
-        user: User;
-        time: number;
-      } | null)[] = Array(problemLength).fill(null);
-      score.userScore.forEach((userScore) => {
-        userScore.problemWithCorrectness.forEach(
-          (problemWithCorrectness, index) => {
-            if (
-              problemWithCorrectness.isCollect &&
-              (!problemStatuses[index] ||
-                problemStatuses[index]!.time > problemWithCorrectness.time)
-            ) {
-              problemStatuses[index] = {
-                user: userScore.user,
-                time: problemWithCorrectness.time,
-              };
-            }
-          },
+    const teamScoreList = battle.scores
+      .map((score) => {
+        const problemStatuses: ({ user: User; time: number } | null)[] = Array(
+          problemLength,
+        )
+          .fill(null)
+          .map((_, index) => {
+            return (
+              score.userScore
+                .map((userScore) => {
+                  const problemWithCorrectness =
+                    userScore.problemWithCorrectness[index];
+                  if (problemWithCorrectness.isCollect) {
+                    return {
+                      user: userScore.user,
+                      time: problemWithCorrectness.time,
+                    };
+                  }
+                  return null;
+                })
+                .filter((v) => v !== null)
+                .sort((a, b) => a!.time - b!.time)[0] || null
+            );
+          });
+        const totalScore = problemStatuses.reduce((acc, cur, index) => {
+          if (cur) return acc + battle.problems[index].score;
+          return acc;
+        }, 0);
+        const team = score.team;
+
+        return { team, problemStatuses, totalScore };
+      })
+      .sort((a, b) => b.totalScore - a.totalScore);
+
+    const firstAcceptanceTimes = Array(problemLength)
+      .fill(null)
+      .map((_, index) => {
+        return (
+          teamScoreList
+            .map((teamScore) => teamScore.problemStatuses[index])
+            .filter((v) => v !== null)
+            .sort((a, b) => a!.time - b!.time)[0] || null
         );
       });
-      const totalScore = problemStatuses.reduce((acc, cur, index) => {
-        if (cur) return acc + battle.problems[index].score;
-        return acc;
-      }, 0);
 
-      return { problemStatuses, totalScore };
-    });
+    return {
+      teamScoreList,
+      firstAcceptanceTimes,
+    };
   }, [battle]);
+
+  const [isTeamScoreDetailVisible, setIsTeamScoreDetailVisible] = useState<
+    boolean[]
+  >(Array(teamScoreList.length).fill(false));
 
   return (
     <Table>
       <TableHeader>
         <TableRow>
+          <TableHead className="w-16 text-center">Rank</TableHead>
           <TableHead>Team</TableHead>
-          <TableHead className="w-1/12 text-center">Score</TableHead>
-          {battle?.problems.map((problem, index) => {
+          <TableHead className="w-16 text-center">Score</TableHead>
+          {battle.problems.map((problem, index) => {
             return (
-              <TableHead key={problem.link} className="w-1/12 text-center">
+              <TableHead key={problem.link} className="w-24 text-center">
                 <TooltipProvider>
                   <Tooltip>
                     <TooltipTrigger>
@@ -94,12 +120,23 @@ export const StandingsTable: React.FC<StandingsTableProps> = ({
         </TableRow>
       </TableHeader>
       <TableBody>
-        {battle ? (
-          battle.scores.map((score, index) => {
-            return (
-              <TableRow key={score.team.name}>
-                <TableCell className="border-r">
-                  <div className="flex items-center gap-8">
+        {teamScoreList.map((score, index) => {
+          return (
+            <>
+              <TableRow
+                key={score.team.name}
+                className="cursor-pointer hover:bg-gray-800/10"
+                onClick={() => {
+                  setIsTeamScoreDetailVisible((prev) => {
+                    const next = [...prev];
+                    next[index] = !prev[index];
+                    return next;
+                  });
+                }}
+              >
+                <TableCell className="text-center">{index + 1}</TableCell>
+                <TableCell>
+                  <div className="flex items-center justify-between gap-8">
                     <p className="whitespace-nowrap">{score.team.name}</p>
                     <div className="flex gap-4">
                       {score.team.members.map((member) => {
@@ -137,50 +174,110 @@ export const StandingsTable: React.FC<StandingsTableProps> = ({
                     </div>
                   </div>
                 </TableCell>
-                <TableCell className="border-r text-center">
-                  {teamScoreList[index].totalScore}
+                <TableCell className="text-center">
+                  {score.totalScore}
                 </TableCell>
-                {teamScoreList[index].problemStatuses.map(
-                  (teamScore, index) => {
-                    return (
-                      <TableCell
-                        key={index}
-                        className="whitespace-nowrap text-center"
-                      >
-                        {teamScore ? (
-                          <div className="flex flex-col items-center gap-2">
-                            <Avatar>
-                              <AvatarImage
-                                src={teamScore.user.icon}
-                                alt={teamScore.user.name}
-                              />
-                              <AvatarFallback>
-                                {teamScore.user.name}
-                              </AvatarFallback>
-                            </Avatar>
-                            <p>
-                              {new Date(teamScore.time - battle.startDate)
-                                .toISOString()
-                                .substr(11, 8)}
-                            </p>
-                          </div>
-                        ) : (
-                          <p>-</p>
-                        )}
-                      </TableCell>
-                    );
-                  },
-                )}
+                {score.problemStatuses.map((teamScore, index) => {
+                  return (
+                    <TableCell
+                      key={index}
+                      className="whitespace-nowrap text-center"
+                    >
+                      {teamScore ? (
+                        <div className="flex flex-col items-center gap-2">
+                          <Avatar>
+                            <AvatarImage
+                              src={teamScore.user.icon}
+                              alt={teamScore.user.name}
+                            />
+                            <AvatarFallback>
+                              {teamScore.user.name}
+                            </AvatarFallback>
+                          </Avatar>
+                          <p>{calcElapsedTime(startDate, teamScore.time)}</p>
+                        </div>
+                      ) : (
+                        <p>-</p>
+                      )}
+                    </TableCell>
+                  );
+                })}
               </TableRow>
+              {battle.scores
+                .find((s) => s.team === score.team)!
+                .userScore.map((userScore) => {
+                  return (
+                    <TableRow
+                      key={userScore.user.name}
+                      className={clsx(
+                        "border-none",
+                        !isTeamScoreDetailVisible[index]
+                          ? "hidden"
+                          : "table-row",
+                      )}
+                    >
+                      <TableCell colSpan={2} />
+                      <TableCell className="text-center">
+                        <Avatar className="h-8 w-8">
+                          <AvatarImage
+                            src={userScore.user.icon}
+                            alt={userScore.user.name}
+                          />
+                          <AvatarFallback>{userScore.user.name}</AvatarFallback>
+                        </Avatar>
+                      </TableCell>
+                      {userScore.problemWithCorrectness.map(
+                        (problemWithCorrectness) => {
+                          return (
+                            <TableCell
+                              key={problemWithCorrectness.time}
+                              className="text-center"
+                            >
+                              {problemWithCorrectness.isCollect
+                                ? calcElapsedTime(
+                                    startDate,
+                                    problemWithCorrectness.time,
+                                  )
+                                : "-"}
+                            </TableCell>
+                          );
+                        },
+                      )}
+                    </TableRow>
+                  );
+                })}
+            </>
+          );
+        })}
+        <TableRow>
+          <TableCell colSpan={3} className="text-right">
+            First Acceptance Time
+          </TableCell>
+          {firstAcceptanceTimes.map((firstAcceptanceTime, index) => {
+            return (
+              <TableCell key={index} className="text-center">
+                {firstAcceptanceTime ? (
+                  <div className="flex flex-col items-center gap-2">
+                    <Avatar>
+                      <AvatarImage
+                        src={firstAcceptanceTime.user.icon}
+                        alt={firstAcceptanceTime.user.name}
+                      />
+                      <AvatarFallback>
+                        {firstAcceptanceTime.user.name}
+                      </AvatarFallback>
+                    </Avatar>
+                    <p>
+                      {calcElapsedTime(startDate, firstAcceptanceTime.time)}
+                    </p>
+                  </div>
+                ) : (
+                  <p>-</p>
+                )}
+              </TableCell>
             );
-          })
-        ) : (
-          <TableRow>
-            <TableCell colSpan={2} className="text-center">
-              {isLoading ? <LoadingAlert /> : <ErrorAlert />}
-            </TableCell>
-          </TableRow>
-        )}
+          })}
+        </TableRow>
       </TableBody>
     </Table>
   );
