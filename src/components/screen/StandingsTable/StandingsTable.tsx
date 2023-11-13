@@ -13,16 +13,11 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avater";
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from "@/components/ui/hovercard";
 import { useMemo, useState } from "react";
 import { User } from "@/schema/User.type";
 import clsx from "clsx";
 import { calcElapsedTime } from "@/utils/calcElapsedTime";
+import { UserAvatar } from "@/components/common/UserAvatar";
 
 type StandingsTableProps = {
   battle: Battle;
@@ -140,36 +135,7 @@ export const StandingsTable: React.FC<StandingsTableProps> = ({
                     <p className="whitespace-nowrap">{score.team.name}</p>
                     <div className="flex gap-4">
                       {score.team.members.map((member) => {
-                        return (
-                          <HoverCard key={member.name}>
-                            <HoverCardTrigger>
-                              <Avatar>
-                                <AvatarImage
-                                  src={member.icon}
-                                  alt={member.name}
-                                />
-                                <AvatarFallback>{member.name}</AvatarFallback>
-                              </Avatar>
-                            </HoverCardTrigger>
-                            <HoverCardContent className="w-80">
-                              <div className="flex justify-between space-x-4">
-                                <Avatar>
-                                  <AvatarImage
-                                    src={member.icon}
-                                    alt={member.name}
-                                  />
-                                  <AvatarFallback>{member.name}</AvatarFallback>
-                                </Avatar>
-                                <div className="space-y-1">
-                                  <h4 className="text-sm font-semibold">
-                                    {member.name}
-                                  </h4>
-                                  <p className="text-sm">{member.bio}</p>
-                                </div>
-                              </div>
-                            </HoverCardContent>
-                          </HoverCard>
-                        );
+                        return <UserAvatar key={member.name} user={member} />;
                       })}
                     </div>
                   </div>
@@ -179,21 +145,10 @@ export const StandingsTable: React.FC<StandingsTableProps> = ({
                 </TableCell>
                 {score.problemStatuses.map((teamScore, index) => {
                   return (
-                    <TableCell
-                      key={index}
-                      className="whitespace-nowrap text-center"
-                    >
+                    <TableCell key={index}>
                       {teamScore ? (
                         <div className="flex flex-col items-center gap-2">
-                          <Avatar>
-                            <AvatarImage
-                              src={teamScore.user.icon}
-                              alt={teamScore.user.name}
-                            />
-                            <AvatarFallback>
-                              {teamScore.user.name}
-                            </AvatarFallback>
-                          </Avatar>
+                          <UserAvatar user={teamScore.user} />
                           <p>{calcElapsedTime(startDate, teamScore.time)}</p>
                         </div>
                       ) : (
@@ -217,14 +172,8 @@ export const StandingsTable: React.FC<StandingsTableProps> = ({
                       )}
                     >
                       <TableCell colSpan={2} />
-                      <TableCell className="text-center">
-                        <Avatar className="h-8 w-8">
-                          <AvatarImage
-                            src={userScore.user.icon}
-                            alt={userScore.user.name}
-                          />
-                          <AvatarFallback>{userScore.user.name}</AvatarFallback>
-                        </Avatar>
+                      <TableCell>
+                        <UserAvatar user={userScore.user} />
                       </TableCell>
                       {userScore.problemWithCorrectness.map(
                         (problemWithCorrectness) => {
@@ -258,15 +207,7 @@ export const StandingsTable: React.FC<StandingsTableProps> = ({
               <TableCell key={index} className="text-center">
                 {firstAcceptanceTime ? (
                   <div className="flex flex-col items-center gap-2">
-                    <Avatar>
-                      <AvatarImage
-                        src={firstAcceptanceTime.user.icon}
-                        alt={firstAcceptanceTime.user.name}
-                      />
-                      <AvatarFallback>
-                        {firstAcceptanceTime.user.name}
-                      </AvatarFallback>
-                    </Avatar>
+                    <UserAvatar user={firstAcceptanceTime.user} />
                     <p>
                       {calcElapsedTime(startDate, firstAcceptanceTime.time)}
                     </p>
