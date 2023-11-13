@@ -14,7 +14,7 @@ export const createMockScore = ({
     const problemWithCorrectness = problems.map((problem) => ({
       problem,
       isCollect: Math.random() > 0.5,
-      time: faker.date.future().getTime(),
+      time: faker.date.soon().getTime(),
     }));
 
     return {

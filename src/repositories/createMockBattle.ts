@@ -18,8 +18,8 @@ export const createMockBattle = ({
   });
   const createdAt = faker.date.past().getTime();
 
-  let startDate = faker.date.past().getTime();
-  let endDate = faker.date.future().getTime();
+  let startDate = faker.date.recent().getTime();
+  let endDate = faker.date.soon().getTime();
 
   if (variant === "upcoming") {
     endDate = faker.date.future().getTime();
