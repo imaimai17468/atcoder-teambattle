@@ -32,7 +32,7 @@ export const BattleDetailTabs: React.FC<BattleDetailTabsProps> = ({
             />
           </TabsContent>
           <TabsContent value="standings">
-            <StandingsTable battle={battle} isLoading={isLoading} />
+            <StandingsTable battle={battle} startDate={battle.startDate} />
           </TabsContent>
           <TabsContent value="analytics">
             <div>Analytics</div>
