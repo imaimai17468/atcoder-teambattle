@@ -9,8 +9,7 @@ type BattleAnalyticsProps = {
 export const BattleAnalytics: React.FC<BattleAnalyticsProps> = ({
   battle,
 }: BattleAnalyticsProps) => {
-  const { chartData, TimeLineDataList } = useAnalyticsValue(battle);
-  console.log(TimeLineDataList);
+  const { chartData } = useAnalyticsValue(battle);
   return (
     <div className="flex gap-8">
       <div className="w-2/3">
