@@ -1,6 +1,10 @@
 import { Battle } from "@/schema/Battle.type";
-import { ScoreChart } from "./components/ScoreChart";
 import { useAnalyticsValue } from "@/hooks/useAnalyticsValue";
+
+import dynamic from "next/dynamic";
+const ScoreChart = dynamic(() => import("./components/ScoreChart"), {
+  ssr: false,
+});
 
 type BattleAnalyticsProps = {
   battle: Battle;

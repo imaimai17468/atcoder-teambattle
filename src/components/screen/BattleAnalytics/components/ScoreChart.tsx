@@ -1,3 +1,5 @@
+"use client";
+
 import { Line } from "react-chartjs-2";
 import zoomPlugin from "chartjs-plugin-zoom";
 import "chartjs-adapter-moment";
@@ -37,9 +39,7 @@ type BattleAnalyticsProps = {
   };
 };
 
-export const ScoreChart: React.FC<BattleAnalyticsProps> = ({
-  chartData,
-}: BattleAnalyticsProps) => {
+export default function ScoreChart({ chartData }: BattleAnalyticsProps) {
   return (
     <Line
       data={chartData}
@@ -57,24 +57,24 @@ export const ScoreChart: React.FC<BattleAnalyticsProps> = ({
             },
           },
         },
-        plugins: {
-          zoom: {
-            pan: {
-              enabled: true,
-              mode: "x",
-            },
-            zoom: {
-              pinch: {
-                enabled: true,
-              },
-              wheel: {
-                enabled: true,
-              },
-              mode: "x",
-            },
-          },
-        },
+        // plugins: {
+        //   zoom: {
+        //     pan: {
+        //       enabled: true,
+        //       mode: "x",
+        //     },
+        //     zoom: {
+        //       pinch: {
+        //         enabled: true,
+        //       },
+        //       wheel: {
+        //         enabled: true,
+        //       },
+        //       mode: "x",
+        //     },
+        //   },
+        // },
       }}
     />
   );
-};
+}
