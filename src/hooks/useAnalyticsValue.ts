@@ -14,7 +14,7 @@ export const useAnalyticsValue = (battle: Battle) => {
               user: userScore.user,
               teamName: score.team.name,
             }))
-            .filter((problem) => problem.isCollect),
+            .filter((problem) => problem.isCorrect),
         )
         .sort((a, b) => a.time - b.time)
         .filter((v, _, arr) => {

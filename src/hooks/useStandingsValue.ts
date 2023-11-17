@@ -18,7 +18,7 @@ export const useStandingsValue = (battle: Battle) => {
                 .map((userScore) => {
                   const problemWithCorrectness =
                     userScore.problemWithCorrectness[index];
-                  if (problemWithCorrectness.isCollect) {
+                  if (problemWithCorrectness.isCorrect) {
                     return {
                       user: userScore.user,
                       time: problemWithCorrectness.time,
