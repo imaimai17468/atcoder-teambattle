@@ -2,16 +2,28 @@ import { User } from "@/schema/User.type";
 import { faker } from "@faker-js/faker";
 
 export const createMockUser = (): User => {
+  const id = faker.string.uuid();
+  const AtCoderID = faker.internet.userName();
   const name = faker.person.fullName();
-  const color = faker.internet.color();
   const icon = faker.image.avatar();
   const bio = faker.lorem.paragraph();
+  const occupation = faker.person.jobTitle();
+  const organization = faker.company.name();
+  const links = {
+    github: faker.internet.url(),
+    twitter: faker.internet.url(),
+    website: faker.internet.url(),
+  };
 
   return {
+    id,
+    AtCoderID,
     name,
-    color,
     icon,
     bio,
+    occupation,
+    organization,
+    links,
   };
 };
 
