@@ -51,17 +51,17 @@ export const UserPage: NextPage = () => {
           {user.bio && <p className="text-sm">{user.bio}</p>}
           <div className="flex gap-4">
             {user.links.github && (
-              <a href={user.links.github} target="_blank" rel="noreferrer">
+              <a href={user.links.github} target="_blank" rel="noopener noreferrer">
                 <GitHubLogoIcon />
               </a>
             )}
             {user.links.twitter && (
-              <a href={user.links.twitter} target="_blank" rel="noreferrer">
+              <a href={user.links.twitter} target="_blank" rel="noopener noreferrer">
                 <TwitterLogoIcon />
               </a>
             )}
             {user.links.website && (
-              <a href={user.links.website} target="_blank" rel="noreferrer">
+              <a href={user.links.website} target="_blank" rel="noopener noreferrer">
                 <Link1Icon />
               </a>
             )}
