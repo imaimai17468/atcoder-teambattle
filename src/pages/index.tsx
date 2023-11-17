@@ -1,8 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { NextPage } from "next";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 export const Home: NextPage = () => {
+  const router = useRouter();
+
   return (
     <div className="mt-16 flex flex-col items-center justify-center gap-8 sm:flex-row">
       <Image
@@ -21,7 +24,14 @@ export const Home: NextPage = () => {
           </p>
           <p>君たちの協力と才能が、今日の戦いを明日のスキルに変える。</p>
         </div>
-        <Button className="mx-auto w-fit sm:mx-0">戦いに参加する</Button>
+        <Button
+          className="mx-auto w-fit sm:mx-0"
+          onClick={() => {
+            router.push("/battle");
+          }}
+        >
+          戦いに参加する
+        </Button>
       </div>
     </div>
   );
