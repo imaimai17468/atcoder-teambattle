@@ -9,6 +9,7 @@ import { useState } from "react";
 import { CLIENT_PATH } from "@/constants/clientpath";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import Image from "next/image";
 
 export const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -16,9 +17,12 @@ export const Header: React.FC = () => {
 
   return (
     <header className="sticky top-0 z-50 flex items-center justify-between bg-gray-200/10 px-8  py-4 backdrop-blur-md">
-      <Link className="text-xl font-bold sm:text-2xl" href={CLIENT_PATH.HOME}>
-        AtCoder Team Battle
-      </Link>
+      <div className="flex items-center gap-4">
+        <Image src="/favicon.png" width={48} height={48} alt="icon" />
+        <Link className="text-xl font-bold sm:text-2xl" href={CLIENT_PATH.HOME}>
+          AtCoder Team Battle
+        </Link>
+      </div>
       <div className="hidden gap-8 sm:flex">
         <Button
           variant="ghost"
