@@ -27,7 +27,7 @@ export const UserScoreRow: React.FC<UserScoreRowProps> = ({
       {userScore.problemWithCorrectness.map((problemWithCorrectness) => {
         return (
           <TableCell key={problemWithCorrectness.time} className="text-center">
-            {problemWithCorrectness.isCollect
+            {problemWithCorrectness.isCorrect
               ? calcElapsedTime(startDate, problemWithCorrectness.time)
               : "-"}
           </TableCell>

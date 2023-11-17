@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import { Battle } from "@/schema/Battle.type";
 import { User } from "@/schema/User.type";
 
-export const useStandingsTableValue = (battle: Battle) => {
+export const useStandingsValue = (battle: Battle) => {
   return useMemo(() => {
     if (!battle) return { teamScoreList: [], firstAcceptanceTimes: [] };
     const problemLength = battle.problems.length;
@@ -18,7 +18,7 @@ export const useStandingsTableValue = (battle: Battle) => {
                 .map((userScore) => {
                   const problemWithCorrectness =
                     userScore.problemWithCorrectness[index];
-                  if (problemWithCorrectness.isCollect) {
+                  if (problemWithCorrectness.isCorrect) {
                     return {
                       user: userScore.user,
                       time: problemWithCorrectness.time,

@@ -2,7 +2,7 @@ import { Problem } from "@/schema/Problem.type";
 import { faker } from "@faker-js/faker";
 
 export const createMockProblem = (): Problem => {
-  const name = faker.lorem.sentence();
+  const name = faker.lorem.word();
   const score = faker.number.int({ min: 100, max: 1000 });
   const link = faker.internet.url();
 

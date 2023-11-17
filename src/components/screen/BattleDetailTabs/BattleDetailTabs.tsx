@@ -4,6 +4,7 @@ import { ErrorAlert } from "@/components/common/ErrorAlert";
 import { LoadingAlert } from "@/components/common/LoadingAlert";
 import { ProblemListTable } from "../ProblemListTable";
 import { StandingsTable } from "../StandingsTable";
+import { BattleAnalytics } from "../BattleAnalytics";
 
 type BattleDetailTabsProps = {
   battle: Battle | null;
@@ -16,7 +17,7 @@ export const BattleDetailTabs: React.FC<BattleDetailTabsProps> = ({
 }: BattleDetailTabsProps) => {
   return (
     <Tabs defaultValue="problems">
-      <TabsList className="border">
+      <TabsList className="mb-4 border">
         <TabsTrigger value="problems">Problems</TabsTrigger>
         <TabsTrigger value="standings">Standings</TabsTrigger>
         <TabsTrigger value="analytics">Analytics</TabsTrigger>
@@ -35,7 +36,7 @@ export const BattleDetailTabs: React.FC<BattleDetailTabsProps> = ({
             <StandingsTable battle={battle} startDate={battle.startDate} />
           </TabsContent>
           <TabsContent value="analytics">
-            <div>Analytics</div>
+            <BattleAnalytics battle={battle} />
           </TabsContent>
         </>
       )}

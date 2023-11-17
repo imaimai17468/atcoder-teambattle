@@ -13,7 +13,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { useState } from "react";
-import { useStandingsTableValue } from "./hooks/useStandingsTableValue";
+import { useStandingsValue } from "../../../hooks/useStandingsValue";
 import { FirstAcceptanceTimeRow } from "./components/FirstAcceptanceTimeRow";
 import { TeamScoreRow } from "./components/TeamScoreRow";
 import { UserScoreRow } from "./components/UserScoreRow";
@@ -27,8 +27,7 @@ export const StandingsTable: React.FC<StandingsTableProps> = ({
   battle,
   startDate,
 }: StandingsTableProps) => {
-  const { teamScoreList, firstAcceptanceTimes } =
-    useStandingsTableValue(battle);
+  const { teamScoreList, firstAcceptanceTimes } = useStandingsValue(battle);
 
   const [isTeamScoreDetailVisible, setIsTeamScoreDetailVisible] = useState<
     boolean[]

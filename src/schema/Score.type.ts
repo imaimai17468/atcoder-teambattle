@@ -11,7 +11,7 @@ export const ScoreSchema = z.object({
       problemWithCorrectness: z.array(
         z.object({
           problem: ProblemSchema,
-          isCollect: z.boolean(),
+          isCorrect: z.boolean(),
           time: z.number(),
         }),
       ),
