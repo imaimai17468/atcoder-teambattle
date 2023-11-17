@@ -43,6 +43,7 @@ export default function ScoreChart({ chartData }: BattleAnalyticsProps) {
   return (
     <Line
       data={chartData}
+      height={300}
       options={{
         responsive: true,
         scales: {
@@ -57,23 +58,27 @@ export default function ScoreChart({ chartData }: BattleAnalyticsProps) {
             },
           },
         },
-        // plugins: {
-        //   zoom: {
-        //     pan: {
-        //       enabled: true,
-        //       mode: "x",
-        //     },
-        //     zoom: {
-        //       pinch: {
-        //         enabled: true,
-        //       },
-        //       wheel: {
-        //         enabled: true,
-        //       },
-        //       mode: "x",
-        //     },
-        //   },
-        // },
+        plugins: {
+          legend: {
+            position: "bottom",
+            align: "start",
+          },
+          zoom: {
+            pan: {
+              enabled: true,
+              mode: "x",
+            },
+            zoom: {
+              pinch: {
+                enabled: true,
+              },
+              wheel: {
+                enabled: true,
+              },
+              mode: "x",
+            },
+          },
+        },
       }}
     />
   );
