@@ -42,7 +42,11 @@ export const Timeline: React.FC<TimelineProps> = ({
             </CardHeader>
             <CardContent className="flex flex-col gap-4">
               <CardTitle className="flex items-center gap-4">
-                <a href={timelineData.problem.link} rel="noopener noreferrer">
+                <a
+                  href={timelineData.problem.link}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
                   {timelineData.problem.name}
                 </a>
                 <p className="ml-auto">+ {timelineData.problem.score} point</p>
