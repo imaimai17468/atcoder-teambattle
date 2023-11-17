@@ -32,7 +32,13 @@ export const Header: React.FC = () => {
           <RocketIcon />
           Battles
         </Button>
-        <Button variant="ghost" className="flex gap-2">
+        <Button
+          variant="ghost"
+          className="flex gap-2"
+          onClick={() =>
+            router.push({ pathname: CLIENT_PATH.USER, query: { userId: "me" } })
+          }
+        >
           <PersonIcon />
           Profile
         </Button>
