@@ -10,13 +10,13 @@ import {
 import { useState, useEffect } from "react";
 import { User } from "@/schema/User.type";
 import { createMockUser } from "../../repositories/createMockUser";
-import { UserAvatar } from "@/components/common/UserAvatar";
 import { Button } from "@/components/ui/button";
 import {
   GitHubLogoIcon,
   TwitterLogoIcon,
   Link1Icon,
 } from "@radix-ui/react-icons";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export const UserPage: NextPage = () => {
   const [user, setUser] = useState<User>();
@@ -33,7 +33,10 @@ export const UserPage: NextPage = () => {
       <Card>
         <CardHeader>
           <div className="flex items-center gap-4">
-            <UserAvatar user={user} />
+            <Avatar className="h-16 w-16 border">
+              <AvatarImage src={user.icon} alt={user.name} />
+              <AvatarFallback>{user.name}</AvatarFallback>
+            </Avatar>
             <div className="flex flex-col gap-2">
               <CardDescription>{user.AtCoderID}</CardDescription>
               <CardTitle>{user.name}</CardTitle>
