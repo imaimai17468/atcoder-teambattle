@@ -17,9 +17,7 @@ type HomeLayoutProps = {
   children?: React.ReactNode;
 };
 
-const HomeLayout: React.FC<HomeLayoutProps> = ({
-  children,
-}: HomeLayoutProps) => {
+export default function HomeLayout({ children }: HomeLayoutProps) {
   return (
     <html lang="ja">
       <body>
@@ -27,6 +25,4 @@ const HomeLayout: React.FC<HomeLayoutProps> = ({
       </body>
     </html>
   );
-};
-
-export default HomeLayout;
+}

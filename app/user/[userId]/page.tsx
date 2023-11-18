@@ -1,4 +1,4 @@
-import { Metadata, NextPage } from "next";
+import { Metadata } from "next";
 import { createMockUser } from "@/repositories/createMockUser";
 import { UserProfileCard } from "@/components/screen/UserProfileCard";
 
@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: "User",
 };
 
-export const UserPage: NextPage = async () => {
+export default async function UserPage() {
   const user = await createMockUser();
   const isLoading = !user;
 
@@ -15,6 +15,4 @@ export const UserPage: NextPage = async () => {
       <UserProfileCard user={user || null} isLoading={isLoading} />
     </div>
   );
-};
-
-export default UserPage;
+}

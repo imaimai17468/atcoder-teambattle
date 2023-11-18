@@ -1,4 +1,4 @@
-import { Metadata, NextPage } from "next";
+import { Metadata } from "next";
 import { createMockBattle } from "@/repositories/createMockBattle";
 import { TimeProgress } from "@/components/common/TimeProgress";
 import { Separator } from "@/components/ui/separator";
@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: "Battle",
 };
 
-export const BattleDetailPage: NextPage = async () => {
+export default async function BattlePage() {
   const battle = await createMockBattle({ variant: "running" });
   const isLoading = !battle;
 
@@ -49,6 +49,4 @@ export const BattleDetailPage: NextPage = async () => {
       <BattleDetailTabs battle={battle} isLoading={isLoading} />
     </div>
   );
-};
-
-export default BattleDetailPage;
+}
