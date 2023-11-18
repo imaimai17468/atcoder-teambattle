@@ -1,26 +1,16 @@
-import { NextPage } from "next";
-import { createMockBattle } from "../../../repositories/createMockBattle";
-import { useEffect, useState } from "react";
-import { Battle } from "@/schema/Battle.type";
-import { useRouter } from "next/router";
-import { CLIENT_PATH } from "@/constants/clientpath";
-import TimeProgress from "../../../components/common/TimeProgress/TimeProgress";
+import { Metadata } from "next";
+import { createMockBattle } from "@/repositories/createMockBattle";
+import { TimeProgress } from "@/components/common/TimeProgress";
 import { Separator } from "@/components/ui/separator";
 import { BattleDetailTabs } from "@/components/screen/BattleDetailTabs";
 
-export const BattleDetailPage: NextPage = () => {
-  const [battle, setBattle] = useState<Battle | null>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-  const router = useRouter();
+export const metadata: Metadata = {
+  title: "Battle",
+};
 
-  useEffect(() => {
-    const battle = createMockBattle({ variant: "running" });
-    if (!battle) {
-      router.push(CLIENT_PATH.NOT_FOUND);
-    }
-    setBattle(battle);
-    setIsLoading(false);
-  }, []);
+export default async function BattlePage() {
+  const battle = await createMockBattle({ variant: "running" });
+  const isLoading = !battle;
 
   return (
     <div className="flex flex-col gap-8">
@@ -59,6 +49,4 @@ export const BattleDetailPage: NextPage = () => {
       <BattleDetailTabs battle={battle} isLoading={isLoading} />
     </div>
   );
-};
-
-export default BattleDetailPage;
+}

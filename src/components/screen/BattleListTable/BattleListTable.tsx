@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Table,
   TableBody,
@@ -8,7 +10,7 @@ import {
 } from "@/components/ui/table";
 import { Battle } from "@/schema/Battle.type";
 import { useState, useEffect } from "react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { CLIENT_PATH } from "@/constants/clientpath";
 import { TimeProgress } from "@/components/common/TimeProgress";
 import { LoadingAlert } from "@/components/common/LoadingAlert";
@@ -59,10 +61,12 @@ export const BattleListTable: React.FC<BattleListTableProps> = ({
                   key={battle.id}
                   className="cursor-pointer hover:bg-gray-800/10"
                   onClick={() => {
-                    router.push({
-                      pathname: CLIENT_PATH.BATTLE_DETAIL,
-                      query: { battleId: battle.id },
-                    });
+                    router.push(
+                      CLIENT_PATH.BATTLE_DETAIL.replace(
+                        "[battleId]",
+                        battle.id,
+                      ),
+                    );
                   }}
                 >
                   <TableCell className="w-1/5 font-semibold">

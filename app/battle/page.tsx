@@ -1,36 +1,26 @@
 import BattleListTable from "@/components/screen/BattleListTable/BattleListTable";
-import { useState, useEffect } from "react";
-import { Battle } from "@/schema/Battle.type";
 import { createMockAllTimeBattle } from "@/repositories/createMockBattle";
 import { DashBoard } from "@/components/screen/DashBoard";
 import { DoubleArrowDownIcon } from "@radix-ui/react-icons";
-import { NextPage } from "next";
+import { Metadata } from "next";
 
-export const BattlePage: NextPage = () => {
-  const [AllBattles, setAllBattles] = useState<{
-    upcoming: Battle[];
-    running: Battle[];
-    recent: Battle[];
-  }>();
-  const [isLoading, setIsLoading] = useState(true);
+export const metadata: Metadata = {
+  title: "Battles",
+};
 
-  useEffect(() => {
-    const { upcomingBattles, runningBattles, recentBattles } =
-      createMockAllTimeBattle();
-    setAllBattles({
-      upcoming: upcomingBattles,
-      running: runningBattles,
-      recent: recentBattles,
-    });
-    setIsLoading(false);
-  }, []);
+export default async function BattlesPage() {
+  const AllBattles = await createMockAllTimeBattle();
+  const isLoading = !AllBattles;
 
   return (
     <div className="flex flex-col gap-8">
-      <DashBoard battles={AllBattles?.running || null} isLoading={isLoading} />
+      <DashBoard
+        battles={AllBattles.runningBattles || null}
+        isLoading={isLoading}
+      />
       <div className="flex flex-col gap-4">
         <BattleListTable
-          battles={AllBattles?.running || null}
+          battles={AllBattles.runningBattles || null}
           variant="running"
           isLoading={isLoading}
         />
@@ -38,7 +28,7 @@ export const BattlePage: NextPage = () => {
           <DoubleArrowDownIcon className="-translate-y-1/2 animate-bounce" />
         </div>
         <BattleListTable
-          battles={AllBattles?.upcoming || null}
+          battles={AllBattles.upcomingBattles || null}
           variant="upcoming"
           isLoading={isLoading}
         />
@@ -46,13 +36,11 @@ export const BattlePage: NextPage = () => {
           <DoubleArrowDownIcon className="-translate-y-1/2 animate-bounce" />
         </div>
         <BattleListTable
-          battles={AllBattles?.recent || null}
+          battles={AllBattles.recentBattles || null}
           variant="recent"
           isLoading={isLoading}
         />
       </div>
     </div>
   );
-};
-
-export default BattlePage;
+}

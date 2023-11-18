@@ -1,8 +1,7 @@
-import { NextPage } from "next";
 import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
 import { ExclamationTriangleIcon } from "@radix-ui/react-icons";
 
-export const NotFoundPage: NextPage = () => {
+export default function NotFoundPage() {
   return (
     <Alert>
       <ExclamationTriangleIcon />
@@ -12,6 +11,4 @@ export const NotFoundPage: NextPage = () => {
       </AlertDescription>
     </Alert>
   );
-};
-
-export default NotFoundPage;
+}
