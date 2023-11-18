@@ -2,7 +2,11 @@ import BattleListTable from "@/components/screen/BattleListTable/BattleListTable
 import { createMockAllTimeBattle } from "@/repositories/createMockBattle";
 import { DashBoard } from "@/components/screen/DashBoard";
 import { DoubleArrowDownIcon } from "@radix-ui/react-icons";
-import { NextPage } from "next";
+import { Metadata, NextPage } from "next";
+
+export const metadata: Metadata = {
+  title: "Battles",
+};
 
 export const BattlePage: NextPage = async () => {
   const AllBattles = await createMockAllTimeBattle();

@@ -1,6 +1,10 @@
-import { NextPage } from "next";
+import { Metadata, NextPage } from "next";
 import { createMockUser } from "@/repositories/createMockUser";
 import { UserProfileCard } from "@/components/screen/UserProfileCard";
+
+export const metadata: Metadata = {
+  title: "User",
+};
 
 export const UserPage: NextPage = async () => {
   const user = await createMockUser();
