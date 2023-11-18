@@ -59,13 +59,14 @@ export const useAnalyticsValue = (battle: Battle) => {
           data: chartTimeLabels.map((time) => {
             if (time === battle.startDate) return 0;
 
-            const previousScore = scoreTransition
-              .filter((v) => v.time <= time)
-              .slice(-1)[0]?.currentScore;
-            return previousScore || 0;
+            const score = scoreTransition.find((v) => v.time === time);
+            if (!score) return null;
+            return score.currentScore;
           }),
           borderColor: `#${Math.floor(Math.random() * 16777215).toString(16)}`,
           backgroundColor: "rgba(0,0,0,0)",
+          stepped: true,
+          spanGaps: true,
         };
       }),
     };

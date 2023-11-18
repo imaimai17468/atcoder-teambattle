@@ -32,7 +32,7 @@ type BattleAnalyticsProps = {
     labels: number[];
     datasets: {
       label: string;
-      data: number[];
+      data: (number | null)[];
       borderColor: string;
       backgroundColor: string;
     }[];
@@ -66,15 +66,6 @@ export default function ScoreChart({ chartData }: BattleAnalyticsProps) {
           zoom: {
             pan: {
               enabled: true,
-              mode: "x",
-            },
-            zoom: {
-              pinch: {
-                enabled: true,
-              },
-              wheel: {
-                enabled: true,
-              },
               mode: "x",
             },
           },
