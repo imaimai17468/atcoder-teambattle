@@ -1,3 +1,5 @@
+"use client";
+
 import { Battle } from "@/schema/Battle.type";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { useMemo, useState } from "react";

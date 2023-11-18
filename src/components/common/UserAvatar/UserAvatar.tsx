@@ -1,3 +1,5 @@
+"use client";
+
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   HoverCard,
@@ -5,7 +7,7 @@ import {
   HoverCardTrigger,
 } from "@/components/ui/hovercard";
 import { User } from "@/schema/User.type";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { CLIENT_PATH } from "@/constants/clientpath";
 import { Button } from "@/components/ui/button";
 import { CardDescription } from "@/components/ui/card";
@@ -51,10 +53,7 @@ export const UserAvatar = ({ user }: UserAvatarProps) => {
             className="ml-auto w-fit"
             size="sm"
             onClick={() => {
-              router.push({
-                pathname: CLIENT_PATH.USER,
-                query: { userId: user.id },
-              });
+              router.push(CLIENT_PATH.USER.replace("[userId]", user.id));
             }}
           >
             view Profile

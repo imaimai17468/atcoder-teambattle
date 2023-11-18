@@ -1,3 +1,5 @@
+"use client";
+
 import { ErrorAlert } from "@/components/common/ErrorAlert";
 import { LoadingAlert } from "@/components/common/LoadingAlert";
 import {
@@ -9,7 +11,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Problem } from "@/schema/Problem.type";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 type ProblemListTableProps = {
   problems: Problem[] | null;

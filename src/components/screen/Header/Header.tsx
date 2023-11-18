@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
 import { ExitIcon } from "@radix-ui/react-icons";
 import {
@@ -7,7 +9,7 @@ import {
 } from "@radix-ui/react-icons";
 import { useState } from "react";
 import { CLIENT_PATH } from "@/constants/clientpath";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -36,7 +38,7 @@ export const Header: React.FC = () => {
           variant="ghost"
           className="flex gap-2"
           onClick={() =>
-            router.push({ pathname: CLIENT_PATH.USER, query: { userId: "me" } })
+            router.push(CLIENT_PATH.USER.replace("[userId]", "me"))
           }
         >
           <PersonIcon />
