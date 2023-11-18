@@ -23,10 +23,10 @@ export const createMockBattle = ({
 
   if (variant === "upcoming") {
     endDate = faker.date.future().getTime();
-    startDate = faker.date.between(new Date(), endDate).getTime();
+    startDate = faker.date.between({ from: new Date(), to: endDate }).getTime();
   } else if (variant === "recent") {
     startDate = faker.date.past().getTime();
-    endDate = faker.date.between(startDate, new Date()).getTime();
+    endDate = faker.date.between({ from: startDate, to: new Date() }).getTime();
   }
 
   return {
