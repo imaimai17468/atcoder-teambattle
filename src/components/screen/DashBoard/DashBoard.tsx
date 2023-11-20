@@ -6,17 +6,13 @@ import { useMemo, useState } from "react";
 import { CaretSortIcon } from "@radix-ui/react-icons";
 import { Button } from "@/components/ui/button";
 import clsx from "clsx";
-import { ErrorAlert } from "@/components/common/ErrorAlert";
-import { LoadingAlert } from "@/components/common/LoadingAlert/LoadingAlert";
 
 type DashBoardProps = {
-  battles: Battle[] | null;
-  isLoading: boolean;
+  battles: Battle[];
 };
 
 export const DashBoard: React.FC<DashBoardProps> = ({
   battles,
-  isLoading,
 }: DashBoardProps) => {
   const activeTeams = useMemo(() => {
     return (
@@ -51,38 +47,34 @@ export const DashBoard: React.FC<DashBoardProps> = ({
           <CaretSortIcon />
         </Button>
       </div>
-      {battles ? (
-        <div
-          className={clsx(
-            "grid grid-cols-1 gap-4 sm:grid-cols-3",
-            isOpen ? "grid sm:hidden" : "hidden sm:grid",
-          )}
-        >
-          <Card>
-            <CardHeader className="text-sm">Running Battles</CardHeader>
-            <CardContent className="flex justify-center gap-2 text-xl font-bold sm:justify-start">
-              <p className="text-emerald-400">{battles.length}</p>
-              <p>Battles</p>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader className="text-sm">Active Teams</CardHeader>
-            <CardContent className="flex justify-center gap-2 text-xl font-bold sm:justify-start">
-              <p className="text-emerald-400"> {activeTeams}</p>
-              <p>Teams</p>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardHeader className="text-sm">Active Users</CardHeader>
-            <CardContent className="flex justify-center gap-2 text-xl font-bold sm:justify-start">
-              <p className="text-emerald-400"> {activeUsers}</p>
-              <p>Users</p>
-            </CardContent>
-          </Card>
-        </div>
-      ) : (
-        <>{isLoading ? <LoadingAlert /> : <ErrorAlert />}</>
-      )}
+      <div
+        className={clsx(
+          "grid grid-cols-1 gap-4 sm:grid-cols-3",
+          isOpen ? "grid sm:hidden" : "hidden sm:grid",
+        )}
+      >
+        <Card>
+          <CardHeader className="text-sm">Running Battles</CardHeader>
+          <CardContent className="flex justify-center gap-2 text-xl font-bold sm:justify-start">
+            <p className="text-emerald-400">{battles.length}</p>
+            <p>Battles</p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader className="text-sm">Active Teams</CardHeader>
+          <CardContent className="flex justify-center gap-2 text-xl font-bold sm:justify-start">
+            <p className="text-emerald-400"> {activeTeams}</p>
+            <p>Teams</p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader className="text-sm">Active Users</CardHeader>
+          <CardContent className="flex justify-center gap-2 text-xl font-bold sm:justify-start">
+            <p className="text-emerald-400"> {activeUsers}</p>
+            <p>Users</p>
+          </CardContent>
+        </Card>
+      </div>
     </div>
   );
 };
