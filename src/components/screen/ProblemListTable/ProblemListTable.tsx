@@ -1,7 +1,5 @@
 "use client";
 
-import { ErrorAlert } from "@/components/common/ErrorAlert";
-import { LoadingAlert } from "@/components/common/LoadingAlert";
 import {
   Table,
   TableBody,
@@ -14,13 +12,11 @@ import { Problem } from "@/schema/Problem.type";
 import { useRouter } from "next/navigation";
 
 type ProblemListTableProps = {
-  problems: Problem[] | null;
-  isLoading: boolean;
+  problems: Problem[];
 };
 
 export const ProblemListTable: React.FC<ProblemListTableProps> = ({
   problems,
-  isLoading,
 }: ProblemListTableProps) => {
   const router = useRouter();
   return (
@@ -33,29 +29,21 @@ export const ProblemListTable: React.FC<ProblemListTableProps> = ({
         </TableRow>
       </TableHeader>
       <TableBody>
-        {problems ? (
-          problems.map((problem, index) => {
-            return (
-              <TableRow
-                key={problem.link}
-                className="cursor-pointer hover:bg-gray-800/10"
-                onClick={() => {
-                  router.push(problem.link);
-                }}
-              >
-                <TableCell>{index + 1}</TableCell>
-                <TableCell>{problem.name}</TableCell>
-                <TableCell className="text-center">{problem.score}</TableCell>
-              </TableRow>
-            );
-          })
-        ) : (
-          <TableRow>
-            <TableCell colSpan={2} className="text-center">
-              {isLoading ? <LoadingAlert /> : <ErrorAlert />}
-            </TableCell>
-          </TableRow>
-        )}
+        {problems.map((problem, index) => {
+          return (
+            <TableRow
+              key={problem.link}
+              className="cursor-pointer hover:bg-gray-800/10"
+              onClick={() => {
+                router.push(problem.link);
+              }}
+            >
+              <TableCell>{index + 1}</TableCell>
+              <TableCell>{problem.name}</TableCell>
+              <TableCell className="text-center">{problem.score}</TableCell>
+            </TableRow>
+          );
+        })}
       </TableBody>
     </Table>
   );

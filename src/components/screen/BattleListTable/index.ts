@@ -1,1 +1,1 @@
-export { default as RunningBattleListTable } from "./BattleListTable";
+export { default as BattleListTable } from "./BattleListTable";
