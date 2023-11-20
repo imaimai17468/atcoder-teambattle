@@ -1,18 +1,16 @@
 import { Metadata } from "next";
-import { createMockUser } from "@/repositories/createMockUser";
-import { UserProfileCard } from "@/components/screen/UserProfileCard";
+import { UserProfileContent } from "@/components/screen/UserProfileContent";
+import { Suspense } from "react";
+import { LoadingAlert } from "@/components/common/LoadingAlert";
 
 export const metadata: Metadata = {
   title: "User",
 };
 
 export default async function UserPage() {
-  const user = await createMockUser();
-  const isLoading = !user;
-
   return (
-    <div>
-      <UserProfileCard user={user || null} isLoading={isLoading} />
-    </div>
+    <Suspense fallback={<LoadingAlert />}>
+      <UserProfileContent />
+    </Suspense>
   );
 }
