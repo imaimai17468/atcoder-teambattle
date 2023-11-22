@@ -1,7 +1,7 @@
 import LoadingDashBoard from "./components/LoadingDashBoard";
 import { LoadingAlert } from "@/components/common/LoadingAlert";
 
-export const LoadingBattleBoard = async () => {
+export const LoadingBattleBoard = () => {
   return (
     <div className="flex flex-col gap-8">
       <LoadingDashBoard />
