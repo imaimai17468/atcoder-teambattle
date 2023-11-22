@@ -14,6 +14,7 @@ import {
   Link1Icon,
 } from "@radix-ui/react-icons";
 import { Button } from "@/components/ui/button";
+import { Skeleton } from "@/components/common/Skeleton";
 
 export type UserProfileCardProps = {
   user: User;
@@ -28,7 +29,9 @@ export const UserProfileCard: React.FC<UserProfileCardProps> = ({
         <div className="flex items-center gap-4">
           <Avatar className="h-16 w-16 border">
             <AvatarImage src={user.icon} alt={user.name} />
-            <AvatarFallback>{user.name}</AvatarFallback>
+            <AvatarFallback>
+              <Skeleton className="h-16 w-16 rounded-full border" />
+            </AvatarFallback>
           </Avatar>
           <div className="flex flex-col gap-2">
             <CardDescription>{user.AtCoderID}</CardDescription>
