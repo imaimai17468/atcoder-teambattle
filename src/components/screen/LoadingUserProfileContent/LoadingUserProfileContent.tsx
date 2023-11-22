@@ -1,6 +1,6 @@
 import LoadingUserProfileCard from "./components/LoadingUserProfileCard";
 
-export const LoadingUserProfileContent = async () => {
+export const LoadingUserProfileContent = () => {
   return <LoadingUserProfileCard />;
 };
 
