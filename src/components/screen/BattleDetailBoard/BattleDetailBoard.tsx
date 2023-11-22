@@ -10,7 +10,9 @@ export const BattleDetailBoard = async () => {
     <div className="flex flex-col gap-8">
       <div className="flex flex-col items-start gap-8 sm:flex-row">
         <h1 className="whitespace-nowrap text-2xl font-bold">{battle.title}</h1>
-        <h2>{battle.description}</h2>
+        <div className="sm:w-1/2">
+          <h2>{battle.description}</h2>
+        </div>
       </div>
       <div className="flex flex-col gap-8 sm:flex-row sm:items-end sm:gap-16">
         <div className="flex flex-col gap-4">
