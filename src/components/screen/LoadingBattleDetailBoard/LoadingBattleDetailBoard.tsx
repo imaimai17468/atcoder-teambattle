@@ -2,7 +2,7 @@ import { Separator } from "@/components/ui/separator";
 import { Skeleton } from "@/components/common/Skeleton/Skeleton";
 import { LoadingAlert } from "@/components/common/LoadingAlert";
 
-export const LoadingBattleDetailBoard = async () => {
+export const LoadingBattleDetailBoard = () => {
   return (
     <div className="flex flex-col gap-8">
       <div className="flex flex-col items-start gap-8 sm:flex-row">
