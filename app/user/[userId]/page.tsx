@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { UserProfileContent } from "@/components/screen/UserProfileContent";
 import { Suspense } from "react";
-import { LoadingAlert } from "@/components/common/LoadingAlert";
+import { LoadingUserProfileContent } from "@/components/screen/LoadingUserProfileContent";
 
 export const metadata: Metadata = {
   title: "User",
@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default async function UserPage() {
   return (
-    <Suspense fallback={<LoadingAlert />}>
+    <Suspense fallback={<LoadingUserProfileContent />}>
       <UserProfileContent />
     </Suspense>
   );
