@@ -3,12 +3,12 @@ import LoadingUserProfileCard from "./components/LoadingUserProfileCard";
 import LoadingEditUserProfileCard from "./components/LoadingEditUserProfileCard";
 
 type LoadingUserProfileContentProps = {
-  isEdit: boolean;
+  isEdit?: boolean;
 };
 
 export const LoadingUserProfileContent: React.FC<
   LoadingUserProfileContentProps
-> = ({ isEdit }: LoadingUserProfileContentProps) => {
+> = ({ isEdit = false }: LoadingUserProfileContentProps) => {
   return (
     <div className="flex flex-col gap-8">
       {isEdit ? <LoadingEditUserProfileCard /> : <LoadingUserProfileCard />}
