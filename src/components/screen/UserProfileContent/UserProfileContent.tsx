@@ -1,10 +1,17 @@
 import { createMockBattles } from "@/repositories/createMockBattle";
 import { createMockUser } from "../../../repositories/createMockUser";
-import { UserProfileCard } from "../UserProfileCard/UserProfileCard";
+import UserProfileCard from "./components/UserProfileCard";
 import { BattleListTable } from "../BattleListTable";
 import { NextArrow } from "@/components/common/NextArrow";
+import EditUserProfileCard from "./components/EditUserProfileCard";
 
-export const UserProfileContent = async () => {
+type UserProfileContentProps = {
+  isEdit?: boolean;
+};
+
+export const UserProfileContent: React.FC<UserProfileContentProps> = async ({
+  isEdit,
+}: UserProfileContentProps) => {
   const user = await createMockUser();
   const joinedBattle = await createMockBattles({ count: 5, variant: "recent" });
   const createdBattle = await createMockBattles({
@@ -14,7 +21,11 @@ export const UserProfileContent = async () => {
 
   return (
     <div className="flex flex-col gap-8">
-      <UserProfileCard user={user} />
+      {isEdit ? (
+        <EditUserProfileCard user={user} />
+      ) : (
+        <UserProfileCard user={user} />
+      )}
       <BattleListTable battles={joinedBattle} title="Joined Battles" />
       <NextArrow className="my-8" />
       <BattleListTable battles={createdBattle} title="Created Battles" />
