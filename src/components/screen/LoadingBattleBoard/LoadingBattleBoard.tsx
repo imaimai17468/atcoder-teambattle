@@ -5,9 +5,7 @@ export const LoadingBattleBoard = () => {
   return (
     <div className="flex flex-col gap-8">
       <LoadingDashBoard />
-      <div className="flex flex-col gap-4">
-        <LoadingAlert />
-      </div>
+      <LoadingAlert />
     </div>
   );
 };
