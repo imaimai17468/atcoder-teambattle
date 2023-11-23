@@ -1,3 +1,5 @@
+"use client";
+
 import { User } from "@/schema/User.type";
 import {
   Card,
@@ -15,6 +17,8 @@ import {
 } from "@radix-ui/react-icons";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/common/Skeleton";
+import { useRouter, useParams } from "next/navigation";
+import { CLIENT_PATH } from "@/constants/clientpath";
 
 export type UserProfileCardProps = {
   user: User;
@@ -23,6 +27,9 @@ export type UserProfileCardProps = {
 export const UserProfileCard: React.FC<UserProfileCardProps> = ({
   user,
 }: UserProfileCardProps) => {
+  const router = useRouter();
+  const { userId } = useParams();
+
   return (
     <Card>
       <CardHeader>
@@ -40,12 +47,15 @@ export const UserProfileCard: React.FC<UserProfileCardProps> = ({
         </div>
       </CardHeader>
       <CardContent className="flex flex-col gap-4">
-        <div className="flex flex-col">
+        <div className="flex flex-col gap-2 sm:flex-row">
           {user.occupation && (
             <CardDescription>{user.occupation}</CardDescription>
           )}
           {user.organization && (
-            <CardDescription>at {user.organization}</CardDescription>
+            <>
+              <CardDescription>at</CardDescription>
+              <CardDescription>{user.organization}</CardDescription>
+            </>
           )}
         </div>
         {user.bio && <p className="text-sm">{user.bio}</p>}
@@ -80,7 +90,14 @@ export const UserProfileCard: React.FC<UserProfileCardProps> = ({
         </div>
       </CardContent>
       <CardFooter>
-        <Button className="ml-auto">Edit Profile</Button>
+        <Button
+          className="ml-auto"
+          onClick={() => {
+            router.push(CLIENT_PATH.USER_EDIT.replace("[userId]", userId[0]));
+          }}
+        >
+          Edit Profile
+        </Button>
       </CardFooter>
     </Card>
   );
