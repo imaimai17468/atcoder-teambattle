@@ -16,12 +16,12 @@ import { TimeProgress } from "@/components/common/TimeProgress";
 
 type BattleListTableProps = {
   battles: Battle[];
-  variant: "upcoming" | "running" | "recent";
+  title: string;
 };
 
 export const BattleListTable: React.FC<BattleListTableProps> = ({
   battles,
-  variant,
+  title,
 }: BattleListTableProps) => {
   const router = useRouter();
   const [isSP, setIsSP] = useState(false);
@@ -34,7 +34,7 @@ export const BattleListTable: React.FC<BattleListTableProps> = ({
   return (
     <>
       <h1 className="border-b border-gray-300 text-2xl font-semibold">
-        {variant.charAt(0).toUpperCase() + variant.slice(1)} Battles
+        {title}
       </h1>
       <Table>
         <TableHeader>
