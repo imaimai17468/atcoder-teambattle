@@ -1,7 +1,7 @@
 import { DashBoard } from "../DashBoard";
 import { BattleListTable } from "../BattleListTable";
 import { createMockAllTimeBattle } from "@/repositories/createMockBattle";
-import { DoubleArrowDownIcon } from "@radix-ui/react-icons";
+import { NextArrow } from "@/components/common/NextArrow";
 
 export const BattleBoard = async () => {
   const AllBattles = await createMockAllTimeBattle();
@@ -12,21 +12,17 @@ export const BattleBoard = async () => {
       <div className="flex flex-col gap-4">
         <BattleListTable
           battles={AllBattles.runningBattles || null}
-          variant="running"
+          title="Running Battles"
         />
-        <div className="my-8 flex w-full justify-center">
-          <DoubleArrowDownIcon className="-translate-y-1/2 animate-bounce" />
-        </div>
+        <NextArrow className="my-8" />
         <BattleListTable
           battles={AllBattles.upcomingBattles || null}
-          variant="upcoming"
+          title="Upcoming Battles"
         />
-        <div className="my-8 flex w-full justify-center">
-          <DoubleArrowDownIcon className="-translate-y-1/2 animate-bounce" />
-        </div>
+        <NextArrow className="my-8" />
         <BattleListTable
           battles={AllBattles.recentBattles || null}
-          variant="recent"
+          title="Recent Battles"
         />
       </div>
     </div>
