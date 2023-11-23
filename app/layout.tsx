@@ -3,6 +3,7 @@ import { MainLayout } from "@/components/layout/MainLayout";
 import { Metadata } from "next";
 import Favicon from "public/favicon.png";
 import { SITE_NAME, SITE_DESCRIPTION } from "@/constants/metadata";
+import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
   title: {
@@ -20,8 +21,10 @@ type HomeLayoutProps = {
 export default function HomeLayout({ children }: HomeLayoutProps) {
   return (
     <html lang="ja">
+      <head />
       <body>
         <MainLayout>{children}</MainLayout>
+        <Toaster />
       </body>
     </html>
   );
