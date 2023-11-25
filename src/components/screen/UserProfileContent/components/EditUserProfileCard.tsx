@@ -16,11 +16,8 @@ import {
 } from "@radix-ui/react-icons";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/common/Skeleton";
-import { useRouter, useParams } from "next/navigation";
-import { CLIENT_PATH } from "@/constants/clientpath";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { useToast } from "@/components/ui/use-toast";
 import { useEditUserProfileForm } from "../hooks/useEditUserProfileForm";
 import { BioCounter } from "./BioCounter";
 
@@ -31,9 +28,6 @@ export type EditUserProfileCardProps = {
 export const EditUserProfileCard: React.FC<EditUserProfileCardProps> = ({
   user,
 }: EditUserProfileCardProps) => {
-  const router = useRouter();
-  const { userId } = useParams();
-  const { toast } = useToast();
   const {
     onSubmit,
     register,
@@ -151,13 +145,6 @@ export const EditUserProfileCard: React.FC<EditUserProfileCardProps> = ({
             type="submit"
             className="ml-auto"
             disabled={!isDirty || !isValid || isSubmitting}
-            onClick={() => {
-              toast({
-                title: "Success",
-                description: "Your profile has been updated.",
-              });
-              router.push(CLIENT_PATH.USER.replace("[userId]", userId[0]));
-            }}
           >
             Submit
           </Button>
