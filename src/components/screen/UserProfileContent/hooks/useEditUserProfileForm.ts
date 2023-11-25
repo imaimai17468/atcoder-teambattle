@@ -15,6 +15,7 @@ export const useEditUserProfileForm = (user: User) => {
     watch,
     formState: { errors, isValid, isDirty, isSubmitting },
   } = useForm<User>({
+    mode: "onChange",
     resolver: zodResolver(UserSchema),
     defaultValues: user,
   });
