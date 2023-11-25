@@ -3,7 +3,7 @@ import { faker } from "@faker-js/faker";
 
 export const createMockUser = (): User => {
   const id = faker.string.uuid();
-  const AtCoderID = faker.internet.userName();
+  const atcoderId = faker.internet.userName();
   const name = faker.person.fullName();
   const icon = faker.image.avatar();
   const bio = faker.lorem.paragraph();
@@ -17,7 +17,7 @@ export const createMockUser = (): User => {
 
   return {
     id,
-    AtCoderID,
+    atcoderId,
     name,
     icon,
     bio,
