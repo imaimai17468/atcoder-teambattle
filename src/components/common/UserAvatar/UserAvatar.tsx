@@ -40,7 +40,7 @@ export const UserAvatar = ({ user }: UserAvatarProps) => {
               <AvatarFallback>{user.name}</AvatarFallback>
             </Avatar>
             <div className="flex flex-col">
-              <CardDescription>{user.AtCoderID}</CardDescription>
+              <CardDescription>{user.atcoderId}</CardDescription>
               <p className="text-lg font-semibold">{user.name}</p>
             </div>
           </div>

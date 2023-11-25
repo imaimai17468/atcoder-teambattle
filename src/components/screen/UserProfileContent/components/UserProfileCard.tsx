@@ -41,7 +41,7 @@ export const UserProfileCard: React.FC<UserProfileCardProps> = ({
             </AvatarFallback>
           </Avatar>
           <div className="flex flex-col gap-2">
-            <CardDescription>{user.AtCoderID}</CardDescription>
+            <CardDescription>{user.atcoderId}</CardDescription>
             <CardTitle>{user.name}</CardTitle>
           </div>
         </div>
