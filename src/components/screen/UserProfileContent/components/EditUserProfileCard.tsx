@@ -58,7 +58,9 @@ export const EditUserProfileCard: React.FC<EditUserProfileCardProps> = ({
                   {...register("atcoderId")}
                 />
                 {errors.atcoderId && (
-                  <p className="text-red-500">{errors.atcoderId.message}</p>
+                  <p className="whitespace-nowrap text-sm text-red-500">
+                    {errors.atcoderId.message}
+                  </p>
                 )}
               </div>
               <div className="flex items-center gap-2">
@@ -69,14 +71,16 @@ export const EditUserProfileCard: React.FC<EditUserProfileCardProps> = ({
                   {...register("name")}
                 />
                 {errors.name && (
-                  <p className="text-red-500">{errors.name.message}</p>
+                  <p className="whitespace-nowrap text-sm text-red-500">
+                    {errors.name.message}
+                  </p>
                 )}
               </div>
             </div>
           </div>
         </CardHeader>
         <CardContent className="flex flex-col gap-4">
-          <div className="flex flex-col gap-2 sm:flex-row">
+          <div className="flex flex-col gap-2 md:flex-row md:items-center">
             <Input
               type="text"
               placeholder="Occupation"
@@ -92,15 +96,32 @@ export const EditUserProfileCard: React.FC<EditUserProfileCardProps> = ({
                 {...register("organization")}
               />
             </div>
-          </div>
-          <Textarea placeholder="Bio" className="h-32" {...register("bio")} />
-          <BioCounter control={control}>
-            {(count) => (
-              <CardDescription className="text-right text-sm">
-                {count}/{BIO_MAX_LENGTH}
-              </CardDescription>
+            {errors.occupation && (
+              <p className="whitespace-nowrap text-sm text-red-500">
+                {errors.occupation.message}
+              </p>
             )}
-          </BioCounter>
+            {errors.organization && (
+              <p className="whitespace-nowrap text-sm text-red-500">
+                {errors.organization.message}
+              </p>
+            )}
+          </div>
+          <div className="flex flex-col items-end gap-1">
+            <Textarea placeholder="Bio" className="h-32" {...register("bio")} />
+            <BioCounter control={control}>
+              {(count) => (
+                <CardDescription className="text-sm">
+                  {count}/{BIO_MAX_LENGTH}
+                </CardDescription>
+              )}
+            </BioCounter>
+            {errors.bio && (
+              <p className="whitespace-nowrap text-sm text-red-500">
+                {errors.bio.message}
+              </p>
+            )}
+          </div>
           <div className="flex flex-col gap-4">
             <div className="flex items-center gap-4">
               <GitHubLogoIcon className="h-6 w-6" />
@@ -111,7 +132,9 @@ export const EditUserProfileCard: React.FC<EditUserProfileCardProps> = ({
                 {...register("links.github")}
               />
               {errors.links?.github && (
-                <p className="text-red-500">{errors.links.github.message}</p>
+                <p className="whitespace-nowrap text-sm text-red-500">
+                  {errors.links.github.message}
+                </p>
               )}
             </div>
             <div className="flex items-center gap-4">
@@ -123,7 +146,9 @@ export const EditUserProfileCard: React.FC<EditUserProfileCardProps> = ({
                 {...register("links.twitter")}
               />
               {errors.links?.twitter && (
-                <p className="text-red-500">{errors.links.twitter.message}</p>
+                <p className="whitespace-nowrap text-sm text-red-500">
+                  {errors.links.twitter.message}
+                </p>
               )}
             </div>
             <div className="flex items-center gap-4">
@@ -135,7 +160,9 @@ export const EditUserProfileCard: React.FC<EditUserProfileCardProps> = ({
                 {...register("links.website")}
               />
               {errors.links?.website && (
-                <p className="text-red-500">{errors.links.website.message}</p>
+                <p className="whitespace-nowrap text-sm text-red-500">
+                  {errors.links.website.message}
+                </p>
               )}
             </div>
           </div>
