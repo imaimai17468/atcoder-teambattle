@@ -1,7 +1,6 @@
-import { DashBoard } from "../DashBoard";
-import { BattleListTable } from "../BattleListTable";
+import DashBoard from "./components/DashBoard";
 import { createMockAllTimeBattle } from "@/repositories/createMockBattle";
-import { NextArrow } from "@/components/common/NextArrow";
+import { BattleLists } from "./components/BattleLists";
 
 export const BattleBoard = async () => {
   const AllBattles = await createMockAllTimeBattle();
@@ -9,22 +8,11 @@ export const BattleBoard = async () => {
   return (
     <div className="flex flex-col gap-8">
       <DashBoard battles={AllBattles.runningBattles} />
-      <div className="flex flex-col gap-4">
-        <BattleListTable
-          battles={AllBattles.runningBattles || null}
-          title="Running Battles"
-        />
-        <NextArrow className="my-8" />
-        <BattleListTable
-          battles={AllBattles.upcomingBattles || null}
-          title="Upcoming Battles"
-        />
-        <NextArrow className="my-8" />
-        <BattleListTable
-          battles={AllBattles.recentBattles || null}
-          title="Recent Battles"
-        />
-      </div>
+      <BattleLists
+        upcomingBattles={AllBattles.upcomingBattles}
+        runningBattles={AllBattles.runningBattles}
+        recentBattles={AllBattles.recentBattles}
+      />
     </div>
   );
 };
