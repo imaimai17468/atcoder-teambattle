@@ -4,7 +4,7 @@ import { Suspense } from "react";
 import { LoadingBattleDetailBoard } from "@/components/screen/LoadingBattleDetailBoard";
 
 export const metadata: Metadata = {
-  title: "Battle",
+  title: "Detail Battle",
 };
 
 export default async function BattleDetailPage() {
