@@ -17,17 +17,11 @@ export const BattleLists: React.FC<BattleListsProps> = ({
   return (
     <div className="flex flex-col gap-4">
       <CreateBattleButton />
-      <BattleListTable
-        battles={runningBattles || null}
-        title="Running Battles"
-      />
+      <BattleListTable battles={runningBattles} title="Running Battles" />
       <NextArrow className="my-8" />
-      <BattleListTable
-        battles={upcomingBattles || null}
-        title="Upcoming Battles"
-      />
+      <BattleListTable battles={upcomingBattles} title="Upcoming Battles" />
       <NextArrow className="my-8" />
-      <BattleListTable battles={recentBattles || null} title="Recent Battles" />
+      <BattleListTable battles={recentBattles} title="Recent Battles" />
     </div>
   );
 };
