@@ -2,28 +2,45 @@ import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { DatePicker } from "@/components/common/DatePicker";
+import { Separator } from "@/components/ui/separator";
 
 export const CreateBattleForm: React.FC = () => {
   return (
     <Card>
       <CardHeader>
         <CardTitle>Create Battle</CardTitle>
+        <Separator />
       </CardHeader>
       <CardContent className="flex flex-col gap-4">
+        <CardTitle>Basic Info</CardTitle>
         <div className="flex flex-col gap-2">
-          <CardDescription>Title</CardDescription>
+          <p>Title</p>
           <Input className="w-72" />
         </div>
         <div className="flex flex-col gap-2">
-          <CardDescription>Description</CardDescription>
+          <p>Description</p>
           <Textarea />
+        </div>
+        <div className="flex flex-col gap-2">
+          <p>Start Time</p>
+          <div className="flex gap-2">
+            <DatePicker />
+            <Input type="time" className="w-32" />
+          </div>
+        </div>
+        <div className="flex flex-col gap-2">
+          <p>End Time</p>
+          <div className="flex gap-2">
+            <DatePicker />
+            <Input type="time" className="w-32" />
+          </div>
         </div>
       </CardContent>
       <CardFooter className="flex justify-end">
