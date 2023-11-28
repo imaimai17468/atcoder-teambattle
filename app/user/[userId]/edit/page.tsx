@@ -4,10 +4,10 @@ import { Suspense } from "react";
 import { LoadingUserProfileContent } from "@/components/screen/LoadingUserProfileContent";
 
 export const metadata: Metadata = {
-  title: "User",
+  title: "Edit User",
 };
 
-export default async function UserPage() {
+export default async function EditUserPage() {
   return (
     <Suspense fallback={<LoadingUserProfileContent isEdit />}>
       <UserProfileContent isEdit />

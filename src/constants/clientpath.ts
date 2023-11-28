@@ -1,7 +1,8 @@
 export const CLIENT_PATH = {
   HOME: "/",
   BATTLE: "/battle",
-  BATTLE_DETAIL: "/battle/[battleId]",
+  BATTLE_CREATE: "/battle/create",
+  BATTLE_DETAIL: "/battle/detail/[battleId]",
   USER: "/user/[userId]",
   USER_EDIT: "/user/[userId]/edit",
   NOT_FOUND: "/404",

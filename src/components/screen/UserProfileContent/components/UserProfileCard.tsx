@@ -52,10 +52,10 @@ export const UserProfileCard: React.FC<UserProfileCardProps> = ({
             <CardDescription>{user.occupation}</CardDescription>
           )}
           {user.organization && (
-            <>
+            <div className="flex gap-2">
               <CardDescription>at</CardDescription>
               <CardDescription>{user.organization}</CardDescription>
-            </>
+            </div>
           )}
         </div>
         {user.bio && <p className="text-sm">{user.bio}</p>}
