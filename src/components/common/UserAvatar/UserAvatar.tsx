@@ -11,6 +11,7 @@ import { useRouter } from "next/navigation";
 import { CLIENT_PATH } from "@/constants/clientpath";
 import { Button } from "@/components/ui/button";
 import { CardDescription } from "@/components/ui/card";
+import { Skeleton } from "../Skeleton";
 
 type UserAvatarProps = {
   user: User;
@@ -22,9 +23,11 @@ export const UserAvatar = ({ user }: UserAvatarProps) => {
   return (
     <HoverCard key={user.name}>
       <HoverCardTrigger>
-        <Avatar>
+        <Avatar className="border">
           <AvatarImage src={user.icon} alt={user.name} />
-          <AvatarFallback>{user.name}</AvatarFallback>
+          <AvatarFallback>
+            <Skeleton className="h-16 w-16 rounded-full border" />
+          </AvatarFallback>{" "}
         </Avatar>
       </HoverCardTrigger>
       <HoverCardContent
@@ -37,7 +40,9 @@ export const UserAvatar = ({ user }: UserAvatarProps) => {
           <div className="flex items-center gap-4">
             <Avatar>
               <AvatarImage src={user.icon} alt={user.name} />
-              <AvatarFallback>{user.name}</AvatarFallback>
+              <AvatarFallback>
+                <Skeleton className="h-16 w-16 rounded-full border" />
+              </AvatarFallback>
             </Avatar>
             <div className="flex flex-col">
               <CardDescription>{user.atcoderId}</CardDescription>
