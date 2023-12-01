@@ -3,10 +3,9 @@
 import { CardDescription, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
-import { useEffect, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Problem } from "@/schema/Problem.type";
-import { useMemo, useCallback } from "react";
+import { useMemo, useCallback, useState } from "react";
 import {
   Table,
   TableBody,
@@ -48,12 +47,6 @@ export const ProblemSetTable: React.FC<ProblemSetTableProps> = ({
     setIsFocus(false);
     document.removeEventListener("click", closeModal);
   }, []);
-
-  useEffect(() => {
-    return () => {
-      document.removeEventListener("click", closeModal);
-    };
-  }, [closeModal]);
 
   return (
     <div className="flex flex-col gap-4">
