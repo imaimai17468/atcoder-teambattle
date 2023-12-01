@@ -66,10 +66,22 @@ const config: Config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        "scale-up-ver-top": {
+          "0%": {
+            transform: "scaleY(.4)",
+            "transform-origin": "100% 0%",
+          },
+          to: {
+            transform: "scaleY(1)",
+            "transform-origin": "100% 0%",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "scale-up-ver-top":
+          "scale-up-ver-top 0.2s cubic-bezier(0.390, 0.575, 0.565, 1.000)   both",
       },
     },
   },
