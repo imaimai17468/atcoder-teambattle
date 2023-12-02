@@ -14,7 +14,7 @@ import { ProblemSetContent } from "./components/ProblemSetContent";
 import { createMockProblems } from "@/repositories/createMockProblem";
 
 export const CreateBattleForm: React.FC = async () => {
-  const problems = await createMockProblems(10);
+  const problems = await createMockProblems(30);
 
   return (
     <Card className="mb-48">
