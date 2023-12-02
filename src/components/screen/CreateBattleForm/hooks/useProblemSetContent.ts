@@ -1,4 +1,4 @@
-import { useState, useMemo, useCallback } from "react";
+import { useState, useMemo, useCallback, useEffect } from "react";
 import { Problem } from "@/schema/Problem.type";
 
 export const useProblemSetContent = ({ problems }: { problems: Problem[] }) => {
@@ -31,6 +31,12 @@ export const useProblemSetContent = ({ problems }: { problems: Problem[] }) => {
   const openSuggestedProblemList = useCallback(() => {
     setIsOpenSuggestedProblemList(true);
     document.addEventListener("click", closeSuggestedProblemList);
+  }, [closeSuggestedProblemList]);
+
+  useEffect(() => {
+    return () => {
+      document.removeEventListener("click", closeSuggestedProblemList);
+    };
   }, [closeSuggestedProblemList]);
 
   return {
