@@ -50,6 +50,7 @@ export const ProblemSetContent: React.FC<ProblemSetContentProps> = ({
                   onClick={() => {
                     setSelectedProblems((prev) => {
                       if (!prev) return [problem];
+                      if (prev.includes(problem)) return prev;
                       return [...prev, problem];
                     });
                   }}
