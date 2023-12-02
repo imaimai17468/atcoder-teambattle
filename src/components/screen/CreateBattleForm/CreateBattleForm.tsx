@@ -10,7 +10,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { DatePicker } from "@/components/common/DatePicker";
 import { Separator } from "@/components/ui/separator";
-import { ProblemSetTable } from "./components/ProblemSetTable";
+import { ProblemSetContent } from "./components/ProblemSetContent";
 import { createMockProblems } from "@/repositories/createMockProblem";
 
 export const CreateBattleForm: React.FC = async () => {
@@ -48,7 +48,7 @@ export const CreateBattleForm: React.FC = async () => {
             </div>
           </div>
         </div>
-        <ProblemSetTable problems={problems} />
+        <ProblemSetContent problems={problems} />
       </CardContent>
       <CardFooter className="flex justify-end">
         <Button>Create</Button>
