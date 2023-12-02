@@ -7,13 +7,13 @@ import { useProblemSetContent } from "../hooks/useProblemSetContent";
 import { ProblemSetTable } from "./ProblemSetTable";
 import { SearchInput } from "./SearchInput";
 
-type ProblemSetTableProps = {
+type ProblemSetContentProps = {
   problems: Problem[];
 };
 
-export const ProblemSetContent: React.FC<ProblemSetTableProps> = ({
+export const ProblemSetContent: React.FC<ProblemSetContentProps> = ({
   problems,
-}: ProblemSetTableProps) => {
+}: ProblemSetContentProps) => {
   const {
     isOpenSuggestedProblemList,
     keyword,
