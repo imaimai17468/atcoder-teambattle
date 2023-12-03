@@ -30,11 +30,17 @@ const difficultyMap = [
   },
 ];
 
+const defaultColor = { color: "bg-gray-500 border-gray-500" };
+
 export const DifficultMark = ({ difficulty = 0 }: DifficultyMarkProps) => {
-  const { color } = difficultyMap.filter(({ range }) => {
-    if (difficulty) return range.min <= difficulty && difficulty <= range.max;
-    else return range.min <= 0 && 0 <= range.max;
-  })[0] || { color: "bg-gray-500 border-gray-500" };
+  const { color } =
+    difficulty < 0 || difficulty > 9999
+      ? difficultyMap.filter(({ range }) => {
+          if (difficulty)
+            return range.min <= difficulty && difficulty <= range.max;
+          else return range.min <= 0 && 0 <= range.max;
+        })[0] || defaultColor
+      : defaultColor;
 
   return (
     <div
