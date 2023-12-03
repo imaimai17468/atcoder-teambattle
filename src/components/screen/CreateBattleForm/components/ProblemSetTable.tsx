@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/table";
 import { Link1Icon, TrashIcon } from "@radix-ui/react-icons";
 import { Button } from "@/components/ui/button";
+import { DifficultMark } from "@/components/common/DifficultMark";
 
 type ProblemSetTableProps = {
   problems: Problem[];
@@ -50,7 +51,12 @@ export const ProblemSetTable: React.FC<ProblemSetTableProps> = ({
                     </a>
                   </div>
                 </TableCell>
-                <TableCell className="text-center">{problem.score}</TableCell>
+                <TableCell className="text-center">
+                  <div className="flex items-center justify-center gap-4">
+                    <DifficultMark difficulty={problem.score} />
+                    <p>{problem.score}</p>
+                  </div>
+                </TableCell>
                 <TableCell className="text-center">
                   <Button
                     className="h-8 w-8 rounded-full border-destructive text-destructive hover:text-destructive"

@@ -17,8 +17,8 @@ export const useProblemSetContent = ({ problems }: { problems: Problem[] }) => {
         );
       })
       .filter((problem) => {
-        return !selectedProblems?.some((selectedProblem) => {
-          return selectedProblem.name === problem.name;
+        return !selectedProblems.some((selectedProblem) => {
+          return problem.name === selectedProblem.name;
         });
       });
   }, [problems, keyword, selectedProblems]);

@@ -1,5 +1,6 @@
 "use client";
 
+import { DifficultMark } from "@/components/common/DifficultMark";
 import {
   Table,
   TableBody,
@@ -40,7 +41,12 @@ export const ProblemListTable: React.FC<ProblemListTableProps> = ({
             >
               <TableCell>{index + 1}</TableCell>
               <TableCell>{problem.name}</TableCell>
-              <TableCell className="text-center">{problem.score}</TableCell>
+              <TableCell>
+                <div className="flex items-center justify-center gap-2">
+                  <DifficultMark difficulty={problem.score} />
+                  {problem.score}
+                </div>
+              </TableCell>
             </TableRow>
           );
         })}
