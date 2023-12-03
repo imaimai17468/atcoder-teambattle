@@ -34,7 +34,7 @@ const defaultColor = { color: "bg-gray-500 border-gray-500" };
 
 export const DifficultMark = ({ difficulty = 0 }: DifficultyMarkProps) => {
   const { color } =
-    difficulty < 0 || difficulty > 9999
+    difficulty >= 0 || difficulty <= 9999
       ? difficultyMap.filter(({ range }) => {
           if (difficulty)
             return range.min <= difficulty && difficulty <= range.max;
@@ -52,7 +52,9 @@ export const DifficultMark = ({ difficulty = 0 }: DifficultyMarkProps) => {
       <div
         className="w-4 rounded-ee-sm rounded-es-sm bg-white"
         style={{
-          height: `${((400 - (difficulty % 400)) / 400) * 15}px`,
+          height: `${
+            difficulty < 4000 ? ((400 - (difficulty % 400)) / 400) * 15 : 0
+          }px`,
         }}
       />
     </div>

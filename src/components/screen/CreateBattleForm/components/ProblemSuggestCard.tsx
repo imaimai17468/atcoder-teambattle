@@ -1,3 +1,4 @@
+import { DifficultMark } from "@/components/common/DifficultMark";
 import { Card, CardContent, CardDescription } from "@/components/ui/card";
 import { Problem } from "@/schema/Problem.type";
 
@@ -29,9 +30,10 @@ export const ProblemSuggestCard: React.FC<ProblemSuggestCardProps> = ({
             }}
           >
             <div className="flex flex-col gap-2">
-              <div className="flex gap-2">
+              <div className="flex items-center gap-2">
                 <p>{problem.name}</p>
                 <p>-</p>
+                <DifficultMark difficulty={problem.score} />
                 <p>{problem.score} point</p>
               </div>
               <CardDescription>{problem.link}</CardDescription>
