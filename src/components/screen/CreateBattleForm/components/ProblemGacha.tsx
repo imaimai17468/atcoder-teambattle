@@ -145,7 +145,11 @@ export const ProblemGacha: React.FC<ProblemGachaProps> = ({
               className="w-48"
               onChange={(e) => {
                 const newRanges = [...currentRanges];
-                newRanges[index].min = parseInt(e.target.value);
+                const updatedRange = {
+                  ...newRanges[index],
+                  min: parseInt(e.target.value),
+                };
+                newRanges[index] = updatedRange;
                 setCurrentRanges(newRanges);
               }}
               min={0}
@@ -160,7 +164,11 @@ export const ProblemGacha: React.FC<ProblemGachaProps> = ({
               className="w-48"
               onChange={(e) => {
                 const newRanges = [...currentRanges];
-                newRanges[index].max = parseInt(e.target.value);
+                const updatedRange = {
+                  ...newRanges[index],
+                  max: parseInt(e.target.value),
+                };
+                newRanges[index] = updatedRange;
                 setCurrentRanges(newRanges);
               }}
               min={0}
