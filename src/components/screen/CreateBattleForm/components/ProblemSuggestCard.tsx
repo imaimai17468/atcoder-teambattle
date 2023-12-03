@@ -12,7 +12,7 @@ export const ProblemSuggestCard: React.FC<ProblemSuggestCardProps> = ({
 }: ProblemSuggestCardProps) => {
   return (
     <Card
-      className="absolute top-16 h-64 w-full overflow-y-scroll pt-4"
+      className="absolute top-16 z-10 h-64 w-full overflow-y-scroll pt-4"
       onClick={(e) => e.stopPropagation()}
     >
       <CardContent className="flex flex-col gap-4">
