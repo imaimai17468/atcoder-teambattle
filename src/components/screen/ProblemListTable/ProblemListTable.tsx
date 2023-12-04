@@ -26,7 +26,8 @@ export const ProblemListTable: React.FC<ProblemListTableProps> = ({
         <TableRow>
           <TableHead className="w-1/12">index</TableHead>
           <TableHead>Problem</TableHead>
-          <TableHead className="text-center">Point</TableHead>
+          <TableHead className="w-1/6 text-center">Difficulty</TableHead>
+          <TableHead className="w-1/6 text-center">Point</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -43,10 +44,11 @@ export const ProblemListTable: React.FC<ProblemListTableProps> = ({
               <TableCell>{problem.name}</TableCell>
               <TableCell>
                 <div className="flex items-center justify-center gap-2">
-                  <DifficultMark difficulty={problem.score} />
-                  {problem.score}
+                  <DifficultMark difficulty={problem.difficulty} />
+                  {problem.difficulty.toFixed(1)}
                 </div>
               </TableCell>
+              <TableCell className="text-center">{problem.score}</TableCell>
             </TableRow>
           );
         })}
