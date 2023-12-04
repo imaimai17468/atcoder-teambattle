@@ -87,7 +87,8 @@ export const ProblemGacha: React.FC<ProblemGachaProps> = ({
 
     currentRanges.forEach((range) => {
       const filteredProblems = problems.filter(
-        (problem) => range.min <= problem.score && problem.score <= range.max,
+        (problem) =>
+          range.min <= problem.difficulty && problem.difficulty <= range.max,
       );
       if (filteredProblems.length !== 0) {
         const randomIndex = Math.floor(Math.random() * filteredProblems.length);
