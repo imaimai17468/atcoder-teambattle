@@ -26,8 +26,9 @@ export const ProblemSetTable: React.FC<ProblemSetTableProps> = ({
         <TableRow>
           <TableHead className="w-1/6">index</TableHead>
           <TableHead>Problem</TableHead>
+          <TableHead className="w-1/6 text-center">Difficulty</TableHead>
           <TableHead className="w-1/6 text-center">Point</TableHead>
-          <TableHead className="w-1/6 text-center" />
+          <TableHead className="w-1/6 text-center">Delete</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -53,10 +54,11 @@ export const ProblemSetTable: React.FC<ProblemSetTableProps> = ({
                 </TableCell>
                 <TableCell className="text-center">
                   <div className="flex items-center justify-center gap-4">
-                    <DifficultMark difficulty={problem.score} />
-                    <p>{problem.score}</p>
+                    <DifficultMark difficulty={problem.difficulty} />
+                    <p>{problem.difficulty.toFixed(1)}</p>
                   </div>
                 </TableCell>
+                <TableCell className="text-center">{problem.score}</TableCell>
                 <TableCell className="text-center">
                   <Button
                     className="h-8 w-8 rounded-full border-destructive text-destructive hover:text-destructive"
@@ -81,7 +83,7 @@ export const ProblemSetTable: React.FC<ProblemSetTableProps> = ({
           })
         ) : (
           <TableRow>
-            <TableCell className="text-center" colSpan={4}>
+            <TableCell className="text-center" colSpan={5}>
               No Data
             </TableCell>
           </TableRow>
