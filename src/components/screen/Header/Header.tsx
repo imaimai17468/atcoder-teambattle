@@ -65,7 +65,6 @@ export const Header: React.FC = () => {
         <DropdownMenu>
           <DropdownMenuTrigger>
             <div className="flex items-center gap-2">
-              <p className="text-sm text-gray-500">{currentUser.name}</p>
               <Avatar className="border border-gray-300">
                 <AvatarImage src={currentUser.icon} alt={currentUser.name} />
                 <AvatarFallback>
@@ -74,8 +73,8 @@ export const Header: React.FC = () => {
               </Avatar>
             </div>
           </DropdownMenuTrigger>
-          <DropdownMenuContent>
-            <DropdownMenuLabel>My Account</DropdownMenuLabel>
+          <DropdownMenuContent className="mr-4">
+            <DropdownMenuLabel>Settings</DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuItem
               onClick={() => {
