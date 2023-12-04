@@ -33,8 +33,14 @@ export const ProblemSuggestCard: React.FC<ProblemSuggestCardProps> = ({
               <div className="flex items-center gap-2">
                 <p>{problem.name}</p>
                 <p>-</p>
-                <DifficultMark difficulty={problem.score} />
                 <p>{problem.score} point</p>
+              </div>
+              <div className="flex items-center gap-2">
+                <CardDescription>Difficulty</CardDescription>
+                <CardDescription>
+                  {problem.difficulty.toFixed(1)}
+                </CardDescription>
+                <DifficultMark difficulty={problem.difficulty} />
               </div>
               <CardDescription>{problem.link}</CardDescription>
             </div>
