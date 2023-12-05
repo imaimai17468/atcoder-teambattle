@@ -2,14 +2,14 @@ import { MagnifyingGlassIcon } from "@radix-ui/react-icons";
 
 type SearchInputProps = {
   keyword: string;
-  setKeyword: React.Dispatch<React.SetStateAction<string>>;
-  openSuggestedProblemList: () => void;
+  onClick?: () => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 export const SearchInput: React.FC<SearchInputProps> = ({
   keyword,
-  setKeyword,
-  openSuggestedProblemList,
+  onClick,
+  onChange,
 }: SearchInputProps) => {
   return (
     <div className="flex items-center gap-2 rounded-md border p-3">
@@ -17,11 +17,13 @@ export const SearchInput: React.FC<SearchInputProps> = ({
       <input
         className="w-full outline-none"
         onClick={(e) => {
-          openSuggestedProblemList();
+          onClick && onClick();
           e.stopPropagation();
         }}
         value={keyword}
-        onChange={(e) => setKeyword(e.target.value)}
+        onChange={(e) => {
+          onChange && onChange(e);
+        }}
       />
     </div>
   );

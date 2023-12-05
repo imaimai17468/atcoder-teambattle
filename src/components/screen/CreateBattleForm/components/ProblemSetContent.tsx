@@ -1,6 +1,5 @@
 "use client";
 
-import { CardTitle } from "@/components/ui/card";
 import { Problem } from "@/schema/Problem.type";
 import { useProblemSetContent } from "../hooks/useProblemSetContent";
 import { ProblemSetTable } from "./ProblemSetTable";
@@ -28,7 +27,6 @@ export const ProblemSetContent: React.FC<ProblemSetContentProps> = ({
   return (
     <div className="flex flex-col gap-8">
       <div className="flex flex-col gap-4">
-        <CardTitle>Battle ProblemSet</CardTitle>
         <ProblemSetTable
           problems={selectedProblems}
           setProblems={setSelectedProblems}
@@ -36,8 +34,8 @@ export const ProblemSetContent: React.FC<ProblemSetContentProps> = ({
         <div className="relative">
           <SearchInput
             keyword={keyword}
-            setKeyword={setKeyword}
-            openSuggestedProblemList={openSuggestedProblemList}
+            onClick={openSuggestedProblemList}
+            onChange={(e) => setKeyword(e.target.value)}
           />
           {isOpenSuggestedProblemList && (
             <ProblemSuggestCard

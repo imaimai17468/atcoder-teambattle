@@ -64,15 +64,17 @@ export const Header: React.FC = () => {
       {isLogin ? (
         <DropdownMenu>
           <DropdownMenuTrigger>
-            <Avatar>
-              <AvatarImage src={currentUser.icon} alt={currentUser.name} />
-              <AvatarFallback>
-                <Skeleton className="h-16 w-16 rounded-full border" />
-              </AvatarFallback>
-            </Avatar>
+            <div className="flex items-center gap-2">
+              <Avatar className="border border-gray-300">
+                <AvatarImage src={currentUser.icon} alt={currentUser.name} />
+                <AvatarFallback>
+                  <Skeleton className="h-16 w-16 rounded-full" />
+                </AvatarFallback>
+              </Avatar>
+            </div>
           </DropdownMenuTrigger>
-          <DropdownMenuContent>
-            <DropdownMenuLabel>My Account</DropdownMenuLabel>
+          <DropdownMenuContent className="mr-4">
+            <DropdownMenuLabel>Settings</DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuItem
               onClick={() => {
