@@ -12,9 +12,12 @@ import { DatePicker } from "@/components/common/DatePicker";
 import { Separator } from "@/components/ui/separator";
 import { ProblemSetContent } from "./components/ProblemSetContent";
 import { createMockProblems } from "@/repositories/createMockProblem";
+import { ExpectedTeamContent } from "./components/ExpectedTeamContent";
+import { createMockUsers } from "@/repositories/createMockUser";
 
 export const CreateBattleForm: React.FC = async () => {
   const problems = await createMockProblems(30);
+  const users = await createMockUsers(30);
 
   return (
     <Card className="mb-48">
@@ -48,7 +51,14 @@ export const CreateBattleForm: React.FC = async () => {
             </div>
           </div>
         </div>
-        <ProblemSetContent problems={problems} />
+        <div className="flex flex-col gap-4">
+          <CardTitle>Expected Teams</CardTitle>
+          <ExpectedTeamContent users={users} />
+        </div>
+        <div className="flex flex-col gap-4">
+          <CardTitle>Battle ProblemSet</CardTitle>
+          <ProblemSetContent problems={problems} />
+        </div>
       </CardContent>
       <CardFooter className="flex justify-end">
         <Button>Create</Button>
