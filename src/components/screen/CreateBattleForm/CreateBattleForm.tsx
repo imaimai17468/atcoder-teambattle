@@ -18,9 +18,9 @@ import { ExpectedTeamContent } from "./components/ExpectedTeamContent";
 import { createMockUsers } from "@/repositories/createMockUser";
 import { useCreateBattleForm } from "./hooks/useCreateBattleForm";
 
-export const CreateBattleForm: React.FC = async () => {
-  const problems = await createMockProblems(30);
-  const users = await createMockUsers(30);
+export const CreateBattleForm: React.FC = () => {
+  const problems = createMockProblems(30);
+  const users = createMockUsers(30);
 
   const { onSubmit, register, isDirty, isSubmitting, isValid } =
     useCreateBattleForm();
