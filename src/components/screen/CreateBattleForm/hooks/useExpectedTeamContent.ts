@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useRef } from "react";
 import { User } from "@/schema/User.type";
 import { Team } from "@/schema/Team.type";
