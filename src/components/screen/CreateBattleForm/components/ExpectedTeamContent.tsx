@@ -18,13 +18,17 @@ import { UserAvatar } from "@/components/common/UserAvatar";
 import { Card, CardContent } from "@/components/ui/card";
 import { SearchInput } from "./SearchInput";
 import { Badge } from "@/components/ui/badge";
+import { Team } from "@/schema/Team.type";
+import { useEffect } from "react";
 
 type ExpectedTeamContentProps = {
   users: User[];
+  onChange?: (teams: Team[]) => void;
 };
 
 export const ExpectedTeamContent: React.FC<ExpectedTeamContentProps> = ({
   users,
+  onChange,
 }: ExpectedTeamContentProps) => {
   const {
     expectedTeams,
@@ -38,6 +42,12 @@ export const ExpectedTeamContent: React.FC<ExpectedTeamContentProps> = ({
     clickedTeamIndex,
     setClickedTeamIndex,
   } = useExpectedTeamContent({ users });
+
+  useEffect(() => {
+    if (onChange) {
+      onChange(expectedTeams);
+    }
+  }, [expectedTeams, onChange]);
 
   return (
     <div className="flex flex-col items-center gap-2">
@@ -61,7 +71,24 @@ export const ExpectedTeamContent: React.FC<ExpectedTeamContentProps> = ({
               return (
                 <TableRow key={teamIndex}>
                   <TableCell>
-                    <Input placeholder="Team Name" />
+                    <Input
+                      placeholder="Team Name"
+                      onChange={(e) => {
+                        const newExpectedTeams = expectedTeams.map(
+                          (expectedTeam, currentIndex) => {
+                            if (currentIndex === teamIndex) {
+                              return {
+                                ...expectedTeam,
+                                name: e.target.value,
+                              };
+                            } else {
+                              return expectedTeam;
+                            }
+                          },
+                        );
+                        setExpectedTeams(newExpectedTeams);
+                      }}
+                    />
                   </TableCell>
                   <TableCell>
                     <div className="flex flex-wrap gap-2">
