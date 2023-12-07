@@ -69,7 +69,12 @@ export const CreateBattleForm: React.FC = () => {
           </div>
           <div className="flex flex-col gap-4">
             <CardTitle>Expected Teams</CardTitle>
-            <ExpectedTeamContent users={users} />
+            <ExpectedTeamContent
+              users={users}
+              onChange={(teams) => {
+                console.log(teams);
+              }}
+            />
           </div>
           <div className="flex flex-col gap-4">
             <CardTitle>Battle ProblemSet</CardTitle>
