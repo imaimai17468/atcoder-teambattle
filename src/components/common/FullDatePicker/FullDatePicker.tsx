@@ -11,7 +11,7 @@ export const FullDatePicker: React.FC<FullDatePickerProps> = ({
   onChange,
   value,
 }: FullDatePickerProps) => {
-  const [date, setDate] = useState<Date>(new Date());
+  const [date, setDate] = useState<Date>(value || new Date());
 
   useEffect(() => {
     onChange(date);
