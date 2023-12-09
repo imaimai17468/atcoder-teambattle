@@ -6,13 +6,16 @@ import { ProblemSetTable } from "./ProblemSetTable";
 import { SearchInput } from "./SearchInput";
 import { ProblemSuggestCard } from "./ProblemSuggestCard";
 import { ProblemGacha } from "./ProblemGacha";
+import { useEffect } from "react";
 
 type ProblemSetContentProps = {
   problems: Problem[];
+  onChange?: (problems: Problem[]) => void;
 };
 
 export const ProblemSetContent: React.FC<ProblemSetContentProps> = ({
   problems,
+  onChange,
 }: ProblemSetContentProps) => {
   const {
     isOpenSuggestedProblemList,
@@ -23,6 +26,10 @@ export const ProblemSetContent: React.FC<ProblemSetContentProps> = ({
     suggestedProblems,
     openSuggestedProblemList,
   } = useProblemSetContent({ problems });
+
+  useEffect(() => {
+    if (onChange) onChange(selectedProblems);
+  }, [selectedProblems, onChange]);
 
   return (
     <div className="flex flex-col gap-8">

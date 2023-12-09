@@ -10,13 +10,13 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { DatePicker } from "@/components/common/DatePicker";
 import { Separator } from "@/components/ui/separator";
 import { ProblemSetContent } from "./components/ProblemSetContent";
 import { createMockProblems } from "@/repositories/createMockProblem";
 import { ExpectedTeamContent } from "./components/ExpectedTeamContent";
 import { createMockUsers } from "@/repositories/createMockUser";
 import { useCreateBattleForm } from "./hooks/useCreateBattleForm";
+import { FullDatePicker } from "@/components/common/FullDatePicker";
 
 export const CreateBattleForm: React.FC = () => {
   const problems = createMockProblems(30);
@@ -54,17 +54,11 @@ export const CreateBattleForm: React.FC = () => {
             </div>
             <div className="flex flex-col gap-2">
               <p>Start Time</p>
-              <div className="flex gap-2">
-                <DatePicker />
-                <Input type="time" className="w-32" />
-              </div>
+              <FullDatePicker onChange={(date) => console.log(date)} />
             </div>
             <div className="flex flex-col gap-2">
               <p>End Time</p>
-              <div className="flex gap-2">
-                <DatePicker />
-                <Input type="time" className="w-32" />
-              </div>
+              <FullDatePicker onChange={(date) => console.log(date)} />
             </div>
           </div>
           <div className="flex flex-col gap-4">
@@ -78,7 +72,12 @@ export const CreateBattleForm: React.FC = () => {
           </div>
           <div className="flex flex-col gap-4">
             <CardTitle>Battle ProblemSet</CardTitle>
-            <ProblemSetContent problems={problems} />
+            <ProblemSetContent
+              problems={problems}
+              onChange={(problems) => {
+                console.log(problems);
+              }}
+            />
           </div>
         </CardContent>
         <CardFooter className="flex justify-end">
