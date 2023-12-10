@@ -9,13 +9,7 @@ import { Battle, BattleSchema } from "@/schema/Battle.type";
 import { faker } from "@faker-js/faker";
 
 export const useCreateBattleForm = () => {
-  const {
-    register,
-    handleSubmit,
-    control,
-    watch,
-    formState: { errors, isValid, isDirty, isSubmitting },
-  } = useForm<Battle>({
+  const form = useForm<Battle>({
     mode: "onChange",
     resolver: zodResolver(BattleSchema),
   });
@@ -34,13 +28,7 @@ export const useCreateBattleForm = () => {
   };
 
   return {
-    register,
-    onSubmit: handleSubmit(onSubmit),
-    control,
-    watch,
-    errors,
-    isValid,
-    isDirty,
-    isSubmitting,
+    form,
+    onSubmit,
   };
 };
