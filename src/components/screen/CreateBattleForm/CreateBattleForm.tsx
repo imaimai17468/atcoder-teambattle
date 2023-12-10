@@ -17,76 +17,142 @@ import { ExpectedTeamContent } from "./components/ExpectedTeamContent";
 import { createMockUsers } from "@/repositories/createMockUser";
 import { useCreateBattleForm } from "./hooks/useCreateBattleForm";
 import { FullDatePicker } from "@/components/common/FullDatePicker";
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 
 export const CreateBattleForm: React.FC = () => {
   const problems = createMockProblems(30);
   const users = createMockUsers(30);
 
-  const { onSubmit, register, isDirty, isSubmitting, isValid } =
-    useCreateBattleForm();
+  const { form, onSubmit } = useCreateBattleForm();
+  const { isDirty, isSubmitting, isValid } = form.formState;
 
   return (
-    <form onSubmit={onSubmit}>
-      <Card className="mb-48">
-        <CardHeader>
-          <CardTitle>Create Battle</CardTitle>
-          <Separator />
-        </CardHeader>
-        <CardContent className="flex flex-col gap-8">
-          <div className="flex flex-col gap-4">
-            <CardTitle>Basic Info</CardTitle>
-            <div className="flex flex-col gap-2">
-              <p>Title</p>
-              <Input
-                className="w-72"
-                required
-                type="text"
-                placeholder="Battle Title"
-                {...register("title")}
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)}>
+        <Card className="mb-48">
+          <CardHeader>
+            <CardTitle>Create Battle</CardTitle>
+            <Separator />
+          </CardHeader>
+          <CardContent className="flex flex-col gap-8">
+            <div className="flex flex-col gap-4">
+              <CardTitle>Basic Info</CardTitle>
+              <FormField
+                control={form.control}
+                name="title"
+                render={({ field }) => (
+                  <FormItem className="flex flex-col">
+                    <FormLabel>Title</FormLabel>
+                    <FormControl>
+                      <Input
+                        className="w-72"
+                        required
+                        type="text"
+                        placeholder="Battle Title"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="description"
+                render={({ field }) => (
+                  <FormItem className="flex flex-col">
+                    <FormLabel>Description</FormLabel>
+                    <FormControl>
+                      <Textarea
+                        className="w-72"
+                        required
+                        placeholder="Battle Description"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="startDate"
+                render={({ field }) => (
+                  <FormItem className="flex flex-col">
+                    <FormLabel>Start Date</FormLabel>
+                    <FormControl>
+                      <FullDatePicker {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="endDate"
+                render={({ field }) => (
+                  <FormItem className="flex flex-col">
+                    <FormLabel>End Date</FormLabel>
+                    <FormControl>
+                      <FullDatePicker {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
               />
             </div>
-            <div className="flex flex-col gap-2">
-              <p>Description</p>
-              <Textarea
-                placeholder="Battle Description"
-                {...register("description")}
-              />
-            </div>
-            <div className="flex flex-col gap-2">
-              <p>Start Time</p>
-              <FullDatePicker onChange={(date) => console.log(date)} />
-            </div>
-            <div className="flex flex-col gap-2">
-              <p>End Time</p>
-              <FullDatePicker onChange={(date) => console.log(date)} />
-            </div>
-          </div>
-          <div className="flex flex-col gap-4">
-            <CardTitle>Expected Teams</CardTitle>
-            <ExpectedTeamContent
-              users={users}
-              onChange={(teams) => {
-                console.log(teams);
-              }}
+            <FormField
+              control={form.control}
+              name="teams"
+              render={({ field }) => (
+                <FormItem className="flex flex-col">
+                  <FormLabel className="text-2xl">Expected Teams</FormLabel>
+                  <FormDescription>
+                    Expected teams to participate in this battle
+                  </FormDescription>
+                  <FormControl>
+                    <ExpectedTeamContent users={users} {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
             />
-          </div>
-          <div className="flex flex-col gap-4">
-            <CardTitle>Battle ProblemSet</CardTitle>
-            <ProblemSetContent
-              problems={problems}
-              onChange={(problems) => {
-                console.log(problems);
-              }}
+            <FormField
+              control={form.control}
+              name="problems"
+              render={({ field }) => (
+                <FormItem className="flex flex-col">
+                  <FormLabel className="text-2xl">Problem Set</FormLabel>
+                  <FormDescription>
+                    Problems to be solved in this battle
+                  </FormDescription>
+                  <FormControl>
+                    <ProblemSetContent problems={problems} {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
             />
-          </div>
-        </CardContent>
-        <CardFooter className="flex justify-end">
-          <Button type="submit" disabled={!isDirty || isSubmitting || !isValid}>
-            Create
-          </Button>
-        </CardFooter>
-      </Card>
-    </form>
+          </CardContent>
+          <CardFooter className="flex justify-end">
+            <Button
+              type="submit"
+              disabled={!isDirty || isSubmitting || !isValid}
+            >
+              Create
+            </Button>
+          </CardFooter>
+        </Card>
+      </form>
+    </Form>
   );
 };
 
