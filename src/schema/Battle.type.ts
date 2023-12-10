@@ -3,7 +3,6 @@ import { ScoreSchema } from "./Score.type";
 import { ProblemSchema } from "./Problem.type";
 import { UserSchema } from "./User.type";
 import { charMinLimitError, charMaxLimitError } from "@/utils/createErrors";
-import { TeamSchema } from "./Team.type";
 
 const TITLE_MAX_LENGTH = 50;
 const DESCRIPTION_MAX_LENGTH = 1000;
@@ -24,8 +23,7 @@ export const BattleSchema = z.object({
     }),
   startDate: z.number(),
   endDate: z.number(),
-  teams: z.array(TeamSchema).nullable(),
-  scores: z.array(ScoreSchema).nullable(),
+  scores: z.array(ScoreSchema),
   problems: z.array(ProblemSchema),
   owner: UserSchema,
   createdAt: z.number(),

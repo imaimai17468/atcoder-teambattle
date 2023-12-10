@@ -111,7 +111,7 @@ export const CreateBattleForm: React.FC = () => {
             </div>
             <FormField
               control={form.control}
-              name="teams"
+              name="scores"
               render={({ field }) => (
                 <FormItem className="flex flex-col">
                   <FormLabel className="text-2xl">Expected Teams</FormLabel>
@@ -119,7 +119,11 @@ export const CreateBattleForm: React.FC = () => {
                     Expected teams to participate in this battle
                   </FormDescription>
                   <FormControl>
-                    <ExpectedTeamContent users={users} {...field} />
+                    <ExpectedTeamContent
+                      users={users}
+                      control={form.control}
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

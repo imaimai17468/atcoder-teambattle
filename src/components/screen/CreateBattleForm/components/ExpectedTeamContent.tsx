@@ -18,17 +18,22 @@ import { UserAvatar } from "@/components/common/UserAvatar";
 import { Card, CardContent } from "@/components/ui/card";
 import { SearchInput } from "./SearchInput";
 import { Badge } from "@/components/ui/badge";
-import { Team } from "@/schema/Team.type";
 import { useEffect } from "react";
+import { Score } from "@/schema/Score.type";
+import { Control } from "react-hook-form";
+import { Battle } from "@/schema/Battle.type";
+import { useWatch } from "react-hook-form";
 
 type ExpectedTeamContentProps = {
   users: User[];
-  onChange?: (teams: Team[]) => void;
+  onChange?: (teams: Score[]) => void;
+  control: Control<Battle>;
 };
 
 export const ExpectedTeamContent: React.FC<ExpectedTeamContentProps> = ({
   users,
   onChange,
+  control,
 }: ExpectedTeamContentProps) => {
   const {
     expectedTeams,
@@ -42,10 +47,28 @@ export const ExpectedTeamContent: React.FC<ExpectedTeamContentProps> = ({
     clickedTeamIndex,
     setClickedTeamIndex,
   } = useExpectedTeamContent({ users });
+  const problems = useWatch({ name: "problems", control });
 
   useEffect(() => {
     if (onChange) {
-      onChange(expectedTeams);
+      const resScore: Score[] = expectedTeams.map((expectedTeam) => {
+        return {
+          team: expectedTeam,
+          userScore: expectedTeam.members.map((member) => {
+            return {
+              user: member,
+              problemWithCorrectness: problems.map((problem) => {
+                return {
+                  problem,
+                  isCorrect: false,
+                  time: 0,
+                };
+              }),
+            };
+          }),
+        };
+      });
+      onChange(resScore);
     }
   }, [expectedTeams, onChange]);
 
