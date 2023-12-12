@@ -25,6 +25,7 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
+  FormMessageMap,
 } from "@/components/ui/form";
 
 export const CreateBattleForm: React.FC = () => {
@@ -51,11 +52,10 @@ export const CreateBattleForm: React.FC = () => {
                 name="title"
                 render={({ field }) => (
                   <FormItem className="flex flex-col">
-                    <FormLabel>Title</FormLabel>
+                    <FormLabel>Title (required)</FormLabel>
                     <FormControl>
                       <Input
                         className="w-72"
-                        required
                         type="text"
                         placeholder="Battle Title"
                         {...field}
@@ -70,11 +70,10 @@ export const CreateBattleForm: React.FC = () => {
                 name="description"
                 render={({ field }) => (
                   <FormItem className="flex flex-col">
-                    <FormLabel>Description</FormLabel>
+                    <FormLabel>Description (required)</FormLabel>
                     <FormControl>
                       <Textarea
                         className="w-72"
-                        required
                         placeholder="Battle Description"
                         {...field}
                       />
@@ -88,7 +87,7 @@ export const CreateBattleForm: React.FC = () => {
                 name="startDate"
                 render={({ field }) => (
                   <FormItem className="flex flex-col">
-                    <FormLabel>Start Date</FormLabel>
+                    <FormLabel>Start Date (required)</FormLabel>
                     <FormControl>
                       <FullDatePicker {...field} />
                     </FormControl>
@@ -101,7 +100,7 @@ export const CreateBattleForm: React.FC = () => {
                 name="endDate"
                 render={({ field }) => (
                   <FormItem className="flex flex-col">
-                    <FormLabel>End Date</FormLabel>
+                    <FormLabel>End Date (required)</FormLabel>
                     <FormControl>
                       <FullDatePicker {...field} />
                     </FormControl>
@@ -119,6 +118,7 @@ export const CreateBattleForm: React.FC = () => {
                   <FormDescription>
                     Expected teams to participate in this battle
                   </FormDescription>
+                  <FormMessageMap />
                   <FormControl>
                     <ExpectedTeamContent
                       users={users}
@@ -126,7 +126,6 @@ export const CreateBattleForm: React.FC = () => {
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
                 </FormItem>
               )}
             />
@@ -135,14 +134,16 @@ export const CreateBattleForm: React.FC = () => {
               name="problems"
               render={({ field }) => (
                 <FormItem className="flex flex-col">
-                  <FormLabel className="text-2xl">Problem Set</FormLabel>
+                  <FormLabel className="text-2xl">
+                    Problem Set (required)
+                  </FormLabel>
                   <FormDescription>
                     Problems to be solved in this battle
                   </FormDescription>
+                  <FormMessage />
                   <FormControl>
                     <ProblemSetContent problems={problems} {...field} />
                   </FormControl>
-                  <FormMessage />
                 </FormItem>
               )}
             />
