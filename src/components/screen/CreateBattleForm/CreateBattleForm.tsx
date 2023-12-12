@@ -14,7 +14,7 @@ import { Separator } from "@/components/ui/separator";
 import { ProblemSetContent } from "./components/ProblemSetContent";
 import { createMockProblems } from "@/repositories/createMockProblem";
 import { ExpectedTeamContent } from "./components/ExpectedTeamContent";
-import { createMockUsers } from "@/repositories/createMockUser";
+import { createMockUsers, createMockUser } from "@/repositories/createMockUser";
 import { useCreateBattleForm } from "./hooks/useCreateBattleForm";
 import { FullDatePicker } from "@/components/common/FullDatePicker";
 import {
@@ -30,8 +30,9 @@ import {
 export const CreateBattleForm: React.FC = () => {
   const problems = createMockProblems(30);
   const users = createMockUsers(30);
+  const currentUser = createMockUser();
 
-  const { form, onSubmit } = useCreateBattleForm();
+  const { form, onSubmit } = useCreateBattleForm(currentUser);
   const { isDirty, isSubmitting, isValid } = form.formState;
 
   return (

@@ -5,13 +5,15 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useToast } from "@/components/ui/use-toast";
 import { CLIENT_PATH } from "@/constants/clientpath";
-import { Battle, BattleSchema } from "@/schema/Battle.type";
+import { Battle, BattleSchema, INITIAL_BATTLE } from "@/schema/Battle.type";
 import { faker } from "@faker-js/faker";
+import { User } from "@/schema/User.type";
 
-export const useCreateBattleForm = () => {
+export const useCreateBattleForm = (user: User) => {
   const form = useForm<Battle>({
     mode: "onChange",
     resolver: zodResolver(BattleSchema),
+    defaultValues: INITIAL_BATTLE,
   });
 
   const router = useRouter();
@@ -19,7 +21,13 @@ export const useCreateBattleForm = () => {
   const { toast } = useToast();
 
   const onSubmit = (data: Battle) => {
-    console.log(data);
+    const submitData = {
+      ...data,
+      id: battleId,
+      owner: user,
+      createdAt: Date.now(),
+    };
+    console.log(submitData);
     toast({
       title: "Success",
       description: "Battle has been created.",
