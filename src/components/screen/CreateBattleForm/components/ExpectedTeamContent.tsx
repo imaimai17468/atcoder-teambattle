@@ -152,6 +152,7 @@ export const ExpectedTeamContent: React.FC<ExpectedTeamContentProps> = ({
                         })}
                       <div className="relative">
                         <Button
+                          type="button"
                           size="icon"
                           variant="outline"
                           onClick={() => {
@@ -214,6 +215,7 @@ export const ExpectedTeamContent: React.FC<ExpectedTeamContentProps> = ({
                   </TableCell>
                   <TableCell className="text-center">
                     <Button
+                      type="button"
                       className="h-8 w-8 rounded-full border-destructive text-destructive hover:text-destructive"
                       variant="outline"
                       size="icon"
@@ -240,6 +242,7 @@ export const ExpectedTeamContent: React.FC<ExpectedTeamContentProps> = ({
         </TableBody>
       </Table>
       <Button
+        type="button"
         className="flex w-fit items-center gap-2"
         variant="outline"
         onClick={() => {
