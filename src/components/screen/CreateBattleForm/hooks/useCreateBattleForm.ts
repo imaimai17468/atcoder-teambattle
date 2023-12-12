@@ -13,7 +13,7 @@ export const useCreateBattleForm = (user: User) => {
   const form = useForm<Battle>({
     mode: "onChange",
     resolver: zodResolver(BattleSchema),
-    defaultValues: INITIAL_BATTLE,
+    defaultValues: { ...INITIAL_BATTLE, owner: user, createdAt: Date.now() },
   });
 
   const router = useRouter();
@@ -24,8 +24,6 @@ export const useCreateBattleForm = (user: User) => {
     const submitData = {
       ...data,
       id: battleId,
-      owner: user,
-      createdAt: Date.now(),
     };
     console.log(submitData);
     toast({

@@ -173,6 +173,72 @@ const FormMessage = React.forwardRef<
 });
 FormMessage.displayName = "FormMessage";
 
+const FormMessageMap = React.forwardRef<
+  HTMLParagraphElement,
+  React.HTMLAttributes<HTMLParagraphElement> & {
+    className?: string;
+  }
+>(({ className, children, ...props }, ref) => {
+  const { error, formMessageId } = useFormField();
+
+  const getErrorMessages = (
+    obj: object,
+    messages = new Set<string>(),
+  ): Set<string> => {
+    if (!obj) return messages;
+
+    if (typeof obj === "object") {
+      Object.values(obj).forEach((value) => {
+        if (value && typeof value === "object" && "message" in value) {
+          messages.add(value.message);
+        } else {
+          getErrorMessages(value, messages);
+        }
+      });
+    }
+
+    return messages;
+  };
+
+  const errorMessages = Array.isArray(error)
+    ? (Array.from(
+        error.reduce((acc, e) => getErrorMessages(e, acc), new Set<string>()),
+      ) as string[])
+    : "";
+
+  const body = errorMessages || children;
+
+  if (!body) {
+    return null;
+  }
+
+  if (Array.isArray(body)) {
+    return body.map((message) => (
+      <p
+        key={message}
+        ref={ref}
+        id={formMessageId}
+        className={cn("text-sm font-medium text-destructive", className)}
+        {...props}
+      >
+        {message}
+      </p>
+    ));
+  }
+
+  return (
+    <p
+      ref={ref}
+      id={formMessageId}
+      className={cn("text-sm font-medium text-destructive", className)}
+      {...props}
+    >
+      {body}
+    </p>
+  );
+});
+FormMessageMap.displayName = "FormMessageMap";
+
 export {
   useFormField,
   Form,
@@ -182,4 +248,5 @@ export {
   FormDescription,
   FormMessage,
   FormField,
+  FormMessageMap,
 };
