@@ -70,7 +70,7 @@ export const BattleListTable: React.FC<BattleListTableProps> = ({
                       <p className="line-clamp-2">{battle.description}</p>
                     </TableCell>
                     <TableCell className="w-1/5 text-center">
-                      {battle.scores.length} Teams
+                      {battle.scores ? battle.scores.length : 0} Teams
                     </TableCell>
                   </>
                 )}

@@ -73,18 +73,19 @@ export const StandingsTable: React.FC<StandingsTableProps> = ({
                 setIsTeamScoreDetailVisible={setIsTeamScoreDetailVisible}
                 startDate={startDate}
               />
-              {battle.scores
-                .find((s) => s.team === teamScore.team)!
-                .userScore.map((userScore) => {
-                  return (
-                    <UserScoreRow
-                      key={userScore.user.name}
-                      userScore={userScore}
-                      visible={isTeamScoreDetailVisible[index]}
-                      startDate={startDate}
-                    />
-                  );
-                })}
+              {battle.scores &&
+                battle.scores
+                  .find((s) => s.team === teamScore.team)!
+                  .userScore.map((userScore) => {
+                    return (
+                      <UserScoreRow
+                        key={userScore.user.name}
+                        userScore={userScore}
+                        visible={isTeamScoreDetailVisible[index]}
+                        startDate={startDate}
+                      />
+                    );
+                  })}
             </>
           );
         })}

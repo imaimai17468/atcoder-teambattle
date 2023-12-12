@@ -24,7 +24,7 @@ export const BattleSchema = z.object({
     }),
   startDate: z.number(),
   endDate: z.number(),
-  scores: z.array(ScoreSchema),
+  scores: z.array(ScoreSchema).nullable(),
   problems: z.array(ProblemSchema),
   owner: UserSchema,
   createdAt: z.number(),

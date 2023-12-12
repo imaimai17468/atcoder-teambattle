@@ -15,26 +15,22 @@ export const DashBoard: React.FC<DashBoardProps> = ({
   battles,
 }: DashBoardProps) => {
   const activeTeams = useMemo(() => {
-    return (
-      battles &&
-      battles.reduce((acc, battle) => {
-        return acc + battle.scores.length;
-      }, 0)
-    );
+    return battles.reduce((acc, battle) => {
+      if (!battle.scores) return acc;
+      return acc + battle.scores.length;
+    }, 0);
   }, [battles]);
 
   const activeUsers = useMemo(() => {
-    return (
-      battles &&
-      battles.reduce((acc, battle) => {
-        return (
-          acc +
-          battle.scores.reduce((acc, score) => {
-            return acc + score.userScore.length;
-          }, 0)
-        );
-      }, 0)
-    );
+    return battles.reduce((acc, battle) => {
+      if (!battle.scores) return acc;
+      return (
+        acc +
+        battle.scores.reduce((acc, score) => {
+          return acc + score.userScore.length;
+        }, 0)
+      );
+    }, 0);
   }, [battles]);
 
   const [isOpen, setIsOpen] = useState(false);
