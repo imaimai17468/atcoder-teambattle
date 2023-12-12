@@ -3,6 +3,7 @@ import { ScoreSchema } from "./Score.type";
 import { ProblemSchema } from "./Problem.type";
 import { UserSchema } from "./User.type";
 import { charMinLimitError, charMaxLimitError } from "@/utils/createErrors";
+import { INITIAL_USER } from "./User.type";
 
 const TITLE_MAX_LENGTH = 50;
 const DESCRIPTION_MAX_LENGTH = 1000;
@@ -32,3 +33,17 @@ export const BattleSchema = z.object({
 });
 
 export type Battle = z.infer<typeof BattleSchema>;
+
+export const INITIAL_BATTLE: Battle = {
+  id: "",
+  title: "",
+  description: "",
+  startDate: 0,
+  endDate: 0,
+  scores: [],
+  problems: [],
+  owner: INITIAL_USER,
+  createdAt: 0,
+  updatedAt: null,
+  deletedAt: null,
+};

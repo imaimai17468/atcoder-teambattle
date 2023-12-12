@@ -50,3 +50,18 @@ export const UserSchema = z.object({
 });
 
 export type User = z.infer<typeof UserSchema>;
+
+export const INITIAL_USER: User = {
+  id: "",
+  atcoderId: "",
+  name: "",
+  icon: "",
+  bio: "",
+  occupation: "",
+  organization: "",
+  links: {
+    github: null,
+    twitter: null,
+    website: null,
+  },
+};
