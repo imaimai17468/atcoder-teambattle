@@ -8,13 +8,7 @@ import { useToast } from "@/components/ui/use-toast";
 import { CLIENT_PATH } from "@/constants/clientpath";
 
 export const useEditUserProfileForm = (user: User) => {
-  const {
-    register,
-    handleSubmit,
-    control,
-    watch,
-    formState: { errors, isValid, isDirty, isSubmitting },
-  } = useForm<User>({
+  const form = useForm<User>({
     mode: "onChange",
     resolver: zodResolver(UserSchema),
     defaultValues: user,
@@ -34,13 +28,7 @@ export const useEditUserProfileForm = (user: User) => {
   };
 
   return {
-    register,
-    onSubmit: handleSubmit(onSubmit),
-    control,
-    watch,
-    errors,
-    isValid,
-    isDirty,
-    isSubmitting,
+    form,
+    onSubmit,
   };
 };
