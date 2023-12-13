@@ -15,5 +15,5 @@ export const arrayMaxLimitError = (name: string, max: number) => {
 };
 
 export const dateMinLimitError = (name: string, min: Date) => {
-  return `${name} must be at least ${min.toLocaleDateString()}.`;
+  return `${name} must be at least ${min.toLocaleDateString("en-US")}.`;
 };
