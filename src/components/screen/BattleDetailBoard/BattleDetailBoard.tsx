@@ -19,14 +19,18 @@ export const BattleDetailBoard = async () => {
           <h2 className="text-xl font-bold">Participant</h2>
           <div className="flex gap-4">
             <div className="flex gap-2">
-              <p className="font-bold">{battle.scores.length}</p>
+              <p className="font-bold">
+                {battle.scores ? battle.scores.length : 0}
+              </p>
               <p>Teams</p>
             </div>
             <div className="flex gap-2">
               <p className="font-bold">
-                {battle.scores.reduce((acc, cur) => {
-                  return acc + cur.team.members.length;
-                }, 0)}
+                {battle.scores
+                  ? battle.scores.reduce((acc, cur) => {
+                      return acc + cur.team.members.length;
+                    }, 0)
+                  : 0}
               </p>
               <p>Users</p>
             </div>

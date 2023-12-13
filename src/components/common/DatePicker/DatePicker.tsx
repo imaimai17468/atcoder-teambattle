@@ -14,12 +14,12 @@ import {
 import { useEffect, useState } from "react";
 
 type DatePickerProps = {
-  onChange: (date: Date) => void;
-  value: Date;
+  onChange: (date: number) => void;
+  value: number;
 };
 
 export function DatePicker({ onChange, value }: DatePickerProps) {
-  const [date, setDate] = useState<Date>(value);
+  const [date, setDate] = useState<number>(value);
 
   useEffect(() => {
     onChange(date);
@@ -27,7 +27,7 @@ export function DatePicker({ onChange, value }: DatePickerProps) {
 
   const handleSelect = (newDate: Date | undefined) => {
     if (newDate) {
-      setDate(newDate);
+      setDate(newDate.getTime());
     }
   };
 
@@ -48,7 +48,7 @@ export function DatePicker({ onChange, value }: DatePickerProps) {
       <PopoverContent className="w-auto p-0">
         <Calendar
           mode="single"
-          selected={date}
+          selected={new Date(date)}
           onSelect={handleSelect}
           initialFocus
         />

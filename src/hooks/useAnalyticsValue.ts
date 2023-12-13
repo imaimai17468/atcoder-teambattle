@@ -5,42 +5,44 @@ import { Problem } from "@/schema/Problem.type";
 
 export const useAnalyticsValue = (battle: Battle) => {
   return useMemo(() => {
-    const ScoreTransitions = battle.scores.map((score) => {
-      return score.userScore
-        .flatMap((userScore) =>
-          userScore.problemWithCorrectness
-            .map((problem) => ({
-              ...problem,
-              user: userScore.user,
-              teamName: score.team.name,
-            }))
-            .filter((problem) => problem.isCorrect),
-        )
-        .sort((a, b) => a.time - b.time)
-        .filter((v, _, arr) => {
-          const onlyProblemArr = arr.map((v) => v.problem);
-          return onlyProblemArr.indexOf(v.problem) === arr.indexOf(v);
-        })
-        .reduce(
-          (acc, cur) => {
-            const previousScore = acc.slice(-1)[0]?.currentScore || 0;
-            return [
-              ...acc,
-              {
-                ...cur,
-                currentScore: previousScore + cur.problem.score,
+    const ScoreTransitions = battle.scores
+      ? battle.scores.map((score) => {
+          return score.userScore
+            .flatMap((userScore) =>
+              userScore.problemWithCorrectness
+                .map((problem) => ({
+                  ...problem,
+                  user: userScore.user,
+                  teamName: score.team.name,
+                }))
+                .filter((problem) => problem.isCorrect),
+            )
+            .sort((a, b) => a.time - b.time)
+            .filter((v, _, arr) => {
+              const onlyProblemArr = arr.map((v) => v.problem);
+              return onlyProblemArr.indexOf(v.problem) === arr.indexOf(v);
+            })
+            .reduce(
+              (acc, cur) => {
+                const previousScore = acc.slice(-1)[0]?.currentScore || 0;
+                return [
+                  ...acc,
+                  {
+                    ...cur,
+                    currentScore: previousScore + cur.problem.score,
+                  },
+                ];
               },
-            ];
-          },
-          [] as {
-            user: User;
-            time: number;
-            problem: Problem;
-            currentScore: number;
-            teamName: string;
-          }[],
-        );
-    });
+              [] as {
+                user: User;
+                time: number;
+                problem: Problem;
+                currentScore: number;
+                teamName: string;
+              }[],
+            );
+        })
+      : [];
 
     const chartTimeLabels = [
       battle.startDate,

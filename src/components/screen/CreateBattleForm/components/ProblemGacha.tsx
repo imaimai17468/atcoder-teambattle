@@ -176,6 +176,7 @@ export const ProblemGacha: React.FC<ProblemGachaProps> = ({
               max={9999}
             />
             <Button
+              type="button"
               className="h-8 w-8 rounded-full border-destructive text-destructive hover:text-destructive"
               variant="outline"
               size="icon"
@@ -192,6 +193,7 @@ export const ProblemGacha: React.FC<ProblemGachaProps> = ({
         ))}
         <div className="flex justify-around">
           <Button
+            type="button"
             className="flex w-48 items-center gap-2"
             variant="outline"
             onClick={() => {
@@ -202,7 +204,7 @@ export const ProblemGacha: React.FC<ProblemGachaProps> = ({
             <DoubleArrowDownIcon />
             more Range
           </Button>
-          <Button className="w-48" onClick={onSubmit}>
+          <Button type="button" className="w-48" onClick={onSubmit}>
             Randomly add
           </Button>
         </div>

@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { charMinLimitError, charMaxLimitError } from "@/utils/createErrors";
 
 export const ATCODER_ID_MAX_LENGTH = 16;
 export const NAME_MAX_LENGTH = 32;
@@ -16,36 +17,51 @@ export const UserSchema = z.object({
   id: z.string(),
   atcoderId: z
     .string()
-    .min(1, { message: "AtCoder ID is required" })
+    .min(1, { message: charMinLimitError("AtCoder ID", 1) })
     .max(ATCODER_ID_MAX_LENGTH, {
-      message: `AtCoder ID must be less than ${ATCODER_ID_MAX_LENGTH} characters`,
+      message: charMaxLimitError("AtCoder ID", ATCODER_ID_MAX_LENGTH),
     }),
   name: z
     .string()
     .min(1, { message: "Name is required" })
     .max(NAME_MAX_LENGTH, {
-      message: `Name must be less than ${NAME_MAX_LENGTH} characters`,
+      message: charMaxLimitError("Name", NAME_MAX_LENGTH),
     }),
   icon: z.string(),
   bio: z
     .string()
     .max(BIO_MAX_LENGTH, {
-      message: `Bio must be less than ${BIO_MAX_LENGTH} characters`,
+      message: charMaxLimitError("Bio", BIO_MAX_LENGTH),
     })
     .nullable(),
   occupation: z
     .string()
     .max(OCCUPATION_MAX_LENGTH, {
-      message: `Occupation must be less than ${OCCUPATION_MAX_LENGTH} characters`,
+      message: charMaxLimitError("Occupation", OCCUPATION_MAX_LENGTH),
     })
     .nullable(),
   organization: z
     .string()
     .max(ORGANIZATION_MAX_LENGTH, {
-      message: `Organization must be less than ${ORGANIZATION_MAX_LENGTH} characters`,
+      message: charMaxLimitError("Organization", ORGANIZATION_MAX_LENGTH),
     })
     .nullable(),
   links: UserLinksSchema,
 });
 
 export type User = z.infer<typeof UserSchema>;
+
+export const INITIAL_USER: User = {
+  id: "",
+  atcoderId: "",
+  name: "",
+  icon: "",
+  bio: "",
+  occupation: "",
+  organization: "",
+  links: {
+    github: null,
+    twitter: null,
+    website: null,
+  },
+};

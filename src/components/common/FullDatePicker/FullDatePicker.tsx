@@ -3,15 +3,15 @@ import { Input } from "@/components/ui/input";
 import { useState, useEffect } from "react";
 
 type FullDatePickerProps = {
-  onChange: (date: Date) => void;
-  value?: Date;
+  onChange: (date: number) => void;
+  value?: number;
 };
 
 export const FullDatePicker: React.FC<FullDatePickerProps> = ({
   onChange,
   value,
 }: FullDatePickerProps) => {
-  const [date, setDate] = useState<Date>(value || new Date());
+  const [date, setDate] = useState<number>(value || new Date().getTime());
 
   useEffect(() => {
     onChange(date);
@@ -22,30 +22,30 @@ export const FullDatePicker: React.FC<FullDatePickerProps> = ({
       <DatePicker
         onChange={(newDate) => {
           const newDateWithTime = new Date(date);
+          const currentDate = new Date(newDate);
           newDateWithTime.setFullYear(
-            newDate.getFullYear(),
-            newDate.getMonth(),
-            newDate.getDate(),
+            currentDate.getFullYear(),
+            currentDate.getMonth(),
+            currentDate.getDate(),
           );
-          setDate(newDateWithTime);
+          setDate(newDateWithTime.getTime());
         }}
-        value={value || new Date()}
+        value={value || new Date().getTime()}
       />
       <Input
         type="time"
         className="w-32"
-        onChange={(e) => {
-          const [hour, minute] = e.target.value.split(":");
-          const newDate = new Date(date);
-          newDate.setHours(parseInt(hour));
-          newDate.setMinutes(parseInt(minute));
-          setDate(newDate);
-        }}
-        value={date.toLocaleTimeString("en-US", {
-          hour12: false,
+        value={new Date(date).toLocaleTimeString("ja-JP", {
           hour: "2-digit",
           minute: "2-digit",
         })}
+        onChange={(e) => {
+          const newDate = new Date(date);
+          const [hour, minute] = e.target.value.split(":");
+          newDate.setHours(parseInt(hour));
+          newDate.setMinutes(parseInt(minute));
+          setDate(newDate.getTime());
+        }}
       />
     </div>
   );

@@ -8,13 +8,17 @@ export const ScoreSchema = z.object({
   userScore: z.array(
     z.object({
       user: UserSchema,
-      problemWithCorrectness: z.array(
-        z.object({
-          problem: ProblemSchema,
-          isCorrect: z.boolean(),
-          time: z.number(),
+      problemWithCorrectness: z
+        .array(
+          z.object({
+            problem: ProblemSchema,
+            isCorrect: z.boolean(),
+            time: z.number(),
+          }),
+        )
+        .min(1, {
+          message: "⇩ Please register problems from “Problem Set” section. ⇩",
         }),
-      ),
     }),
   ),
 });
