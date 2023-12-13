@@ -17,7 +17,7 @@ export const ScoreSchema = z.object({
           }),
         )
         .min(1, {
-          message: "⇩ Please register problems from problem set section. ⇩",
+          message: "⇩ Please register problems from “Problem Set” section. ⇩",
         }),
     }),
   ),
