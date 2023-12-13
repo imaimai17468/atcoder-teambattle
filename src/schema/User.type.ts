@@ -8,9 +8,9 @@ export const OCCUPATION_MAX_LENGTH = 32;
 export const ORGANIZATION_MAX_LENGTH = 32;
 
 export const UserLinksSchema = z.object({
-  github: z.string().url({ message: "Invalid URL" }).nullable(),
-  twitter: z.string().url({ message: "Invalid URL" }).nullable(),
-  website: z.string().url({ message: "Invalid URL" }).nullable(),
+  github: z.string().url({ message: "Invalid URL" }).or(z.literal("")),
+  twitter: z.string().url({ message: "Invalid URL" }).or(z.literal("")),
+  website: z.string().url({ message: "Invalid URL" }).or(z.literal("")),
 });
 
 export const UserSchema = z.object({
@@ -28,24 +28,15 @@ export const UserSchema = z.object({
       message: charMaxLimitError("Name", NAME_MAX_LENGTH),
     }),
   icon: z.string(),
-  bio: z
-    .string()
-    .max(BIO_MAX_LENGTH, {
-      message: charMaxLimitError("Bio", BIO_MAX_LENGTH),
-    })
-    .nullable(),
-  occupation: z
-    .string()
-    .max(OCCUPATION_MAX_LENGTH, {
-      message: charMaxLimitError("Occupation", OCCUPATION_MAX_LENGTH),
-    })
-    .nullable(),
-  organization: z
-    .string()
-    .max(ORGANIZATION_MAX_LENGTH, {
-      message: charMaxLimitError("Organization", ORGANIZATION_MAX_LENGTH),
-    })
-    .nullable(),
+  bio: z.string().max(BIO_MAX_LENGTH, {
+    message: charMaxLimitError("Bio", BIO_MAX_LENGTH),
+  }),
+  occupation: z.string().max(OCCUPATION_MAX_LENGTH, {
+    message: charMaxLimitError("Occupation", OCCUPATION_MAX_LENGTH),
+  }),
+  organization: z.string().max(ORGANIZATION_MAX_LENGTH, {
+    message: charMaxLimitError("Organization", ORGANIZATION_MAX_LENGTH),
+  }),
   links: UserLinksSchema,
 });
 
@@ -60,8 +51,8 @@ export const INITIAL_USER: User = {
   occupation: "",
   organization: "",
   links: {
-    github: null,
-    twitter: null,
-    website: null,
+    github: "",
+    twitter: "",
+    website: "",
   },
 };
