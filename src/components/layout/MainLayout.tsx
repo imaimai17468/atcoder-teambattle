@@ -15,7 +15,7 @@ export const MainLayout: React.FC<Props> = ({ children }: Props) => {
       className={`flex min-h-screen flex-col gap-16 text-gray-900 ${notoSansJP.className}`}
     >
       <Header />
-      <div className="mx-auto min-h-screen w-4/5">{children}</div>
+      <div className="mx-auto min-h-screen w-11/12 md:w-4/5">{children}</div>
       <BgBlur />
       <Footer />
     </div>
