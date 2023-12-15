@@ -1,8 +1,9 @@
-import { Battle } from "@/schema/Battle.type";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { BattleAnalytics } from "./BattleAnalytics";
 import { ProblemListTable } from "./ProblemListTable";
 import { StandingsTable } from "./StandingsTable";
-import { BattleAnalytics } from "./BattleAnalytics";
+
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Battle } from "@/schema/Battle.type";
 
 type BattleDetailTabsProps = {
   battle: Battle;

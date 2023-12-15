@@ -1,8 +1,9 @@
+import { VList } from "virtua";
+
 import { DifficultMark } from "@/components/common/DifficultMark";
 import { LoadingAlert } from "@/components/common/LoadingAlert";
 import { Card, CardContent, CardDescription } from "@/components/ui/card";
 import { Problem } from "@/schema/Problem.type";
-import { VList } from "virtua";
 
 type ProblemSuggestCardProps = {
   suggestedProblems: Problem[];

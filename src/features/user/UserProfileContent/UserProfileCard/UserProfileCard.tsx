@@ -1,6 +1,14 @@
 "use client";
 
-import { User } from "@/schema/User.type";
+import {
+  GitHubLogoIcon,
+  TwitterLogoIcon,
+  Link1Icon,
+} from "@radix-ui/react-icons";
+import { useRouter, useParams } from "next/navigation";
+
+import { UserAvatar } from "@/components/common/UserAvatar";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardHeader,
@@ -9,15 +17,8 @@ import {
   CardTitle,
   CardFooter,
 } from "@/components/ui/card";
-import {
-  GitHubLogoIcon,
-  TwitterLogoIcon,
-  Link1Icon,
-} from "@radix-ui/react-icons";
-import { Button } from "@/components/ui/button";
-import { useRouter, useParams } from "next/navigation";
 import { CLIENT_PATH } from "@/constants/clientpath";
-import { UserAvatar } from "@/components/common/UserAvatar";
+import { User } from "@/schema/User.type";
 
 export type UserProfileCardProps = {
   user: User;

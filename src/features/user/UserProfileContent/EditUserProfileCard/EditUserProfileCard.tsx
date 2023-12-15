@@ -1,8 +1,9 @@
 "use client";
 
-import { User } from "@/schema/User.type";
-import { Card } from "@/components/ui/card";
 import { EditUserProfileForm } from "../EditUserProfileForm";
+
+import { Card } from "@/components/ui/card";
+import { User } from "@/schema/User.type";
 
 export type EditUserProfileCardProps = {
   user: User;

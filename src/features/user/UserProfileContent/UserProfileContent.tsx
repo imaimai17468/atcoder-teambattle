@@ -1,9 +1,10 @@
-import { createMockBattles } from "@/repositories/createMockBattle";
-import { createMockUser } from "../../../repositories/createMockUser";
-import { UserProfileCard } from "./UserProfileCard";
-import { BattleListTable } from "@/features/battle/main/BattleBoard/BattleLists/BattleListTable";
-import { NextArrow } from "@/components/common/NextArrow";
 import { EditUserProfileCard } from "./EditUserProfileCard";
+import { UserProfileCard } from "./UserProfileCard";
+import { createMockUser } from "../../../repositories/createMockUser";
+
+import { NextArrow } from "@/components/common/NextArrow";
+import { BattleListTable } from "@/features/battle/main/BattleBoard/BattleLists/BattleListTable";
+import { createMockBattles } from "@/repositories/createMockBattle";
 
 type UserProfileContentProps = {
   isEdit?: boolean;

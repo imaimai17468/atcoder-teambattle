@@ -1,8 +1,7 @@
+import { UserAvatar } from "@/components/common/UserAvatar";
+import { TableRow, TableCell } from "@/components/ui/table";
 import { Team } from "@/schema/Team.type";
 import { User } from "@/schema/User.type";
-import { TableRow } from "@/components/ui/table";
-import { TableCell } from "@/components/ui/table";
-import { UserAvatar } from "@/components/common/UserAvatar";
 import { calcElapsedTime } from "@/utils/calcElapsedTime";
 
 type TeamScoreRowProps = {

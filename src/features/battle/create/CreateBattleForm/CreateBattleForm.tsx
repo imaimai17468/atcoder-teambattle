@@ -1,5 +1,10 @@
 "use client";
 
+import { ExpectedTeamContent } from "./ExpectedTeamContent/ExpectedTeamContent";
+import { useCreateBattleForm } from "./hooks/useCreateBattleForm";
+import { ProblemSetContent } from "./ProblemSetContent";
+
+import { FullDatePicker } from "@/components/common/FullDatePicker";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -8,15 +13,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Separator } from "@/components/ui/separator";
-import { ProblemSetContent } from "./ProblemSetContent";
-import { createMockProblems } from "@/repositories/createMockProblem";
-import { ExpectedTeamContent } from "./ExpectedTeamContent/ExpectedTeamContent";
-import { createMockUsers, createMockUser } from "@/repositories/createMockUser";
-import { useCreateBattleForm } from "./hooks/useCreateBattleForm";
-import { FullDatePicker } from "@/components/common/FullDatePicker";
 import {
   Form,
   FormControl,
@@ -27,6 +23,11 @@ import {
   FormMessage,
   FormMessageMap,
 } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Separator } from "@/components/ui/separator";
+import { Textarea } from "@/components/ui/textarea";
+import { createMockProblems } from "@/repositories/createMockProblem";
+import { createMockUsers, createMockUser } from "@/repositories/createMockUser";
 
 export const CreateBattleForm: React.FC = () => {
   const problems = createMockProblems(300);

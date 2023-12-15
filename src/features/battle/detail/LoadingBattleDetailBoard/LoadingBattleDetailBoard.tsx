@@ -1,6 +1,6 @@
-import { Separator } from "@/components/ui/separator";
-import { Skeleton } from "@/components/common/Skeleton/Skeleton";
 import { LoadingAlert } from "@/components/common/LoadingAlert";
+import { Skeleton } from "@/components/common/Skeleton/Skeleton";
+import { Separator } from "@/components/ui/separator";
 
 export const LoadingBattleDetailBoard = () => {
   return (

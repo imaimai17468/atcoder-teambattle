@@ -1,6 +1,8 @@
-import { Team } from "@/schema/Team.type";
-import { createMockUsers } from "./createMockUser";
 import { faker } from "@faker-js/faker";
+
+import { createMockUsers } from "./createMockUser";
+
+import { Team } from "@/schema/Team.type";
 
 export const createMockTeam = (): Team => {
   const members = createMockUsers(Math.floor(Math.random() * 3) + 1);

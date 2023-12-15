@@ -1,5 +1,9 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
+
+import { TimeProgress } from "@/components/common/TimeProgress";
 import {
   Table,
   TableBody,
@@ -8,11 +12,8 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Battle } from "@/schema/Battle.type";
-import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
 import { CLIENT_PATH } from "@/constants/clientpath";
-import { TimeProgress } from "@/components/common/TimeProgress";
+import { Battle } from "@/schema/Battle.type";
 
 type BattleListTableProps = {
   battles: Battle[];

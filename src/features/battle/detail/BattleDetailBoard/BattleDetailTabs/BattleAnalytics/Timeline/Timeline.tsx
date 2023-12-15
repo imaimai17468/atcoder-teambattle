@@ -1,5 +1,6 @@
-import { User } from "@/schema/User.type";
-import { Problem } from "@/schema/Problem.type";
+import dayjs from "dayjs";
+
+import { UserAvatar } from "@/components/common/UserAvatar";
 import {
   Card,
   CardContent,
@@ -7,8 +8,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import dayjs from "dayjs";
-import { UserAvatar } from "@/components/common/UserAvatar";
+import { Problem } from "@/schema/Problem.type";
+import { User } from "@/schema/User.type";
 
 type TimelineProps = {
   timelineDataList: {

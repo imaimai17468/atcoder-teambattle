@@ -1,7 +1,8 @@
-import { Score } from "@/schema/Score.type";
-import { TableCell, TableRow } from "@/components/ui/table";
 import clsx from "clsx";
+
 import { UserAvatar } from "@/components/common/UserAvatar";
+import { TableCell, TableRow } from "@/components/ui/table";
+import { Score } from "@/schema/Score.type";
 import { calcElapsedTime } from "@/utils/calcElapsedTime";
 
 type UserScoreRowProps = {

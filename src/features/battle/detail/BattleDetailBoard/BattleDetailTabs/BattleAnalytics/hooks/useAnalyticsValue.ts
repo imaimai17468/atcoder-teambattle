@@ -1,7 +1,8 @@
 import { useMemo } from "react";
+
 import { Battle } from "@/schema/Battle.type";
-import { User } from "@/schema/User.type";
 import { Problem } from "@/schema/Problem.type";
+import { User } from "@/schema/User.type";
 
 export const useAnalyticsValue = (battle: Battle) => {
   return useMemo(() => {

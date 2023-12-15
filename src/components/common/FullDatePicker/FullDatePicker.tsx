@@ -1,6 +1,8 @@
-import { DatePicker } from "../DatePicker";
-import { Input } from "@/components/ui/input";
 import { useState, useEffect } from "react";
+
+import { DatePicker } from "../DatePicker";
+
+import { Input } from "@/components/ui/input";
 
 type FullDatePickerProps = {
   onChange: (date: number) => void;

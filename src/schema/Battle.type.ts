@@ -1,14 +1,15 @@
 import { z } from "zod";
-import { ScoreSchema } from "./Score.type";
+
 import { ProblemSchema } from "./Problem.type";
-import { UserSchema } from "./User.type";
+import { ScoreSchema } from "./Score.type";
+import { UserSchema, INITIAL_USER } from "./User.type";
+
 import {
   charMinLimitError,
   charMaxLimitError,
   arrayMinLimitError,
   dateMinLimitError,
 } from "@/utils/createErrors";
-import { INITIAL_USER } from "./User.type";
 
 const TITLE_MAX_LENGTH = 50;
 const DESCRIPTION_MAX_LENGTH = 1000;

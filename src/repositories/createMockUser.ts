@@ -1,5 +1,6 @@
-import { User } from "@/schema/User.type";
 import { faker } from "@faker-js/faker";
+
+import { User } from "@/schema/User.type";
 
 export const createMockUser = (): User => {
   const id = faker.string.uuid();

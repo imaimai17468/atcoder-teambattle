@@ -1,8 +1,5 @@
 "use client";
 
-import { Line } from "react-chartjs-2";
-import zoomPlugin from "chartjs-plugin-zoom";
-import "chartjs-adapter-moment";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -14,6 +11,9 @@ import {
   Legend,
   TimeScale,
 } from "chart.js";
+import zoomPlugin from "chartjs-plugin-zoom";
+import { Line } from "react-chartjs-2";
+import "chartjs-adapter-moment";
 
 ChartJS.register(
   CategoryScale,

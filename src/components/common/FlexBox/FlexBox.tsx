@@ -1,7 +1,7 @@
 import clsx from "clsx";
-import { forwardRef } from "react";
+import { forwardRef, HTMLAttributes, ReactNode } from "react";
+
 import styles from "./FlexBox.module.scss";
-import { HTMLAttributes, ReactNode } from "react";
 
 type divProps = NonNullable<JSX.IntrinsicElements["div"]["style"]>;
 

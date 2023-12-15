@@ -1,5 +1,5 @@
-import { Control } from "react-hook-form";
-import { useWatch } from "react-hook-form";
+import { Control, useWatch } from "react-hook-form";
+
 import { User } from "@/schema/User.type";
 
 export const BioCounter = ({

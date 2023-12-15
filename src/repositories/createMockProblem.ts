@@ -1,5 +1,6 @@
-import { Problem } from "@/schema/Problem.type";
 import { faker } from "@faker-js/faker";
+
+import { Problem } from "@/schema/Problem.type";
 
 export const createMockProblem = (): Problem => {
   const name = faker.lorem.word();

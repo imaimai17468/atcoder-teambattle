@@ -1,20 +1,20 @@
-import { BIO_MAX_LENGTH, User } from "@/schema/User.type";
+import {
+  GitHubLogoIcon,
+  TwitterLogoIcon,
+  Link1Icon,
+} from "@radix-ui/react-icons";
+
+import { BioCounter } from "../BioCounter";
+import { useEditUserProfileForm } from "../hooks/useEditUserProfileForm";
+
+import { UserAvatar } from "@/components/common/UserAvatar";
+import { Button } from "@/components/ui/button";
 import {
   CardHeader,
   CardContent,
   CardFooter,
   CardDescription,
 } from "@/components/ui/card";
-import { useEditUserProfileForm } from "../hooks/useEditUserProfileForm";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { BioCounter } from "../BioCounter";
-import {
-  GitHubLogoIcon,
-  TwitterLogoIcon,
-  Link1Icon,
-} from "@radix-ui/react-icons";
 import {
   Form,
   FormControl,
@@ -23,7 +23,9 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { UserAvatar } from "@/components/common/UserAvatar";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { BIO_MAX_LENGTH, User } from "@/schema/User.type";
 
 type EditUserProfileFormProps = {
   user: User;

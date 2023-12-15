@@ -1,19 +1,23 @@
 import {
+  ArrowRightIcon,
+  DoubleArrowDownIcon,
+  TrashIcon,
+} from "@radix-ui/react-icons";
+import { useEffect, useState } from "react";
+
+import { DifficultMark } from "@/components/common/DifficultMark";
+import { Button } from "@/components/ui/button";
+import { CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import {
   Select,
   SelectContent,
   SelectItem,
   SelectValue,
   SelectTrigger,
 } from "@/components/ui/select";
-import { CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { useEffect, useState } from "react";
-import { ArrowRightIcon } from "@radix-ui/react-icons";
-import { DifficultMark } from "@/components/common/DifficultMark";
-import { Button } from "@/components/ui/button";
-import { Problem } from "@/schema/Problem.type";
 import { useToast } from "@/components/ui/use-toast";
-import { DoubleArrowDownIcon, TrashIcon } from "@radix-ui/react-icons";
+import { Problem } from "@/schema/Problem.type";
 
 const difficultyLevels = [
   { label: "Easy", value: "easy" },

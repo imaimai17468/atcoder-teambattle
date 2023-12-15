@@ -1,4 +1,5 @@
 import { z } from "zod";
+
 import { charMinLimitError, charMaxLimitError } from "@/utils/createErrors";
 
 export const ATCODER_ID_MAX_LENGTH = 16;

@@ -1,12 +1,14 @@
 "use client";
 
-import { Problem } from "@/schema/Problem.type";
-import { useProblemSetContent } from "./hooks/useProblemSetContent";
-import { ProblemSetTable } from "./ProblemSetTable";
-import { SearchInput } from "../SearchInput";
-import { ProblemSuggestCard } from "./ProblemSuggestCard";
-import { ProblemGacha } from "./ProblemGacha";
 import { useEffect } from "react";
+
+import { useProblemSetContent } from "./hooks/useProblemSetContent";
+import { ProblemGacha } from "./ProblemGacha";
+import { ProblemSetTable } from "./ProblemSetTable";
+import { ProblemSuggestCard } from "./ProblemSuggestCard";
+import { SearchInput } from "../SearchInput";
+
+import { Problem } from "@/schema/Problem.type";
 
 type ProblemSetContentProps = {
   problems: Problem[];

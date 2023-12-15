@@ -1,12 +1,13 @@
 "use client";
 
-import { useForm } from "react-hook-form";
+import { faker } from "@faker-js/faker";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
+import { useForm } from "react-hook-form";
+
 import { useToast } from "@/components/ui/use-toast";
 import { CLIENT_PATH } from "@/constants/clientpath";
 import { Battle, BattleSchema, INITIAL_BATTLE } from "@/schema/Battle.type";
-import { faker } from "@faker-js/faker";
 import { User } from "@/schema/User.type";
 
 export const useCreateBattleForm = (user: User) => {

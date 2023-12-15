@@ -1,6 +1,7 @@
 import { Metadata } from "next";
-import { BattleBoard } from "@/features/battle/main/BattleBoard";
 import { Suspense } from "react";
+
+import { BattleBoard } from "@/features/battle/main/BattleBoard";
 import { LoadingBattleBoard } from "@/features/battle/main/LoadingBattleBoard";
 
 export const metadata: Metadata = {

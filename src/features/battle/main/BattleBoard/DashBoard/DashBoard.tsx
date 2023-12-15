@@ -1,11 +1,12 @@
 "use client";
 
-import { Battle } from "@/schema/Battle.type";
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { useMemo, useState } from "react";
 import { CaretSortIcon } from "@radix-ui/react-icons";
-import { Button } from "@/components/ui/button";
 import clsx from "clsx";
+import { useMemo, useState } from "react";
+
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Battle } from "@/schema/Battle.type";
 
 type DashBoardProps = {
   battles: Battle[];

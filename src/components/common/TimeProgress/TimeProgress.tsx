@@ -1,6 +1,7 @@
 import dayjs from "dayjs";
-import { Progress } from "@/components/ui/progress";
 import { useMemo } from "react";
+
+import { Progress } from "@/components/ui/progress";
 
 type TimeProgressProps = {
   startDate: number;

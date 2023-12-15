@@ -1,6 +1,5 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import {
   PersonIcon,
   RocketIcon,
@@ -8,11 +7,13 @@ import {
   HomeIcon,
   ExitIcon,
 } from "@radix-ui/react-icons";
-import { useState } from "react";
-import { CLIENT_PATH } from "@/constants/clientpath";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+
+import { UserAvatar } from "@/components/common/UserAvatar";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -21,8 +22,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { CLIENT_PATH } from "@/constants/clientpath";
 import { createMockUser } from "@/repositories/createMockUser";
-import { UserAvatar } from "@/components/common/UserAvatar";
 
 export const Header: React.FC = () => {
   const [isLogin, setIsLogin] = useState(true);

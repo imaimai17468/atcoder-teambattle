@@ -1,5 +1,7 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+
 import { DifficultMark } from "@/components/common/DifficultMark";
 import {
   Table,
@@ -10,7 +12,6 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Problem } from "@/schema/Problem.type";
-import { useRouter } from "next/navigation";
 
 type ProblemListTableProps = {
   problems: Problem[];

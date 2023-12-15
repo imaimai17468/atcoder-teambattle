@@ -1,6 +1,6 @@
-import { User } from "@/schema/User.type";
-import { TableRow, TableCell } from "@/components/ui/table";
 import { UserAvatar } from "@/components/common/UserAvatar";
+import { TableRow, TableCell } from "@/components/ui/table";
+import { User } from "@/schema/User.type";
 import { calcElapsedTime } from "@/utils/calcElapsedTime";
 
 type FirstAcceptanceTimeRowProps = {

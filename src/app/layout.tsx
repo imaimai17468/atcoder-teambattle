@@ -1,9 +1,10 @@
 import "@/styles/global.css";
-import { MainLayout } from "@/components/layout/MainLayout";
 import { Metadata } from "next";
 import Favicon from "public/favicon.png";
-import { SITE_NAME, SITE_DESCRIPTION } from "@/constants/metadata";
+
+import { MainLayout } from "@/components/layout/MainLayout";
 import { Toaster } from "@/components/ui/toaster";
+import { SITE_NAME, SITE_DESCRIPTION } from "@/constants/metadata";
 
 export const metadata: Metadata = {
   title: {

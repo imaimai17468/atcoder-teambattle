@@ -1,11 +1,12 @@
 "use client";
 
-import { User, UserSchema } from "@/schema/User.type";
-import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter, useParams } from "next/navigation";
+import { useForm } from "react-hook-form";
+
 import { useToast } from "@/components/ui/use-toast";
 import { CLIENT_PATH } from "@/constants/clientpath";
+import { User, UserSchema } from "@/schema/User.type";
 
 export const useEditUserProfileForm = (user: User) => {
   const form = useForm<User>({

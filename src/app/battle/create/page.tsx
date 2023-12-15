@@ -1,5 +1,6 @@
-import { CreateBattleForm } from "@/features/battle/create/CreateBattleForm";
 import { Metadata } from "next";
+
+import { CreateBattleForm } from "@/features/battle/create/CreateBattleForm";
 
 export const metadata: Metadata = {
   title: "Create Battle",

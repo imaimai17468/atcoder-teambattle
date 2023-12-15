@@ -1,7 +1,8 @@
-import { createMockBattle } from "@/repositories/createMockBattle";
+import { BattleDetailTabs } from "./BattleDetailTabs";
+
 import { TimeProgress } from "@/components/common/TimeProgress";
 import { Separator } from "@/components/ui/separator";
-import { BattleDetailTabs } from "./BattleDetailTabs";
+import { createMockBattle } from "@/repositories/createMockBattle";
 
 export const BattleDetailBoard = async () => {
   const battle = await createMockBattle({ variant: "running" });

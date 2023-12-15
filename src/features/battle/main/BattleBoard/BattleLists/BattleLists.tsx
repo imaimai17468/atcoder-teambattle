@@ -1,7 +1,8 @@
 import { BattleListTable } from "./BattleListTable";
-import { Battle } from "@/schema/Battle.type";
-import { NextArrow } from "@/components/common/NextArrow";
 import { CreateBattleButton } from "../CreateBattleButton";
+
+import { NextArrow } from "@/components/common/NextArrow";
+import { Battle } from "@/schema/Battle.type";
 
 type BattleListsProps = {
   upcomingBattles: Battle[];

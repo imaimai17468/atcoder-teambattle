@@ -1,6 +1,7 @@
-import { LoadingAlert } from "@/components/common/LoadingAlert";
-import { LoadingUserProfileCard } from "./LoadingUserProfileCard";
 import { LoadingEditUserProfileCard } from "./LoadingEditUserProfileCard";
+import { LoadingUserProfileCard } from "./LoadingUserProfileCard";
+
+import { LoadingAlert } from "@/components/common/LoadingAlert";
 
 type LoadingUserProfileContentProps = {
   isEdit?: boolean;

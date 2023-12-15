@@ -1,4 +1,7 @@
-import { Problem } from "@/schema/Problem.type";
+import { Link1Icon, TrashIcon } from "@radix-ui/react-icons";
+
+import { DifficultMark } from "@/components/common/DifficultMark";
+import { Button } from "@/components/ui/button";
 import {
   Table,
   TableBody,
@@ -7,9 +10,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Link1Icon, TrashIcon } from "@radix-ui/react-icons";
-import { Button } from "@/components/ui/button";
-import { DifficultMark } from "@/components/common/DifficultMark";
+import { Problem } from "@/schema/Problem.type";
 
 type ProblemSetTableProps = {
   problems: Problem[];

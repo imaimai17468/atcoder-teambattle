@@ -1,6 +1,7 @@
-import { DashBoard } from "./DashBoard";
-import { createMockAllTimeBattle } from "@/repositories/createMockBattle";
 import { BattleLists } from "./BattleLists";
+import { DashBoard } from "./DashBoard";
+
+import { createMockAllTimeBattle } from "@/repositories/createMockBattle";
 
 export const BattleBoard = async () => {
   const AllBattles = await createMockAllTimeBattle();

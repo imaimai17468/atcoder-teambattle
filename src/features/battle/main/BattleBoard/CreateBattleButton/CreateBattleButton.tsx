@@ -1,8 +1,9 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+
 import { Button } from "@/components/ui/button";
 import { CLIENT_PATH } from "@/constants/clientpath";
-import { useRouter } from "next/navigation";
 
 export const CreateBattleButton: React.FC = () => {
   const router = useRouter();

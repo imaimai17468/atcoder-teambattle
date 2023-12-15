@@ -1,8 +1,10 @@
-import { createMockScores } from "./createMockScore";
-import { Battle } from "@/schema/Battle.type";
 import { faker } from "@faker-js/faker";
+
 import { createMockProblems } from "./createMockProblem";
+import { createMockScores } from "./createMockScore";
 import { createMockUser } from "./createMockUser";
+
+import { Battle } from "@/schema/Battle.type";
 
 export const createMockBattle = ({
   variant,

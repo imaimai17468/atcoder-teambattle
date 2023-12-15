@@ -1,5 +1,12 @@
 "use client";
 
+import { useState } from "react";
+
+import { FirstAcceptanceTimeRow } from "./FirstAcceptanceTimeRow";
+import { useStandingsValue } from "./hooks/useStandingsValue";
+import { TeamScoreRow } from "./TeamScoreRow";
+import { UserScoreRow } from "./UserScoreRow";
+
 import {
   Table,
   TableBody,
@@ -7,18 +14,13 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Battle } from "@/schema/Battle.type";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { useState } from "react";
-import { useStandingsValue } from "./hooks/useStandingsValue";
-import { FirstAcceptanceTimeRow } from "./FirstAcceptanceTimeRow";
-import { TeamScoreRow } from "./TeamScoreRow";
-import { UserScoreRow } from "./UserScoreRow";
+import { Battle } from "@/schema/Battle.type";
 
 type StandingsTableProps = {
   battle: Battle;

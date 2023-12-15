@@ -1,16 +1,17 @@
 import {
+  GitHubLogoIcon,
+  TwitterLogoIcon,
+  Link1Icon,
+} from "@radix-ui/react-icons";
+
+import { Skeleton } from "@/components/common/Skeleton";
+import { Button } from "@/components/ui/button";
+import {
   Card,
   CardHeader,
   CardContent,
   CardFooter,
 } from "@/components/ui/card";
-import {
-  GitHubLogoIcon,
-  TwitterLogoIcon,
-  Link1Icon,
-} from "@radix-ui/react-icons";
-import { Button } from "@/components/ui/button";
-import { Skeleton } from "@/components/common/Skeleton";
 
 export const LoadingUserProfileCard: React.FC = () => {
   return (

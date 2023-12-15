@@ -1,7 +1,8 @@
-import { Header } from "../common/Header";
 import { Noto_Sans_JP } from "next/font/google";
-import { Footer } from "../common/Footer";
+
 import { BgBlur } from "../common/BgBlur";
+import { Footer } from "../common/Footer";
+import { Header } from "../common/Header";
 
 const notoSansJP = Noto_Sans_JP({ subsets: ["latin"] });
 

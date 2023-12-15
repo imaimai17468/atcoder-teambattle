@@ -1,9 +1,10 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { User } from "@/schema/User.type";
-import { Team } from "@/schema/Team.type";
 import { useClickAway } from "react-use";
+
+import { Team } from "@/schema/Team.type";
+import { User } from "@/schema/User.type";
 
 export const useExpectedTeamContent = ({ users }: { users: User[] }) => {
   const [expectedTeams, setExpectedTeams] = useState<Team[]>([]);

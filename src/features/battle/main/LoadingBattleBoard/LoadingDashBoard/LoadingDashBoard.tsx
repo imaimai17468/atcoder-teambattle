@@ -1,11 +1,12 @@
 "use client";
 
-import { Card, CardContent, CardHeader } from "@/components/ui/card";
-import { useState } from "react";
 import { CaretSortIcon } from "@radix-ui/react-icons";
-import { Button } from "@/components/ui/button";
 import clsx from "clsx";
+import { useState } from "react";
+
 import { Skeleton } from "@/components/common/Skeleton/Skeleton";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 
 export const LoadingDashBoard: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);

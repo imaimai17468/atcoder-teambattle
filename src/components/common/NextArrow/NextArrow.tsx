@@ -1,6 +1,6 @@
 import { DoubleArrowDownIcon } from "@radix-ui/react-icons";
-import { HTMLAttributes } from "react";
 import clsx from "clsx";
+import { HTMLAttributes } from "react";
 
 export const NextArrow = ({
   className,

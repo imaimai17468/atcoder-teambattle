@@ -1,6 +1,19 @@
 "use client";
 
-import { User } from "@/schema/User.type";
+import { TrashIcon, PlusCircledIcon } from "@radix-ui/react-icons";
+import { useEffect } from "react";
+import { Control, useWatch } from "react-hook-form";
+import { VList } from "virtua";
+
+import { useExpectedTeamContent } from "./hooks/useExpectedTeamContent";
+import { SearchInput } from "../SearchInput/SearchInput";
+
+import { LoadingAlert } from "@/components/common/LoadingAlert";
+import { UserAvatar } from "@/components/common/UserAvatar";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
 import {
   Table,
   TableBody,
@@ -9,20 +22,9 @@ import {
   TableHead,
   TableRow,
 } from "@/components/ui/table";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { TrashIcon, PlusCircledIcon } from "@radix-ui/react-icons";
-import { useExpectedTeamContent } from "./hooks/useExpectedTeamContent";
-import { UserAvatar } from "@/components/common/UserAvatar";
-import { Card, CardContent } from "@/components/ui/card";
-import { SearchInput } from "../SearchInput/SearchInput";
-import { Badge } from "@/components/ui/badge";
-import { useEffect } from "react";
-import { Score } from "@/schema/Score.type";
-import { Control, useWatch } from "react-hook-form";
 import { Battle } from "@/schema/Battle.type";
-import { VList } from "virtua";
-import { LoadingAlert } from "@/components/common/LoadingAlert";
+import { Score } from "@/schema/Score.type";
+import { User } from "@/schema/User.type";
 
 type ExpectedTeamContentProps = {
   users: User[];

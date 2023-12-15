@@ -1,8 +1,10 @@
-import { Battle } from "@/schema/Battle.type";
+import dynamic from "next/dynamic";
+
 import { useAnalyticsValue } from "./hooks/useAnalyticsValue";
 import { Timeline } from "./Timeline";
 
-import dynamic from "next/dynamic";
+import { Battle } from "@/schema/Battle.type";
+
 const ScoreChart = dynamic(() => import("./ScoreChart"), {
   ssr: false,
 });
