@@ -4,12 +4,14 @@ type SearchInputProps = {
   keyword: string;
   onClick?: () => void;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  placeholder?: string;
 };
 
 export const SearchInput: React.FC<SearchInputProps> = ({
   keyword,
   onClick,
   onChange,
+  placeholder,
 }: SearchInputProps) => {
   return (
     <div className="flex items-center gap-2 rounded-md border p-3">
@@ -24,6 +26,7 @@ export const SearchInput: React.FC<SearchInputProps> = ({
         onChange={(e) => {
           onChange && onChange(e);
         }}
+        placeholder={placeholder}
       />
     </div>
   );
