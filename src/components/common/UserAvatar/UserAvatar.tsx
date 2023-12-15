@@ -1,17 +1,19 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+
+import { Skeleton } from "../Skeleton";
+
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
+import { CardDescription } from "@/components/ui/card";
 import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
 } from "@/components/ui/hovercard";
-import { User } from "@/schema/User.type";
-import { useRouter } from "next/navigation";
 import { CLIENT_PATH } from "@/constants/clientpath";
-import { Button } from "@/components/ui/button";
-import { CardDescription } from "@/components/ui/card";
-import { Skeleton } from "../Skeleton";
+import { User } from "@/schema/User.type";
 
 type UserAvatarProps = {
   user: User;
@@ -80,5 +82,3 @@ export const UserAvatar = ({ user, withoutCard }: UserAvatarProps) => {
     </HoverCard>
   );
 };
-
-export default UserAvatar;

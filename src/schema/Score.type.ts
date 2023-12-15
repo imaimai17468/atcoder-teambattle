@@ -1,7 +1,8 @@
 import { z } from "zod";
-import { UserSchema } from "./User.type";
+
 import { ProblemSchema } from "./Problem.type";
 import { TeamSchema } from "./Team.type";
+import { UserSchema } from "./User.type";
 
 export const ScoreSchema = z.object({
   team: TeamSchema,

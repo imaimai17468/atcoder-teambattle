@@ -1,7 +1,9 @@
-import { createMockTeam } from "./createMockTeam";
-import { Score } from "@/schema/Score.type";
 import { faker } from "@faker-js/faker";
+
+import { createMockTeam } from "./createMockTeam";
+
 import { Problem } from "@/schema/Problem.type";
+import { Score } from "@/schema/Score.type";
 
 export const createMockScore = ({
   problems,

@@ -1,5 +1,7 @@
 import { z } from "zod";
+
 import { UserSchema } from "./User.type";
+
 import {
   charMinLimitError,
   charMaxLimitError,

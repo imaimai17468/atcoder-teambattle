@@ -1,1 +1,1 @@
-export { default as BgBlur } from "./BgBlur";
+export { BgBlur } from "./BgBlur";

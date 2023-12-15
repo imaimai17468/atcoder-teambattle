@@ -1,1 +1,1 @@
-export { default as FullDatePicker } from "./FullDatePicker";
+export { FullDatePicker } from "./FullDatePicker";
