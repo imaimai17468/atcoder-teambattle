@@ -9,6 +9,7 @@ export const useProblemSetContent = ({ problems }: { problems: Problem[] }) => {
   const [selectedProblems, setSelectedProblems] = useState<Problem[]>([]);
 
   const suggestedProblems = useMemo(() => {
+    if (keyword.length === 0) return [];
     return problems
       .filter((problem) => {
         return (
