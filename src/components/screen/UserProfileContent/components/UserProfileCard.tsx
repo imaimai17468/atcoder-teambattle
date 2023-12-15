@@ -9,16 +9,15 @@ import {
   CardTitle,
   CardFooter,
 } from "@/components/ui/card";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   GitHubLogoIcon,
   TwitterLogoIcon,
   Link1Icon,
 } from "@radix-ui/react-icons";
 import { Button } from "@/components/ui/button";
-import { Skeleton } from "@/components/common/Skeleton";
 import { useRouter, useParams } from "next/navigation";
 import { CLIENT_PATH } from "@/constants/clientpath";
+import { UserAvatar } from "@/components/common/UserAvatar";
 
 export type UserProfileCardProps = {
   user: User;
@@ -34,12 +33,7 @@ export const UserProfileCard: React.FC<UserProfileCardProps> = ({
     <Card>
       <CardHeader>
         <div className="flex items-center gap-4">
-          <Avatar className="h-16 w-16 border">
-            <AvatarImage src={user.icon} alt={user.name} />
-            <AvatarFallback>
-              <Skeleton className="h-16 w-16 rounded-full border" />
-            </AvatarFallback>
-          </Avatar>
+          <UserAvatar user={user} withoutCard />
           <div className="flex flex-col gap-2">
             <CardDescription>{user.atcoderId}</CardDescription>
             <CardTitle>{user.name}</CardTitle>

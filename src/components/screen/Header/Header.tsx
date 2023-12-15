@@ -21,9 +21,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Skeleton } from "@/components/common/Skeleton";
 import { createMockUser } from "@/repositories/createMockUser";
+import { UserAvatar } from "@/components/common/UserAvatar";
 
 export const Header: React.FC = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -64,14 +63,7 @@ export const Header: React.FC = () => {
       {isLogin ? (
         <DropdownMenu>
           <DropdownMenuTrigger>
-            <div className="flex items-center gap-2">
-              <Avatar className="border border-gray-300">
-                <AvatarImage src={currentUser.icon} alt={currentUser.name} />
-                <AvatarFallback>
-                  <Skeleton className="h-16 w-16 rounded-full" />
-                </AvatarFallback>
-              </Avatar>
-            </div>
+            <UserAvatar user={currentUser} withoutCard />
           </DropdownMenuTrigger>
           <DropdownMenuContent className="mr-4">
             <DropdownMenuLabel>Settings</DropdownMenuLabel>

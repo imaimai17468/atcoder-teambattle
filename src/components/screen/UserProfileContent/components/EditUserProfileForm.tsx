@@ -6,9 +6,7 @@ import {
   CardDescription,
 } from "@/components/ui/card";
 import { useEditUserProfileForm } from "../hooks/useEditUserProfileForm";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import { Skeleton } from "@/components/common/Skeleton";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { BioCounter } from "./BioCounter";
@@ -25,6 +23,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { UserAvatar } from "@/components/common/UserAvatar";
 
 type EditUserProfileFormProps = {
   user: User;
@@ -41,12 +40,7 @@ export const EditUserProfileForm: React.FC<EditUserProfileFormProps> = ({
       <form onSubmit={form.handleSubmit(onSubmit)}>
         <CardHeader>
           <div className="flex items-center gap-4">
-            <Avatar className="h-16 w-16 border">
-              <AvatarImage src={user.icon} alt={user.name} />
-              <AvatarFallback>
-                <Skeleton className="h-16 w-16 rounded-full border" />
-              </AvatarFallback>
-            </Avatar>
+            <UserAvatar user={user} withoutCard />
             <div className="flex flex-col gap-4 md:flex-row">
               <FormField
                 control={form.control}
