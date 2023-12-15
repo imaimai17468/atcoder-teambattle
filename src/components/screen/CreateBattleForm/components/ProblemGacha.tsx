@@ -137,61 +137,68 @@ export const ProblemGacha: React.FC<ProblemGachaProps> = ({
       </div>
       <div className="flex w-fit flex-col gap-4">
         {currentRanges.map((range, index) => (
-          <div key={index} className="flex items-center gap-4">
-            <DifficultMark difficulty={range.min} />
-            <Input
-              type="number"
-              placeholder="Min Diff"
-              value={range.min}
-              className="w-48"
-              onChange={(e) => {
-                const newRanges = [...currentRanges];
-                const updatedRange = {
-                  ...newRanges[index],
-                  min: parseInt(e.target.value),
-                };
-                newRanges[index] = updatedRange;
-                setCurrentRanges(newRanges);
-              }}
-              min={0}
-              max={9999}
-            />
-            <ArrowRightIcon />
-            <DifficultMark difficulty={range.max} />
-            <Input
-              type="number"
-              placeholder="Max Diff"
-              value={range.max}
-              className="w-48"
-              onChange={(e) => {
-                const newRanges = [...currentRanges];
-                const updatedRange = {
-                  ...newRanges[index],
-                  max: parseInt(e.target.value),
-                };
-                newRanges[index] = updatedRange;
-                setCurrentRanges(newRanges);
-              }}
-              min={0}
-              max={9999}
-            />
-            <Button
-              type="button"
-              className="h-8 w-8 rounded-full border-destructive text-destructive hover:text-destructive"
-              variant="outline"
-              size="icon"
-              onClick={() => {
-                const newRanges = currentRanges.filter(
-                  (_, currentIndex) => currentIndex !== index,
-                );
-                setCurrentRanges(newRanges);
-              }}
-            >
-              <TrashIcon />
-            </Button>
+          <div
+            key={index}
+            className="flex flex-col items-start gap-4 md:flex-row md:items-center"
+          >
+            <div className="flex items-center gap-2">
+              <DifficultMark difficulty={range.min} />
+              <Input
+                type="number"
+                placeholder="Min Diff"
+                value={range.min}
+                className="w-48"
+                onChange={(e) => {
+                  const newRanges = [...currentRanges];
+                  const updatedRange = {
+                    ...newRanges[index],
+                    min: parseInt(e.target.value),
+                  };
+                  newRanges[index] = updatedRange;
+                  setCurrentRanges(newRanges);
+                }}
+                min={0}
+                max={9999}
+              />
+            </div>
+            <div className="flex items-center gap-2">
+              <ArrowRightIcon />
+              <DifficultMark difficulty={range.max} />
+              <Input
+                type="number"
+                placeholder="Max Diff"
+                value={range.max}
+                className="w-48"
+                onChange={(e) => {
+                  const newRanges = [...currentRanges];
+                  const updatedRange = {
+                    ...newRanges[index],
+                    max: parseInt(e.target.value),
+                  };
+                  newRanges[index] = updatedRange;
+                  setCurrentRanges(newRanges);
+                }}
+                min={0}
+                max={9999}
+              />
+              <Button
+                type="button"
+                className="h-8 w-8 rounded-full border-destructive text-destructive hover:text-destructive"
+                variant="outline"
+                size="icon"
+                onClick={() => {
+                  const newRanges = currentRanges.filter(
+                    (_, currentIndex) => currentIndex !== index,
+                  );
+                  setCurrentRanges(newRanges);
+                }}
+              >
+                <TrashIcon />
+              </Button>
+            </div>
           </div>
         ))}
-        <div className="flex justify-around">
+        <div className="flex flex-col justify-around gap-2 md:flex-row">
           <Button
             type="button"
             className="flex w-48 items-center gap-2"

@@ -11,9 +11,11 @@ export const useExpectedTeamContent = ({ users }: { users: User[] }) => {
   const [isSuggestionsOpen, setIsSuggestionsOpen] = useState(false);
   const [clickedTeamIndex, setClickedTeamIndex] = useState(-1);
 
-  const suggestedUsers = users.filter((user) => {
-    return user.name.toLowerCase().includes(keyword.toLowerCase());
-  });
+  const suggestedUsers = keyword.length
+    ? users.filter((user) => {
+        return user.name.toLowerCase().includes(keyword.toLowerCase());
+      })
+    : [];
 
   const ref = useRef(null);
   useClickAway(ref, () => {

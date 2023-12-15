@@ -29,8 +29,8 @@ import {
 } from "@/components/ui/form";
 
 export const CreateBattleForm: React.FC = () => {
-  const problems = createMockProblems(30);
-  const users = createMockUsers(30);
+  const problems = createMockProblems(300);
+  const users = createMockUsers(300);
   const currentUser = createMockUser();
 
   const { form, onSubmit } = useCreateBattleForm(currentUser);
