@@ -1,7 +1,7 @@
 import { Metadata } from "next";
-import { BattleBoard } from "@/components/screen/BattleBoard";
+import { BattleBoard } from "@/features/battle/main/BattleBoard";
 import { Suspense } from "react";
-import { LoadingBattleBoard } from "@/components/screen/LoadingBattleBoard";
+import { LoadingBattleBoard } from "@/features/battle/main/LoadingBattleBoard";
 
 export const metadata: Metadata = {
   title: "Battles",

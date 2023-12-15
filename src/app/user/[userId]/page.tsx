@@ -1,7 +1,7 @@
 import { Metadata } from "next";
-import { UserProfileContent } from "@/components/screen/UserProfileContent";
+import { UserProfileContent } from "@/features/user/UserProfileContent";
 import { Suspense } from "react";
-import { LoadingUserProfileContent } from "@/components/screen/LoadingUserProfileContent";
+import { LoadingUserProfileContent } from "@/features/user/LoadingUserProfileContent";
 
 export const metadata: Metadata = {
   title: "User",
