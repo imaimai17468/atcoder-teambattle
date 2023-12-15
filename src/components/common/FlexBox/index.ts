@@ -1,1 +1,1 @@
-export { default as FlexBox } from "./FlexBox";
+export { FlexBox } from "./FlexBox";

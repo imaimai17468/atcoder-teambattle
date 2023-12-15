@@ -1,1 +1,1 @@
-export { default as TimeProgress } from "./TimeProgress";
+export { TimeProgress } from "./TimeProgress";

@@ -10,5 +10,3 @@ export const ErrorAlert: React.FC = () => {
     </Alert>
   );
 };
-
-export default ErrorAlert;

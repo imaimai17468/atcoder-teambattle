@@ -12,5 +12,3 @@ export const LoadingAlert: React.FC = () => {
     </Alert>
   );
 };
-
-export default LoadingAlert;

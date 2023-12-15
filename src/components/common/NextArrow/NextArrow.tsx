@@ -12,5 +12,3 @@ export const NextArrow = ({
     </div>
   );
 };
-
-export default NextArrow;

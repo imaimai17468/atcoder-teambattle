@@ -1,1 +1,1 @@
-export { default as LoadingAlert } from "./LoadingAlert";
+export { LoadingAlert } from "./LoadingAlert";

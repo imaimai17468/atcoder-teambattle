@@ -50,5 +50,3 @@ export const FullDatePicker: React.FC<FullDatePickerProps> = ({
     </div>
   );
 };
-
-export default FullDatePicker;

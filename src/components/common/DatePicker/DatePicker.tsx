@@ -18,7 +18,10 @@ type DatePickerProps = {
   value: number;
 };
 
-export function DatePicker({ onChange, value }: DatePickerProps) {
+export const DatePicker: React.FC<DatePickerProps> = ({
+  onChange,
+  value,
+}: DatePickerProps) => {
   const [date, setDate] = useState<number>(value);
 
   useEffect(() => {
@@ -55,6 +58,4 @@ export function DatePicker({ onChange, value }: DatePickerProps) {
       </PopoverContent>
     </Popover>
   );
-}
-
-export default DatePicker;
+};

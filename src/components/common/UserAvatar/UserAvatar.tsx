@@ -80,5 +80,3 @@ export const UserAvatar = ({ user, withoutCard }: UserAvatarProps) => {
     </HoverCard>
   );
 };
-
-export default UserAvatar;

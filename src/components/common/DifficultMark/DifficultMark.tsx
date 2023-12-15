@@ -60,5 +60,3 @@ export const DifficultMark = ({ difficulty = 0 }: DifficultyMarkProps) => {
     </div>
   );
 };
-
-export default DifficultMark;

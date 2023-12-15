@@ -34,5 +34,3 @@ export const TimeProgress: React.FC<TimeProgressProps> = ({
     </div>
   );
 };
-
-export default TimeProgress;

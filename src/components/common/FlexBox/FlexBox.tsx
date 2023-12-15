@@ -25,20 +25,20 @@ export type FlexBoxProps = {
   className?: HTMLAttributes<HTMLLIElement>["className"];
 };
 
-const FlexBox = forwardRef<HTMLDivElement, FlexBoxProps>((props, ref) => {
-  const { children, style, className, ...stylePlops } = props;
-  return (
-    <div
-      ref={ref}
-      className={clsx(styles.flex, className)}
-      style={{ ...stylePlops, ...style }}
-    >
-      {children}
-    </div>
-  );
-});
+export const FlexBox = forwardRef<HTMLDivElement, FlexBoxProps>(
+  (props, ref) => {
+    const { children, style, className, ...stylePlops } = props;
+    return (
+      <div
+        ref={ref}
+        className={clsx(styles.flex, className)}
+        style={{ ...stylePlops, ...style }}
+      >
+        {children}
+      </div>
+    );
+  },
+);
 
 const [displayName] = Object.keys({ FlexBox });
 FlexBox.displayName = displayName;
-
-export default FlexBox;

@@ -1,1 +1,1 @@
-export { default as DifficultMark } from "./DifficultMark";
+export { DifficultMark } from "./DifficultMark";
