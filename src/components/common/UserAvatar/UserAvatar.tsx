@@ -15,10 +15,22 @@ import { Skeleton } from "../Skeleton";
 
 type UserAvatarProps = {
   user: User;
+  withoutCard?: boolean;
 };
 
-export const UserAvatar = ({ user }: UserAvatarProps) => {
+export const UserAvatar = ({ user, withoutCard }: UserAvatarProps) => {
   const router = useRouter();
+
+  if (withoutCard) {
+    return (
+      <Avatar className="border">
+        <AvatarImage src={user.icon} alt={user.name} />
+        <AvatarFallback>
+          <Skeleton className="h-16 w-16 rounded-full border" />
+        </AvatarFallback>
+      </Avatar>
+    );
+  }
 
   return (
     <HoverCard key={user.name}>
