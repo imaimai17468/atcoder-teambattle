@@ -23,6 +23,7 @@ import { Score } from "@/schema/Score.type";
 import { Control } from "react-hook-form";
 import { Battle } from "@/schema/Battle.type";
 import { useWatch } from "react-hook-form";
+import { VList } from "virtua";
 
 type ExpectedTeamContentProps = {
   users: User[];
@@ -163,50 +164,55 @@ export const ExpectedTeamContent: React.FC<ExpectedTeamContentProps> = ({
                           <PlusCircledIcon />
                         </Button>
                         {teamIndex == clickedTeamIndex && isSuggestionsOpen && (
-                          <Card
-                            className="absolute top-12 z-10 h-48 w-64 overflow-y-scroll"
-                            ref={ref}
-                          >
+                          <Card className="absolute top-12 z-10 w-80" ref={ref}>
                             <CardContent className="flex flex-col gap-4 pt-4">
                               <SearchInput
                                 keyword={keyword}
-                                onChange={(e) => setKeyword(e.target.value)}
+                                onChange={(e) => {
+                                  setKeyword(e.target.value);
+                                }}
+                                placeholder="Please enter more than one character"
                               />
-                              {suggestedUsersWithoutTeamMember.map(
-                                (suggestedUser, index) => {
-                                  return (
-                                    <div
-                                      key={index}
-                                      className="flex cursor-pointer items-center gap-2 rounded-md p-2 hover:bg-gray-100"
-                                      onClick={() => {
-                                        const newExpectedTeams =
-                                          expectedTeams.map(
-                                            (expectedTeam, currentIndex) => {
-                                              if (
-                                                currentIndex ===
-                                                clickedTeamIndex
-                                              ) {
-                                                return {
-                                                  ...expectedTeam,
-                                                  members: [
-                                                    ...expectedTeam.members,
-                                                    suggestedUser,
-                                                  ],
-                                                };
-                                              } else {
-                                                return expectedTeam;
-                                              }
-                                            },
-                                          );
-                                        setExpectedTeams(newExpectedTeams);
-                                      }}
-                                    >
-                                      <UserAvatar user={suggestedUser} />
-                                      <p>{suggestedUser.name}</p>
-                                    </div>
-                                  );
-                                },
-                              )}
+                              <VList style={{ height: "192px" }}>
+                                {suggestedUsersWithoutTeamMember.map(
+                                  (suggestedUser, index) => {
+                                    return (
+                                      <div
+                                        key={index}
+                                        className="flex cursor-pointer items-center gap-2 rounded-md p-2 hover:bg-gray-100"
+                                        onClick={() => {
+                                          const newExpectedTeams =
+                                            expectedTeams.map(
+                                              (expectedTeam, currentIndex) => {
+                                                if (
+                                                  currentIndex ===
+                                                  clickedTeamIndex
+                                                ) {
+                                                  return {
+                                                    ...expectedTeam,
+                                                    members: [
+                                                      ...expectedTeam.members,
+                                                      suggestedUser,
+                                                    ],
+                                                  };
+                                                } else {
+                                                  return expectedTeam;
+                                                }
+                                              },
+                                            );
+                                          setExpectedTeams(newExpectedTeams);
+                                        }}
+                                      >
+                                        <UserAvatar
+                                          user={suggestedUser}
+                                          withoutCard
+                                        />
+                                        <p>{suggestedUser.name}</p>
+                                      </div>
+                                    );
+                                  },
+                                )}
+                              </VList>
                             </CardContent>
                           </Card>
                         )}
