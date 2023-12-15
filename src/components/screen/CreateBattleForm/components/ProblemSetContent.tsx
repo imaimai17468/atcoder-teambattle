@@ -34,15 +34,18 @@ export const ProblemSetContent: React.FC<ProblemSetContentProps> = ({
   return (
     <div className="flex flex-col gap-8">
       <div className="flex flex-col gap-4">
-        <ProblemSetTable
-          problems={selectedProblems}
-          setProblems={setSelectedProblems}
-        />
+        <div className="overflow-x-scroll">
+          <ProblemSetTable
+            problems={selectedProblems}
+            setProblems={setSelectedProblems}
+          />
+        </div>
         <div className="relative">
           <SearchInput
             keyword={keyword}
             onClick={openSuggestedProblemList}
             onChange={(e) => setKeyword(e.target.value)}
+            placeholder="Please enter at least 1 character"
           />
           {isOpenSuggestedProblemList && (
             <ProblemSuggestCard

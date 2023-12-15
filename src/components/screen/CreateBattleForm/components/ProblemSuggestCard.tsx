@@ -1,4 +1,5 @@
 import { DifficultMark } from "@/components/common/DifficultMark";
+import { LoadingAlert } from "@/components/common/LoadingAlert";
 import { Card, CardContent, CardDescription } from "@/components/ui/card";
 import { Problem } from "@/schema/Problem.type";
 import { VList } from "virtua";
@@ -18,37 +19,41 @@ export const ProblemSuggestCard: React.FC<ProblemSuggestCardProps> = ({
       onClick={(e) => e.stopPropagation()}
     >
       <CardContent>
-        <VList style={{ height: "256px" }}>
-          {suggestedProblems.map((problem) => (
-            <Card
-              key={problem.link}
-              className="mb-4 flex cursor-pointer items-center px-4 py-2 transition-all hover:bg-gray-100"
-              onClick={() => {
-                setSelectedProblems((prev) => {
-                  if (!prev) return [problem];
-                  if (prev.includes(problem)) return prev;
-                  return [...prev, problem];
-                });
-              }}
-            >
-              <div className="flex flex-col gap-2">
-                <div className="flex items-center gap-2">
-                  <p>{problem.name}</p>
-                  <p>-</p>
-                  <p>{problem.score} point</p>
+        {suggestedProblems.length === 0 ? (
+          <LoadingAlert />
+        ) : (
+          <VList style={{ height: "256px" }}>
+            {suggestedProblems.map((problem) => (
+              <Card
+                key={problem.link}
+                className="mb-4 flex cursor-pointer items-center px-4 py-2 transition-all hover:bg-gray-100"
+                onClick={() => {
+                  setSelectedProblems((prev) => {
+                    if (!prev) return [problem];
+                    if (prev.includes(problem)) return prev;
+                    return [...prev, problem];
+                  });
+                }}
+              >
+                <div className="flex flex-col gap-2">
+                  <div className="flex items-center gap-2">
+                    <p>{problem.name}</p>
+                    <p>-</p>
+                    <p>{problem.score} point</p>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CardDescription>Difficulty</CardDescription>
+                    <CardDescription>
+                      {problem.difficulty.toFixed(1)}
+                    </CardDescription>
+                    <DifficultMark difficulty={problem.difficulty} />
+                  </div>
+                  <CardDescription>{problem.link}</CardDescription>
                 </div>
-                <div className="flex items-center gap-2">
-                  <CardDescription>Difficulty</CardDescription>
-                  <CardDescription>
-                    {problem.difficulty.toFixed(1)}
-                  </CardDescription>
-                  <DifficultMark difficulty={problem.difficulty} />
-                </div>
-                <CardDescription>{problem.link}</CardDescription>
-              </div>
-            </Card>
-          ))}
-        </VList>
+              </Card>
+            ))}
+          </VList>
+        )}
       </CardContent>
     </Card>
   );
