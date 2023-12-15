@@ -1,1 +1,1 @@
-export { default as BattleAnalytics } from "./BattleAnalytics";
+export { BattleAnalytics } from "./BattleAnalytics";

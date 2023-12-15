@@ -1,1 +1,1 @@
-export { default as BattleDetailTabs } from "./BattleDetailTabs";
+export { BattleDetailTabs } from "./BattleDetailTabs";

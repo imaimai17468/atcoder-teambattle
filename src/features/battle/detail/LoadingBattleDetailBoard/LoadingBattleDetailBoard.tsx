@@ -26,5 +26,3 @@ export const LoadingBattleDetailBoard = () => {
     </div>
   );
 };
-
-export default LoadingBattleDetailBoard;

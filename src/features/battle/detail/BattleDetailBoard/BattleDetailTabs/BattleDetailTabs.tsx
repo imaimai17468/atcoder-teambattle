@@ -30,5 +30,3 @@ export const BattleDetailTabs: React.FC<BattleDetailTabsProps> = ({
     </Tabs>
   );
 };
-
-export default BattleDetailTabs;

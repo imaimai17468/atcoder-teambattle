@@ -1,1 +1,1 @@
-export { default as CreateBattleForm } from "./CreateBattleForm";
+export { CreateBattleForm } from "./CreateBattleForm";

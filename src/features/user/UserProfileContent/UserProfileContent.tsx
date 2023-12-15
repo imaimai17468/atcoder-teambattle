@@ -32,5 +32,3 @@ export const UserProfileContent: React.FC<UserProfileContentProps> = async ({
     </div>
   );
 };
-
-export default UserProfileContent;

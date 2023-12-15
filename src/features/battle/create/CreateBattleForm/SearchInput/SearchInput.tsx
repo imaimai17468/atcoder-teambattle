@@ -31,5 +31,3 @@ export const SearchInput: React.FC<SearchInputProps> = ({
     </div>
   );
 };
-
-export default SearchInput;

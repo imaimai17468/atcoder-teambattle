@@ -1,1 +1,1 @@
-export { default as BattleBoard } from "./BattleBoard";
+export { BattleBoard } from "./BattleBoard";

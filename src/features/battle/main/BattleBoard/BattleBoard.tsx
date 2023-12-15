@@ -16,5 +16,3 @@ export const BattleBoard = async () => {
     </div>
   );
 };
-
-export default BattleBoard;

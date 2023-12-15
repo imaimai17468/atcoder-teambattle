@@ -56,5 +56,3 @@ export const ProblemListTable: React.FC<ProblemListTableProps> = ({
     </Table>
   );
 };
-
-export default ProblemListTable;

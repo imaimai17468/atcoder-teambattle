@@ -1,1 +1,1 @@
-export { default as ExpectedTeamContent } from "./ExpectedTeamContent";
+export { ExpectedTeamContent } from "./ExpectedTeamContent";

@@ -282,5 +282,3 @@ export const ExpectedTeamContent: React.FC<ExpectedTeamContentProps> = ({
     </div>
   );
 };
-
-export default ExpectedTeamContent;

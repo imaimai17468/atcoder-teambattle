@@ -1,1 +1,1 @@
-export { default as LoadingUserProfileContent } from "./LoadingUserProfileContent";
+export { LoadingUserProfileContent } from "./LoadingUserProfileContent";

@@ -59,5 +59,3 @@ export const ProblemSetContent: React.FC<ProblemSetContentProps> = ({
     </div>
   );
 };
-
-export default ProblemSetContent;

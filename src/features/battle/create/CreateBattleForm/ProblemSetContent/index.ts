@@ -1,1 +1,1 @@
-export { default as ProblemSetContent } from "./ProblemSetContent";
+export { ProblemSetContent } from "./ProblemSetContent";

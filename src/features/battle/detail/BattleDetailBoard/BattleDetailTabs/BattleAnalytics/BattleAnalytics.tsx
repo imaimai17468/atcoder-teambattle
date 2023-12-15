@@ -26,5 +26,3 @@ export const BattleAnalytics: React.FC<BattleAnalyticsProps> = ({
     </div>
   );
 };
-
-export default BattleAnalytics;

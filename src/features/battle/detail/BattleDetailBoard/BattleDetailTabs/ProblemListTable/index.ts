@@ -1,1 +1,1 @@
-export { default as ProblemListTable } from "./ProblemListTable";
+export { ProblemListTable } from "./ProblemListTable";

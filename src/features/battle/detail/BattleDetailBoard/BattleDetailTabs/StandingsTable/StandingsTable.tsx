@@ -97,5 +97,3 @@ export const StandingsTable: React.FC<StandingsTableProps> = ({
     </Table>
   );
 };
-
-export default StandingsTable;

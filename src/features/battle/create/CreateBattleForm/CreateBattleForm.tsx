@@ -161,5 +161,3 @@ export const CreateBattleForm: React.FC = () => {
     </Form>
   );
 };
-
-export default CreateBattleForm;

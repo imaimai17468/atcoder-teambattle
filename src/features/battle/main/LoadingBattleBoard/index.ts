@@ -1,1 +1,1 @@
-export { default as LoadingBattleBoard } from "./LoadingBattleBoard";
+export { LoadingBattleBoard } from "./LoadingBattleBoard";

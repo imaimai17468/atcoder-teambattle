@@ -1,1 +1,1 @@
-export { default as LoadingBattleDetailBoard } from "./LoadingBattleDetailBoard";
+export { LoadingBattleDetailBoard } from "./LoadingBattleDetailBoard";

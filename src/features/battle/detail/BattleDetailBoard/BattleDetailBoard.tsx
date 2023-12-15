@@ -48,5 +48,3 @@ export const BattleDetailBoard = async () => {
     </div>
   );
 };
-
-export default BattleDetailBoard;

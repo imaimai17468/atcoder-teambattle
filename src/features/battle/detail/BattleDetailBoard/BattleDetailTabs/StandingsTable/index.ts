@@ -1,1 +1,1 @@
-export { default as StandingsTable } from "./StandingsTable";
+export { StandingsTable } from "./StandingsTable";

@@ -16,5 +16,3 @@ export const LoadingUserProfileContent: React.FC<
     </div>
   );
 };
-
-export default LoadingUserProfileContent;
