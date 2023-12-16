@@ -19,7 +19,7 @@ export const BattleDetailTabs: React.FC<BattleDetailTabsProps> = ({
         <TabsTrigger value="problems">Problems</TabsTrigger>
         <TabsTrigger value="analytics">Analytics</TabsTrigger>
       </TabsList>
-      <TabsContent value="standings">
+      <TabsContent value="standings" className="w-full overflow-x-scroll">
         <StandingsTable battle={battle} startDate={battle.startDate} />
       </TabsContent>
       <TabsContent value="problems">
