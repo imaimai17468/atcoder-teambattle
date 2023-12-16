@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, Fragment } from "react";
 
 import { FirstAcceptanceTimeRow } from "./FirstAcceptanceTimeRow";
 import { useStandingsValue } from "./hooks/useStandingsValue";
@@ -68,7 +68,7 @@ export const StandingsTable: React.FC<StandingsTableProps> = ({
       <TableBody>
         {teamScoreList.map((teamScore, index) => {
           return (
-            <>
+            <Fragment key={teamScore.team.name}>
               <TeamScoreRow
                 teamScore={teamScore}
                 index={index}
@@ -81,14 +81,14 @@ export const StandingsTable: React.FC<StandingsTableProps> = ({
                   .userScore.map((userScore) => {
                     return (
                       <UserScoreRow
-                        key={userScore.user.name}
+                        key={userScore.user.id}
                         userScore={userScore}
                         visible={isTeamScoreDetailVisible[index]}
                         startDate={startDate}
                       />
                     );
                   })}
-            </>
+            </Fragment>
           );
         })}
         <FirstAcceptanceTimeRow
