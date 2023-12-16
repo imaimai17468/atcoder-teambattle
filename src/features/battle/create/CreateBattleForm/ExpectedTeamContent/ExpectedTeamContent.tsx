@@ -170,7 +170,7 @@ export const ExpectedTeamContent: React.FC<ExpectedTeamContentProps> = ({
                           {teamIndex == clickedTeamIndex &&
                             isSuggestionsOpen && (
                               <Card
-                                className="fixed left-1/2 top-1/2 z-10 w-80 -translate-x-1/2 -translate-y-1/2 md:absolute md:left-0 md:top-12 md:translate-x-0 md:translate-y-0"
+                                className="fixed left-1/2 top-1/2 z-10 w-96 -translate-x-1/2 -translate-y-1/2 md:absolute md:left-0 md:top-12 md:translate-x-0 md:translate-y-0"
                                 ref={ref}
                               >
                                 <CardContent className="flex flex-col gap-4 pt-4">

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useMemo } from "react";
 import { useClickAway } from "react-use";
 
 import { Team } from "@/schema/Team.type";
@@ -12,11 +12,13 @@ export const useExpectedTeamContent = ({ users }: { users: User[] }) => {
   const [isSuggestionsOpen, setIsSuggestionsOpen] = useState(false);
   const [clickedTeamIndex, setClickedTeamIndex] = useState(-1);
 
-  const suggestedUsers = keyword.length
-    ? users.filter((user) => {
-        return user.name.toLowerCase().includes(keyword.toLowerCase());
-      })
-    : [];
+  const suggestedUsers = useMemo(() => {
+    return keyword.length
+      ? users.filter((user) => {
+          return user.name.toLowerCase().includes(keyword.toLowerCase());
+        })
+      : [];
+  }, [users, keyword]);
 
   const ref = useRef(null);
   useClickAway(ref, () => {

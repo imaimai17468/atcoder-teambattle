@@ -75,7 +75,7 @@ export const useAnalyticsValue = (battle: Battle) => {
     };
 
     return {
-      TimeLineDataList: ScoreTransitions.flat().sort((a, b) => a.time - b.time),
+      TimeLineDataList: ScoreTransitions.flat().sort((a, b) => b.time - a.time),
       chartData,
     };
   }, [battle]);

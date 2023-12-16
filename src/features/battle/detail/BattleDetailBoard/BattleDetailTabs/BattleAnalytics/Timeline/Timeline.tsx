@@ -1,3 +1,4 @@
+import { RocketIcon } from "@radix-ui/react-icons";
 import dayjs from "dayjs";
 
 import { UserAvatar } from "@/components/common/UserAvatar";
@@ -26,7 +27,12 @@ export const Timeline: React.FC<TimelineProps> = ({
 }: TimelineProps) => {
   return (
     <Card className="h-full overflow-y-scroll">
-      <CardHeader>AC Timeline</CardHeader>
+      <CardHeader>
+        <CardTitle className="flex items-center gap-2">
+          <RocketIcon />
+          AC Timeline
+        </CardTitle>
+      </CardHeader>
       <CardContent className="flex flex-col gap-4">
         {timelineDataList.map((timelineData, index) => (
           <Card key={index}>
