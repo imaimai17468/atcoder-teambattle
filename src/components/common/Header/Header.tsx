@@ -32,7 +32,7 @@ export const Header: React.FC = () => {
 
   return (
     <header className="sticky top-0 z-50 flex items-center justify-between bg-gray-200/10 px-8  py-4 backdrop-blur-md">
-      <div className="flex items-end gap-8">
+      <div className="flex items-center gap-8">
         <div className="flex items-center gap-4">
           <Image src="/favicon.png" width={48} height={48} alt="icon" />
           <Link
@@ -42,7 +42,7 @@ export const Header: React.FC = () => {
             AtCoder Team Battle
           </Link>
         </div>
-        <div className="flex gap-2">
+        <div className=" hidden gap-2 md:flex">
           <Button
             variant="ghost"
             className="flex gap-2"
@@ -67,6 +67,24 @@ export const Header: React.FC = () => {
             <UserAvatar user={currentUser} withoutCard />
           </DropdownMenuTrigger>
           <DropdownMenuContent className="mr-4">
+            <div className="block md:hidden">
+              <DropdownMenuLabel>Contents</DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem
+                onClick={() => {
+                  router.push(CLIENT_PATH.USER.replace("[userId]", "me"));
+                }}
+                className="flex gap-2"
+              >
+                <RocketIcon />
+                Battles
+              </DropdownMenuItem>
+              <DropdownMenuItem className="flex gap-2">
+                <ChatBubbleIcon />
+                Contact
+              </DropdownMenuItem>
+              <DropdownMenuSeparator />
+            </div>
             <DropdownMenuLabel>Settings</DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuItem
