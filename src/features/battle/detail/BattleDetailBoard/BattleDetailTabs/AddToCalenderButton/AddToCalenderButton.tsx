@@ -34,7 +34,7 @@ export const AddToCalenderButton: React.FC<AddToCalenderButtonProps> = ({
 
   return (
     <a href={eventUrl} target="_blank" rel="noopener noreferrer">
-      <Button size="icon" type="button">
+      <Button size="icon" type="button" aria-label="Add to Google Calendar">
         <CalendarIcon />
       </Button>
     </a>
