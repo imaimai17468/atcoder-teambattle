@@ -13,17 +13,17 @@ export const BattleDetailTabs: React.FC<BattleDetailTabsProps> = ({
   battle,
 }: BattleDetailTabsProps) => {
   return (
-    <Tabs defaultValue="problems">
+    <Tabs defaultValue="standings">
       <TabsList className="mb-4 border">
-        <TabsTrigger value="problems">Problems</TabsTrigger>
         <TabsTrigger value="standings">Standings</TabsTrigger>
+        <TabsTrigger value="problems">Problems</TabsTrigger>
         <TabsTrigger value="analytics">Analytics</TabsTrigger>
       </TabsList>
+      <TabsContent value="standings" className="w-full overflow-x-scroll">
+        <StandingsTable battle={battle} startDate={battle.startDate} />
+      </TabsContent>
       <TabsContent value="problems">
         <ProblemListTable problems={battle.problems} />
-      </TabsContent>
-      <TabsContent value="standings">
-        <StandingsTable battle={battle} startDate={battle.startDate} />
       </TabsContent>
       <TabsContent value="analytics">
         <BattleAnalytics battle={battle} />

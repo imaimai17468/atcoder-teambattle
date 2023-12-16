@@ -1,7 +1,6 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useState, useEffect } from "react";
 
 import { TimeProgress } from "@/components/common/TimeProgress";
 import {
@@ -25,12 +24,6 @@ export const BattleListTable: React.FC<BattleListTableProps> = ({
   title,
 }: BattleListTableProps) => {
   const router = useRouter();
-  const [isSP, setIsSP] = useState(false);
-  useEffect(() => {
-    if (window.innerWidth < 640) {
-      setIsSP(true);
-    }
-  }, []);
 
   return (
     <>
@@ -41,12 +34,10 @@ export const BattleListTable: React.FC<BattleListTableProps> = ({
         <TableHeader>
           <TableRow>
             <TableHead>Title</TableHead>
-            {!isSP && (
-              <>
-                <TableHead>Description</TableHead>
-                <TableHead className="text-center">No. of Teams</TableHead>
-              </>
-            )}
+            <TableHead className="hidden md:table-cell">Description</TableHead>
+            <TableHead className="hidden text-center md:table-cell">
+              No. of Teams
+            </TableHead>
             <TableHead className="text-center">Duration</TableHead>
           </TableRow>
         </TableHeader>
@@ -62,19 +53,15 @@ export const BattleListTable: React.FC<BattleListTableProps> = ({
                   );
                 }}
               >
-                <TableCell className="w-1/5 font-semibold">
+                <TableCell className="w-1/3 font-semibold md:w-1/5">
                   {battle.title}
                 </TableCell>
-                {!isSP && (
-                  <>
-                    <TableCell className="w-1/3">
-                      <p className="line-clamp-2">{battle.description}</p>
-                    </TableCell>
-                    <TableCell className="w-1/5 text-center">
-                      {battle.scores ? battle.scores.length : 0} Teams
-                    </TableCell>
-                  </>
-                )}
+                <TableCell className="hidden w-1/3 md:table-cell">
+                  <p className="line-clamp-2">{battle.description}</p>
+                </TableCell>
+                <TableCell className="hidden w-1/5 text-center md:table-cell">
+                  {battle.scores ? battle.scores.length : 0} Teams
+                </TableCell>
                 <TableCell>
                   <TimeProgress
                     startDate={battle.startDate}
