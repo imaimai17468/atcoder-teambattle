@@ -55,11 +55,11 @@ export const BattleDetailBoard = async () => {
         <Button variant="outline">Join</Button>
         <TwitterShareButton
           url={`https://atcoder-team-battle.com/battle/${battle.id}`}
-          text={`バーチャルコンテストに参加しよう！%0aTitle: ${
+          text={`バーチャルコンテストに参加しよう！\nTitle: ${
             battle.title
-          }%0aStart: ${dayjs(battle.startDate)}%0aEnd: ${dayjs(
+          }\nStart: ${dayjs(battle.startDate)}%0aEnd: ${dayjs(
             battle.endDate,
-          )}%0a`}
+          )}\n`}
         />
         <AddToCalenderButton
           title={battle.title}
