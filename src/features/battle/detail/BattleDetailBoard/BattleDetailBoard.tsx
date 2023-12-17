@@ -1,6 +1,11 @@
+import dayjs from "dayjs";
+
 import { BattleDetailTabs } from "./BattleDetailTabs";
+import { AddToCalenderButton } from "./BattleDetailTabs/AddToCalenderButton";
+import { TwitterShareButton } from "./BattleDetailTabs/TwitterShareButton";
 
 import { TimeProgress } from "@/components/common/TimeProgress";
+import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { createMockBattle } from "@/repositories/createMockBattle";
 
@@ -45,6 +50,24 @@ export const BattleDetailBoard = async () => {
         </div>
       </div>
       <Separator className="bg-gray-300" />
+      <div className="flex gap-4">
+        <Button variant="outline">Edit</Button>
+        <Button variant="outline">Join</Button>
+        <TwitterShareButton
+          url={`https://atcoder-team-battle.com/battle/${battle.id}`}
+          text={`バーチャルコンテストに参加しよう！\nTitle: ${
+            battle.title
+          }\nStart: ${dayjs(battle.startDate)}%0aEnd: ${dayjs(
+            battle.endDate,
+          )}\n`}
+        />
+        <AddToCalenderButton
+          title={battle.title}
+          start={new Date(battle.startDate)}
+          end={new Date(battle.endDate)}
+          details={battle.description}
+        />
+      </div>
       <BattleDetailTabs battle={battle} />
     </div>
   );
