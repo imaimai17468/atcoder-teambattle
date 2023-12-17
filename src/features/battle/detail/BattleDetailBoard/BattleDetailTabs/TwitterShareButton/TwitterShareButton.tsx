@@ -16,12 +16,7 @@ export const TwitterShareButton: React.FC<TwitterShareButtonProps> = ({
   )}&url=${encodeURIComponent(url)}`;
   return (
     <a href={shareUrl} target="_blank" rel="noopener noreferrer">
-      <Button
-        type="button"
-        rel="noopener noreferrer"
-        size="icon"
-        aria-label="Share on Twitter"
-      >
+      <Button type="button" size="icon" aria-label="Share on Twitter">
         <TwitterLogoIcon />
       </Button>
     </a>
