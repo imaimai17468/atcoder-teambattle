@@ -6,9 +6,9 @@ import { Control, useWatch } from "react-hook-form";
 import { VList } from "virtua";
 
 import { useExpectedTeamContent } from "./hooks/useExpectedTeamContent";
-import { SearchInput } from "../SearchInput/SearchInput";
 
 import { LoadingAlert } from "@/components/common/LoadingAlert";
+import { SearchInput } from "@/components/common/SearchInput";
 import { UserAvatar } from "@/components/common/UserAvatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
