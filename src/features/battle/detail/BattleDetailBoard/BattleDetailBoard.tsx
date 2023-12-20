@@ -2,16 +2,18 @@ import dayjs from "dayjs";
 
 import { AddToCalenderButton } from "./AddToCalenderButton";
 import { BattleDetailTabs } from "./BattleDetailTabs";
-import { TeamJoinButton } from "./TeamJoinButton";
+import { TeamJoinDialog } from "./TeamJoinDialog";
 import { TwitterShareButton } from "./TwitterShareButton";
 
 import { TimeProgress } from "@/components/common/TimeProgress";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { createMockBattle } from "@/repositories/createMockBattle";
+import { createMockUsers } from "@/repositories/createMockUser";
 
 export const BattleDetailBoard = async () => {
   const battle = await createMockBattle({ variant: "running" });
+  const users = await createMockUsers(5);
 
   return (
     <div className="flex flex-col gap-8">
@@ -53,7 +55,7 @@ export const BattleDetailBoard = async () => {
       <Separator className="bg-gray-300" />
       <div className="flex gap-4">
         <Button variant="outline">Edit</Button>
-        <TeamJoinButton />
+        <TeamJoinDialog users={users} />
         <TwitterShareButton
           url={`https://atcoder-team-battle.com/battle/${battle.id}`}
           text={`バーチャルコンテストに参加しよう！\nTitle: ${
