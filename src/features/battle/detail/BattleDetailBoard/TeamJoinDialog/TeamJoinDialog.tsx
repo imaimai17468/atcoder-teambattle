@@ -1,3 +1,5 @@
+"use client";
+
 import { SelectMembers } from "./SelectMembers";
 
 import { Button } from "@/components/ui/button";
