@@ -6,8 +6,8 @@ import { useProblemSetContent } from "./hooks/useProblemSetContent";
 import { ProblemGacha } from "./ProblemGacha";
 import { ProblemSetTable } from "./ProblemSetTable";
 import { ProblemSuggestCard } from "./ProblemSuggestCard";
-import { SearchInput } from "../SearchInput";
 
+import { SearchInput } from "@/components/common/SearchInput";
 import { Problem } from "@/schema/Problem.type";
 
 type ProblemSetContentProps = {
