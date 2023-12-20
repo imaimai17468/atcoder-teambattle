@@ -1,7 +1,7 @@
-import { Link1Icon, TrashIcon } from "@radix-ui/react-icons";
+import { Link1Icon } from "@radix-ui/react-icons";
 
+import { DeleteButton } from "@/components/common/DeleteButton";
 import { DifficultMark } from "@/components/common/DifficultMark";
-import { Button } from "@/components/ui/button";
 import {
   Table,
   TableBody,
@@ -61,10 +61,7 @@ export const ProblemSetTable: React.FC<ProblemSetTableProps> = ({
                 </TableCell>
                 <TableCell className="text-center">{problem.score}</TableCell>
                 <TableCell className="text-center">
-                  <Button
-                    className="h-8 w-8 rounded-full border-destructive text-destructive hover:text-destructive"
-                    variant="outline"
-                    size="icon"
+                  <DeleteButton
                     onClick={(e) => {
                       e.stopPropagation();
                       setProblems((prev) => {
@@ -75,9 +72,7 @@ export const ProblemSetTable: React.FC<ProblemSetTableProps> = ({
                         );
                       });
                     }}
-                  >
-                    <TrashIcon />
-                  </Button>
+                  />
                 </TableCell>
               </TableRow>
             );

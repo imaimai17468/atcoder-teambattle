@@ -1,12 +1,13 @@
 "use client";
 
-import { TrashIcon, PlusCircledIcon } from "@radix-ui/react-icons";
+import { PlusCircledIcon } from "@radix-ui/react-icons";
 import { useEffect } from "react";
 import { Control, useWatch } from "react-hook-form";
 import { VList } from "virtua";
 
 import { useExpectedTeamContent } from "./hooks/useExpectedTeamContent";
 
+import { DeleteButton } from "@/components/common/DeleteButton";
 import { LoadingAlert } from "@/components/common/LoadingAlert";
 import { SearchInput } from "@/components/common/SearchInput";
 import { UserAvatar } from "@/components/common/UserAvatar";
@@ -238,20 +239,14 @@ export const ExpectedTeamContent: React.FC<ExpectedTeamContentProps> = ({
                       </div>
                     </TableCell>
                     <TableCell className="text-center">
-                      <Button
-                        type="button"
-                        className="h-8 w-8 rounded-full border-destructive text-destructive hover:text-destructive"
-                        variant="outline"
-                        size="icon"
+                      <DeleteButton
                         onClick={() => {
                           const newExpectedTeams = expectedTeams.filter(
                             (_, currentIndex) => currentIndex !== teamIndex,
                           );
                           setExpectedTeams(newExpectedTeams);
                         }}
-                      >
-                        <TrashIcon />
-                      </Button>
+                      />
                     </TableCell>
                   </TableRow>
                 );
