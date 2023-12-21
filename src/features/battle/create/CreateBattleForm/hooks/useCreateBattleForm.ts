@@ -31,7 +31,7 @@ export const useCreateBattleForm = (user: User) => {
       title: "Success",
       description: "Battle has been created.",
     });
-    router.push(CLIENT_PATH.BATTLE_DETAIL.replace("[battleId]", battleId[0]));
+    router.push(CLIENT_PATH.BATTLE_DETAIL.replace("[battleId]", battleId));
   };
 
   return {
