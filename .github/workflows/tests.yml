@@ -1,4 +1,4 @@
-name: Example
+name: Build
 
 on: pull_request
 
