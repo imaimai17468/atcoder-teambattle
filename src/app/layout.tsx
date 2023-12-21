@@ -1,6 +1,5 @@
 import "@/styles/global.css";
 import { Metadata } from "next";
-import Favicon from "public/favicon.png";
 
 import { MainLayout } from "@/components/layout/MainLayout";
 import { Toaster } from "@/components/ui/toaster";
@@ -12,7 +11,7 @@ export const metadata: Metadata = {
     template: `%s - ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
-  icons: [{ rel: "icon", url: Favicon.src }],
+  icons: [{ rel: "icon", url: "public/favicon.png" }],
 };
 
 type HomeLayoutProps = {
