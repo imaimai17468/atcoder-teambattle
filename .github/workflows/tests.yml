@@ -3,7 +3,7 @@ name: Build
 on: pull_request
 
 jobs:
-  lint:
+  test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -11,6 +11,16 @@ jobs:
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v1
+
+      - name: Use GitHub Actions Cache
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.npm
+            ${{ github.workspace }}/.next/cache
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/bun.lockb') }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
+          restore-keys: |
+            ${{ runner.os }}-nextjs-${{ hashFiles('**/bun.lockb') }}-
 
       - name: Install dependencies
         run: bun install
