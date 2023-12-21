@@ -86,6 +86,9 @@ export const ComboBox: React.FC<ComboBoxProps> = ({
               {option.label}
             </Button>
           ))}
+          {filteredOptions.length === 0 && (
+            <p className="text-muted-foreground">No options</p>
+          )}
         </VList>
       </PopoverContent>
     </Popover>
