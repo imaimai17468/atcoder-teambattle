@@ -25,7 +25,9 @@ export const useEditUserProfileForm = (user: User) => {
       title: "Success",
       description: "Your profile has been updated.",
     });
-    router.push(CLIENT_PATH.USER.replace("[userId]", userId[0]));
+    if (typeof userId === "string") {
+      router.push(CLIENT_PATH.USER.replace("[userId]", userId));
+    }
   };
 
   return {
