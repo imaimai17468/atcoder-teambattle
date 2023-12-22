@@ -1,4 +1,9 @@
+import { Pencil2Icon } from "@radix-ui/react-icons";
+
+import { TeamJoinDialog } from "../../../TeamJoinDialog";
+
 import { UserAvatar } from "@/components/common/UserAvatar";
+import { Button } from "@/components/ui/button";
 import { TableRow, TableCell } from "@/components/ui/table";
 import { Team } from "@/schema/Team.type";
 import { User } from "@/schema/User.type";
@@ -39,6 +44,17 @@ export const TeamScoreRow: React.FC<TeamScoreRowProps> = ({
       <TableCell className="text-center">{index + 1}</TableCell>
       <TableCell>
         <div className="flex items-center justify-between gap-8">
+          <TeamJoinDialog defaultValues={teamScore.team}>
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={(e) => {
+                e.stopPropagation();
+              }}
+            >
+              <Pencil2Icon />
+            </Button>
+          </TeamJoinDialog>
           <p className="whitespace-nowrap">{teamScore.team.name}</p>
           <div className="flex gap-4">
             {teamScore.team.members.map((member) => {
