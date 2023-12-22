@@ -268,7 +268,7 @@ export const ExpectedTeamContent: React.FC<ExpectedTeamContentProps> = ({
         onClick={() => {
           const newExpectedTeams = [
             ...expectedTeams,
-            { name: "", members: [] },
+            { id: "", name: "", members: [] },
           ];
           setExpectedTeams(newExpectedTeams);
         }}
