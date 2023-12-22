@@ -1,11 +1,9 @@
 import clsx from "clsx";
 import { forwardRef, HTMLAttributes, ReactNode } from "react";
 
-import styles from "./FlexBox.module.scss";
-
 type divProps = NonNullable<JSX.IntrinsicElements["div"]["style"]>;
 
-export type FlexBoxProps = {
+export type FlexboxProps = {
   children?: ReactNode;
   margin?: divProps["margin"];
   padding?: divProps["padding"];
@@ -25,13 +23,13 @@ export type FlexBoxProps = {
   className?: HTMLAttributes<HTMLLIElement>["className"];
 };
 
-export const FlexBox = forwardRef<HTMLDivElement, FlexBoxProps>(
+export const Flexbox = forwardRef<HTMLDivElement, FlexboxProps>(
   (props, ref) => {
     const { children, style, className, ...stylePlops } = props;
     return (
       <div
         ref={ref}
-        className={clsx(styles.flex, className)}
+        className={clsx("flex", className)}
         style={{ ...stylePlops, ...style }}
       >
         {children}
@@ -40,5 +38,5 @@ export const FlexBox = forwardRef<HTMLDivElement, FlexBoxProps>(
   },
 );
 
-const [displayName] = Object.keys({ FlexBox });
-FlexBox.displayName = displayName;
+const [displayName] = Object.keys({ Flexbox });
+Flexbox.displayName = displayName;
