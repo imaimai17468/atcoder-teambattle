@@ -25,25 +25,25 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { User } from "@/schema/User.type";
+import { Team } from "@/schema/Team.type";
 
 type TeamJoinDialogProps = {
-  users: User[];
+  defaultValues?: Team;
+  children: React.ReactNode;
 };
 
 export const TeamJoinDialog: React.FC<TeamJoinDialogProps> = ({
-  users,
+  defaultValues,
+  children,
 }: TeamJoinDialogProps) => {
-  const { onSubmit, form } = useSubmitTeamForm();
+  const { onSubmit, form, users } = useSubmitTeamForm({ defaultValues });
   const { isDirty, isSubmitting, isValid } = form.formState;
   const router = useRouter();
 
   return (
     <Dialog>
-      <DialogTrigger asChild>
-        <Button variant="outline">Join</Button>
-      </DialogTrigger>
-      <DialogContent>
+      <DialogTrigger asChild>{children}</DialogTrigger>
+      <DialogContent onClick={(e) => e.stopPropagation()}>
         <DialogHeader>
           <DialogTitle>Participate as a Team</DialogTitle>
           <DialogDescription>
