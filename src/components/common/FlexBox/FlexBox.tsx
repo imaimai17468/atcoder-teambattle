@@ -24,12 +24,12 @@ export type FlexboxProps = {
 
 export const Flexbox = forwardRef<HTMLDivElement, FlexboxProps>(
   (props, ref) => {
-    const { children, style, className, ...stylePlops } = props;
+    const { children, style, className, ...styleProps } = props;
     return (
       <div
         ref={ref}
         className={className}
-        style={{ display: "flex", ...stylePlops, ...style }}
+        style={{ display: "flex", ...styleProps, ...style }}
       >
         {children}
       </div>
@@ -37,5 +37,4 @@ export const Flexbox = forwardRef<HTMLDivElement, FlexboxProps>(
   },
 );
 
-const [displayName] = Object.keys({ Flexbox });
-Flexbox.displayName = displayName;
+Flexbox.displayName = "Flexbox";
