@@ -1,4 +1,3 @@
-import clsx from "clsx";
 import { forwardRef, HTMLAttributes, ReactNode } from "react";
 
 type divProps = NonNullable<JSX.IntrinsicElements["div"]["style"]>;
@@ -29,8 +28,8 @@ export const Flexbox = forwardRef<HTMLDivElement, FlexboxProps>(
     return (
       <div
         ref={ref}
-        className={clsx("flex", className)}
-        style={{ ...stylePlops, ...style }}
+        className={className}
+        style={{ display: "flex", ...stylePlops, ...style }}
       >
         {children}
       </div>
