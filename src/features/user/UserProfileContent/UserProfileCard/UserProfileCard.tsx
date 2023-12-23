@@ -28,7 +28,7 @@ export const UserProfileCard: React.FC<UserProfileCardProps> = ({
   user,
 }: UserProfileCardProps) => {
   const router = useRouter();
-  const { userId } = useParams();
+  const { userId } = useParams<{ userId: string }>();
 
   return (
     <Card>
@@ -88,7 +88,7 @@ export const UserProfileCard: React.FC<UserProfileCardProps> = ({
         <Button
           className="ml-auto"
           onClick={() => {
-            router.push(CLIENT_PATH.USER_EDIT.replace("[userId]", userId[0]));
+            router.push(CLIENT_PATH.USER_EDIT.replace("[userId]", userId));
           }}
         >
           Edit Profile
