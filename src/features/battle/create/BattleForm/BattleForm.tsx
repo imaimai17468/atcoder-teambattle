@@ -29,7 +29,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { createMockProblems } from "@/repositories/createMockProblem";
 import { createMockUsers, createMockUser } from "@/repositories/createMockUser";
 
-export const CreateBattleForm: React.FC = () => {
+export const BattleForm: React.FC = () => {
   const problems = createMockProblems(300);
   const users = createMockUsers(300);
   const currentUser = createMockUser();

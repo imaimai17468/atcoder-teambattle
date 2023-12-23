@@ -1,11 +1,11 @@
 import { Metadata } from "next";
 
-import { CreateBattleForm } from "@/features/battle/create/CreateBattleForm";
+import { BattleForm } from "@/features/battle/create/BattleForm";
 
 export const metadata: Metadata = {
   title: "Create Battle",
 };
 
 export default function CreateBattlesPage() {
-  return <CreateBattleForm />;
+  return <BattleForm />;
 }
