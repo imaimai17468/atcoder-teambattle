@@ -10,11 +10,23 @@ import { CLIENT_PATH } from "@/constants/clientpath";
 import { Battle, BattleSchema, INITIAL_BATTLE } from "@/schema/Battle.type";
 import { User } from "@/schema/User.type";
 
-export const useCreateBattleForm = (user: User) => {
+type useBattleFormProps = {
+  currentUser: User;
+  defaultValues?: Battle;
+};
+
+export const useBattleForm = ({
+  currentUser,
+  defaultValues,
+}: useBattleFormProps) => {
   const form = useForm<Battle>({
     mode: "onChange",
     resolver: zodResolver(BattleSchema),
-    defaultValues: { ...INITIAL_BATTLE, owner: user, createdAt: Date.now() },
+    defaultValues: defaultValues || {
+      ...INITIAL_BATTLE,
+      owner: currentUser,
+      createdAt: Date.now(),
+    },
   });
 
   const router = useRouter();

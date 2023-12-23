@@ -2,6 +2,7 @@ import dayjs from "dayjs";
 
 import { AddToCalenderButton } from "./AddToCalenderButton";
 import { BattleDetailTabs } from "./BattleDetailTabs";
+import { NavigateToBattleEditButton } from "./NavigateBattleEditButton/NavigateBattleEditButton";
 import { TeamJoinDialog } from "./TeamJoinDialog";
 import { TwitterShareButton } from "./TwitterShareButton";
 
@@ -52,7 +53,7 @@ export const BattleDetailBoard = async () => {
       </div>
       <Separator className="bg-gray-300" />
       <div className="flex gap-4">
-        <Button variant="outline">Edit</Button>
+        <NavigateToBattleEditButton />
         <TeamJoinDialog>
           <Button variant="outline">Join</Button>
         </TeamJoinDialog>

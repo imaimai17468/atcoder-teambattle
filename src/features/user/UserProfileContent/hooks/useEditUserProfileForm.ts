@@ -16,7 +16,7 @@ export const useEditUserProfileForm = (user: User) => {
   });
 
   const router = useRouter();
-  const { userId } = useParams();
+  const { userId } = useParams<{ userId: string }>();
   const { toast } = useToast();
 
   const onSubmit = (data: User) => {
@@ -25,9 +25,7 @@ export const useEditUserProfileForm = (user: User) => {
       title: "Success",
       description: "Your profile has been updated.",
     });
-    if (typeof userId === "string") {
-      router.push(CLIENT_PATH.USER.replace("[userId]", userId));
-    }
+    router.push(CLIENT_PATH.USER.replace("[userId]", userId));
   };
 
   return {

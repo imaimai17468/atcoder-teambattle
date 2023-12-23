@@ -2,16 +2,16 @@ import { Metadata } from "next";
 import { Suspense } from "react";
 
 import { LoadingAlert } from "@/components/common/LoadingAlert";
-import { CreateBattleContent } from "@/features/battle/create/CreateBattleContent";
+import { EditBattleContent } from "@/features/battle/edit/EditBattleContent";
 
 export const metadata: Metadata = {
-  title: "Create Battle",
+  title: "Edit Battle",
 };
 
 export default function CreateBattlesPage() {
   return (
     <Suspense fallback={<LoadingAlert />}>
-      <CreateBattleContent />
+      <EditBattleContent />
     </Suspense>
   );
 }
