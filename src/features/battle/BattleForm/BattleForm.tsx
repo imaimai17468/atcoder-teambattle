@@ -26,15 +26,27 @@ import {
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { Textarea } from "@/components/ui/textarea";
-import { createMockProblems } from "@/repositories/createMockProblem";
-import { createMockUsers, createMockUser } from "@/repositories/createMockUser";
+import { Battle } from "@/schema/Battle.type";
+import { Problem } from "@/schema/Problem.type";
+import { User } from "@/schema/User.type";
 
-export const BattleForm: React.FC = () => {
-  const problems = createMockProblems(300);
-  const users = createMockUsers(300);
-  const currentUser = createMockUser();
+type BattleFormProps = {
+  problems: Problem[];
+  users: User[];
+  currentUser: User;
+  defaultValues?: Battle;
+};
 
-  const { form, onSubmit } = useCreateBattleForm(currentUser);
+export const BattleForm: React.FC<BattleFormProps> = ({
+  problems,
+  users,
+  currentUser,
+  defaultValues,
+}: BattleFormProps) => {
+  const { form, onSubmit } = useCreateBattleForm({
+    currentUser,
+    defaultValues,
+  });
   const { isDirty, isSubmitting, isValid } = form.formState;
 
   return (
