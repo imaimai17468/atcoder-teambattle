@@ -1,7 +1,7 @@
 "use client";
 
 import { ExpectedTeamContent } from "./ExpectedTeamContent/ExpectedTeamContent";
-import { useCreateBattleForm } from "./hooks/useCreateBattleForm";
+import { useBattleForm } from "./hooks/useBattleForm";
 import { ProblemSetContent } from "./ProblemSetContent";
 
 import { FullDatePicker } from "@/components/common/FullDatePicker";
@@ -43,7 +43,7 @@ export const BattleForm: React.FC<BattleFormProps> = ({
   currentUser,
   defaultValues,
 }: BattleFormProps) => {
-  const { form, onSubmit } = useCreateBattleForm({
+  const { form, onSubmit } = useBattleForm({
     currentUser,
     defaultValues,
   });
