@@ -1,9 +1,9 @@
 "use client";
 
-import { faker } from "@faker-js/faker";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
+import { ulid } from "ulidx";
 
 import { useToast } from "@/components/ui/use-toast";
 import { CLIENT_PATH } from "@/constants/clientpath";
@@ -18,11 +18,11 @@ export const useCreateBattleForm = (user: User) => {
   });
 
   const router = useRouter();
-  const battleId = faker.string.uuid();
+  const battleId = ulid();
   const { toast } = useToast();
 
   const onSubmit = (data: Battle) => {
-    const submitData = {
+    const submitData: Battle = {
       ...data,
       id: battleId,
     };

@@ -1,6 +1,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMemo } from "react";
 import { useForm } from "react-hook-form";
+import { ulid } from "ulidx";
 
 import { useToast } from "@/components/ui/use-toast";
 import { createMockUsers } from "@/repositories/createMockUser";
@@ -22,7 +23,9 @@ export const useSubmitTeamForm = ({
   const { toast } = useToast();
 
   const onSubmit = (data: Team) => {
-    console.log(data);
+    const submitData: Team = data.id ? data : { ...data, id: ulid() };
+
+    console.log(submitData);
     toast({
       title: "Success",
       description: "Your team has been created.",

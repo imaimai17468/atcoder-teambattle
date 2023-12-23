@@ -9,7 +9,7 @@ import {
 } from "@/utils/createErrors";
 
 export const TeamSchema = z.object({
-  id: z.string(),
+  id: z.string().uuid(),
   name: z
     .string()
     .min(1, { message: charMinLimitError("Name", 1) })

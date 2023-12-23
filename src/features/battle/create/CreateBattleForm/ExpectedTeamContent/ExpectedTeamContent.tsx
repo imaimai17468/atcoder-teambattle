@@ -3,6 +3,7 @@
 import { PlusCircledIcon } from "@radix-ui/react-icons";
 import { useEffect } from "react";
 import { Control, useWatch } from "react-hook-form";
+import { ulid } from "ulidx";
 import { VList } from "virtua";
 
 import { useExpectedTeamContent } from "./hooks/useExpectedTeamContent";
@@ -268,7 +269,7 @@ export const ExpectedTeamContent: React.FC<ExpectedTeamContentProps> = ({
         onClick={() => {
           const newExpectedTeams = [
             ...expectedTeams,
-            { id: "", name: "", members: [] },
+            { id: ulid(), name: "", members: [] },
           ];
           setExpectedTeams(newExpectedTeams);
         }}
