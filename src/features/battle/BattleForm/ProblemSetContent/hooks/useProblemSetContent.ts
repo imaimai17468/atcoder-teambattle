@@ -4,7 +4,7 @@ import { Problem } from "@/schema/Problem.type";
 
 type UseProblemSetContentProps = {
   problems: Problem[];
-  value?: Problem[];
+  value: Problem[];
 };
 
 export const useProblemSetContent = ({
@@ -15,9 +15,7 @@ export const useProblemSetContent = ({
     useState(false);
   const [keyword, setKeyword] = useState("");
 
-  const [selectedProblems, setSelectedProblems] = useState<Problem[]>(
-    value || [],
-  );
+  const [selectedProblems, setSelectedProblems] = useState<Problem[]>(value);
 
   const suggestedProblems = useMemo(() => {
     if (keyword.length === 0) return [];

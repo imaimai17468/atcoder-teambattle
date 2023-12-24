@@ -13,7 +13,7 @@ import { Problem } from "@/schema/Problem.type";
 type ProblemSetContentProps = {
   problems: Problem[];
   onChange?: (problems: Problem[]) => void;
-  value?: Problem[];
+  value: Problem[];
 };
 
 export const ProblemSetContent: React.FC<ProblemSetContentProps> = ({
