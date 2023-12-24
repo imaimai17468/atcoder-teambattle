@@ -2,12 +2,22 @@ import { useState, useMemo, useCallback, useEffect } from "react";
 
 import { Problem } from "@/schema/Problem.type";
 
-export const useProblemSetContent = ({ problems }: { problems: Problem[] }) => {
+type useProblemSetContentProps = {
+  problems: Problem[];
+  value?: Problem[];
+};
+
+export const useProblemSetContent = ({
+  problems,
+  value,
+}: useProblemSetContentProps) => {
   const [isOpenSuggestedProblemList, setIsOpenSuggestedProblemList] =
     useState(false);
   const [keyword, setKeyword] = useState("");
 
-  const [selectedProblems, setSelectedProblems] = useState<Problem[]>([]);
+  const [selectedProblems, setSelectedProblems] = useState<Problem[]>(
+    value || [],
+  );
 
   const suggestedProblems = useMemo(() => {
     if (keyword.length === 0) return [];
