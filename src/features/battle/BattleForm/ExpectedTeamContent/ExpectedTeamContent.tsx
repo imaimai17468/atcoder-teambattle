@@ -32,12 +32,14 @@ type ExpectedTeamContentProps = {
   users: User[];
   onChange?: (teams: Score[]) => void;
   control: Control<Battle>;
+  value: Score[] | null;
 };
 
 export const ExpectedTeamContent: React.FC<ExpectedTeamContentProps> = ({
   users,
   onChange,
   control,
+  value,
 }: ExpectedTeamContentProps) => {
   const {
     expectedTeams,
@@ -50,7 +52,7 @@ export const ExpectedTeamContent: React.FC<ExpectedTeamContentProps> = ({
     ref,
     clickedTeamIndex,
     setClickedTeamIndex,
-  } = useExpectedTeamContent({ users });
+  } = useExpectedTeamContent({ users, value });
   const problems = useWatch({ name: "problems", control });
 
   useEffect(() => {
@@ -102,6 +104,7 @@ export const ExpectedTeamContent: React.FC<ExpectedTeamContentProps> = ({
                       <Input
                         placeholder="Team Name"
                         className="w-32 md:w-full"
+                        value={expectedTeam.name}
                         onChange={(e) => {
                           const newExpectedTeams = expectedTeams.map(
                             (expectedTeam, currentIndex) => {

@@ -3,11 +3,22 @@
 import { useState, useRef, useMemo } from "react";
 import { useClickAway } from "react-use";
 
+import { Score } from "@/schema/Score.type";
 import { Team } from "@/schema/Team.type";
 import { User } from "@/schema/User.type";
 
-export const useExpectedTeamContent = ({ users }: { users: User[] }) => {
-  const [expectedTeams, setExpectedTeams] = useState<Team[]>([]);
+type UseExpectedTeamContentProps = {
+  users: User[];
+  value: Score[] | null;
+};
+
+export const useExpectedTeamContent = ({
+  users,
+  value,
+}: UseExpectedTeamContentProps) => {
+  const [expectedTeams, setExpectedTeams] = useState<Team[]>(
+    value ? value.map((score) => score.team) : [],
+  );
   const [keyword, setKeyword] = useState("");
   const [isSuggestionsOpen, setIsSuggestionsOpen] = useState(false);
   const [clickedTeamIndex, setClickedTeamIndex] = useState(-1);
