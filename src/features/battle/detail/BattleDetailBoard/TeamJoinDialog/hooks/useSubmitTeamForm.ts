@@ -7,13 +7,13 @@ import { useToast } from "@/components/ui/use-toast";
 import { createMockUsers } from "@/repositories/createMockUser";
 import { TeamSchema, Team } from "@/schema/Team.type";
 
-type useSubmitTeamFormProps = {
+type UseSubmitTeamFormProps = {
   defaultValues?: Team;
 };
 
 export const useSubmitTeamForm = ({
   defaultValues,
-}: useSubmitTeamFormProps) => {
+}: UseSubmitTeamFormProps) => {
   const form = useForm<Team>({
     mode: "onChange",
     resolver: zodResolver(TeamSchema),

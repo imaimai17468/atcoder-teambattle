@@ -2,7 +2,7 @@ import { useState, useMemo, useCallback, useEffect } from "react";
 
 import { Problem } from "@/schema/Problem.type";
 
-type useProblemSetContentProps = {
+type UseProblemSetContentProps = {
   problems: Problem[];
   value?: Problem[];
 };
@@ -10,7 +10,7 @@ type useProblemSetContentProps = {
 export const useProblemSetContent = ({
   problems,
   value,
-}: useProblemSetContentProps) => {
+}: UseProblemSetContentProps) => {
   const [isOpenSuggestedProblemList, setIsOpenSuggestedProblemList] =
     useState(false);
   const [keyword, setKeyword] = useState("");
