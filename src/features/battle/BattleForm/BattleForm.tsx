@@ -85,11 +85,7 @@ export const BattleForm: React.FC<BattleFormProps> = ({
                   <FormItem className="flex flex-col">
                     <FormLabel>Description (required)</FormLabel>
                     <FormControl>
-                      <Textarea
-                        className="w-72"
-                        placeholder="Battle Description"
-                        {...field}
-                      />
+                      <Textarea placeholder="Battle Description" {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
