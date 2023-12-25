@@ -1,24 +1,24 @@
 import { forwardRef, HTMLAttributes, ReactNode } from "react";
 
-type divProps = NonNullable<JSX.IntrinsicElements["div"]["style"]>;
+type DivProps = NonNullable<JSX.IntrinsicElements["div"]["style"]>;
 
 export type FlexboxProps = {
   children?: ReactNode;
-  margin?: divProps["margin"];
-  padding?: divProps["padding"];
-  flexDirection?: divProps["flexDirection"];
-  flexWrap?: divProps["flexWrap"];
-  justifyContent?: divProps["justifyContent"];
-  alignItems?: divProps["alignItems"];
-  alignContent?: divProps["alignContent"];
-  flexBasis?: divProps["flexBasis"];
-  flexGrow?: divProps["flexGrow"];
-  flexShrink?: divProps["flexShrink"];
-  width?: divProps["width"];
-  height?: divProps["height"];
-  overflow?: divProps["overflow"];
+  margin?: DivProps["margin"];
+  padding?: DivProps["padding"];
+  flexDirection?: DivProps["flexDirection"];
+  flexWrap?: DivProps["flexWrap"];
+  justifyContent?: DivProps["justifyContent"];
+  alignItems?: DivProps["alignItems"];
+  alignContent?: DivProps["alignContent"];
+  flexBasis?: DivProps["flexBasis"];
+  flexGrow?: DivProps["flexGrow"];
+  flexShrink?: DivProps["flexShrink"];
+  width?: DivProps["width"];
+  height?: DivProps["height"];
+  overflow?: DivProps["overflow"];
   style?: JSX.IntrinsicElements["div"]["style"];
-  gap?: divProps["gap"];
+  gap?: DivProps["gap"];
   className?: HTMLAttributes<HTMLLIElement>["className"];
 };
 

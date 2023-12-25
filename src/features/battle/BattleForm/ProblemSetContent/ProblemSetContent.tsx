@@ -13,11 +13,13 @@ import { Problem } from "@/schema/Problem.type";
 type ProblemSetContentProps = {
   problems: Problem[];
   onChange?: (problems: Problem[]) => void;
+  value: Problem[];
 };
 
 export const ProblemSetContent: React.FC<ProblemSetContentProps> = ({
   problems,
   onChange,
+  value,
 }: ProblemSetContentProps) => {
   const {
     isOpenSuggestedProblemList,
@@ -27,7 +29,7 @@ export const ProblemSetContent: React.FC<ProblemSetContentProps> = ({
     setSelectedProblems,
     suggestedProblems,
     openSuggestedProblemList,
-  } = useProblemSetContent({ problems });
+  } = useProblemSetContent({ problems, value });
 
   useEffect(() => {
     if (onChange) onChange(selectedProblems);

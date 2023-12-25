@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 
-type useComboBoxProps = {
+type UseComboBoxProps = {
   options: {
     value: string;
     label: string;
@@ -8,7 +8,7 @@ type useComboBoxProps = {
   onChange?: (value: string) => void;
 };
 
-export const useComboBox = ({ options, onChange }: useComboBoxProps) => {
+export const useComboBox = ({ options, onChange }: UseComboBoxProps) => {
   const [open, setOpen] = useState<boolean>(false);
   const [value, setValue] = useState<string>("");
   const [keyword, setKeyword] = useState<string>("");
