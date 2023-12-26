@@ -10,13 +10,15 @@ import { User } from "@/schema/User.type";
 type SelectMembersProps = {
   users: User[];
   onChange: (users: User[]) => void;
+  value?: User[];
 };
 
 export const SelectMembers: React.FC<SelectMembersProps> = ({
   users,
   onChange,
+  value,
 }: SelectMembersProps) => {
-  const [selectedUsers, setSelectedUsers] = useState<User[]>([]);
+  const [selectedUsers, setSelectedUsers] = useState<User[]>(value || []);
   const selectUserOptions = useMemo(() => {
     return users
       .filter((user) => !selectedUsers.includes(user))
