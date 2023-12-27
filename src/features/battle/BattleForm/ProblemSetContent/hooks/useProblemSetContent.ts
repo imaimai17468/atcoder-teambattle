@@ -1,4 +1,5 @@
-import { useState, useMemo, useCallback, useEffect } from "react";
+import { useState, useMemo, useRef } from "react";
+import { useClickAway } from "react-use";
 
 import { Problem } from "@/schema/Problem.type";
 
@@ -32,21 +33,10 @@ export const useProblemSetContent = ({
       });
   }, [problems, keyword, selectedProblems]);
 
-  const closeSuggestedProblemList = useCallback(() => {
+  const ref = useRef(null);
+  useClickAway(ref, () => {
     setIsOpenSuggestedProblemList(false);
-    document.removeEventListener("click", closeSuggestedProblemList);
-  }, []);
-
-  const openSuggestedProblemList = useCallback(() => {
-    setIsOpenSuggestedProblemList(true);
-    document.addEventListener("click", closeSuggestedProblemList);
-  }, [closeSuggestedProblemList]);
-
-  useEffect(() => {
-    return () => {
-      document.removeEventListener("click", closeSuggestedProblemList);
-    };
-  }, [closeSuggestedProblemList]);
+  });
 
   return {
     isOpenSuggestedProblemList,
@@ -55,6 +45,7 @@ export const useProblemSetContent = ({
     selectedProblems,
     setSelectedProblems,
     suggestedProblems,
-    openSuggestedProblemList,
+    ref,
+    setIsOpenSuggestedProblemList,
   };
 };
