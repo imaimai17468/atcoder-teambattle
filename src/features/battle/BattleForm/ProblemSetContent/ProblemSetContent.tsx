@@ -49,7 +49,7 @@ export const ProblemSetContent: React.FC<ProblemSetContentProps> = ({
             keyword={keyword}
             onClick={openSuggestedProblemList}
             onChange={(e) => setKeyword(e.target.value)}
-            placeholder="Please enter at least 1 character"
+            placeholder="Search problems"
           />
           {isOpenSuggestedProblemList && (
             <ProblemSuggestCard

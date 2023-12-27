@@ -9,7 +9,6 @@ import { VList } from "virtua";
 import { useExpectedTeamContent } from "./hooks/useExpectedTeamContent";
 
 import { DeleteButton } from "@/components/common/DeleteButton";
-import { LoadingAlert } from "@/components/common/LoadingAlert";
 import { SearchInput } from "@/components/common/SearchInput";
 import { UserAvatar } from "@/components/common/UserAvatar";
 import { Badge } from "@/components/ui/badge";
@@ -184,58 +183,53 @@ export const ExpectedTeamContent: React.FC<ExpectedTeamContentProps> = ({
                                     onChange={(e) => {
                                       setKeyword(e.target.value);
                                     }}
-                                    placeholder="Please enter more than one character"
+                                    placeholder="Search Users"
                                   />
-                                  {suggestedUsersWithoutTeamMember.length ===
-                                  0 ? (
-                                    <LoadingAlert />
-                                  ) : (
-                                    <VList style={{ height: "192px" }}>
-                                      {suggestedUsersWithoutTeamMember.map(
-                                        (suggestedUser, index) => {
-                                          return (
-                                            <div
-                                              key={index}
-                                              className="flex cursor-pointer items-center gap-2 rounded-md p-2 hover:bg-gray-100"
-                                              onClick={() => {
-                                                const newExpectedTeams =
-                                                  expectedTeams.map(
-                                                    (
-                                                      expectedTeam,
-                                                      currentIndex,
-                                                    ) => {
-                                                      if (
-                                                        currentIndex ===
-                                                        clickedTeamIndex
-                                                      ) {
-                                                        return {
-                                                          ...expectedTeam,
-                                                          members: [
-                                                            ...expectedTeam.members,
-                                                            suggestedUser,
-                                                          ],
-                                                        };
-                                                      } else {
-                                                        return expectedTeam;
-                                                      }
-                                                    },
-                                                  );
-                                                setExpectedTeams(
-                                                  newExpectedTeams,
+                                  <VList style={{ height: "192px" }}>
+                                    {suggestedUsersWithoutTeamMember.map(
+                                      (suggestedUser, index) => {
+                                        return (
+                                          <div
+                                            key={index}
+                                            className="flex cursor-pointer items-center gap-2 rounded-md p-2 hover:bg-gray-100"
+                                            onClick={() => {
+                                              const newExpectedTeams =
+                                                expectedTeams.map(
+                                                  (
+                                                    expectedTeam,
+                                                    currentIndex,
+                                                  ) => {
+                                                    if (
+                                                      currentIndex ===
+                                                      clickedTeamIndex
+                                                    ) {
+                                                      return {
+                                                        ...expectedTeam,
+                                                        members: [
+                                                          ...expectedTeam.members,
+                                                          suggestedUser,
+                                                        ],
+                                                      };
+                                                    } else {
+                                                      return expectedTeam;
+                                                    }
+                                                  },
                                                 );
-                                              }}
-                                            >
-                                              <UserAvatar
-                                                user={suggestedUser}
-                                                withoutCard
-                                              />
-                                              <p>{suggestedUser.name}</p>
-                                            </div>
-                                          );
-                                        },
-                                      )}
-                                    </VList>
-                                  )}
+                                              setExpectedTeams(
+                                                newExpectedTeams,
+                                              );
+                                            }}
+                                          >
+                                            <UserAvatar
+                                              user={suggestedUser}
+                                              withoutCard
+                                            />
+                                            <p>{suggestedUser.name}</p>
+                                          </div>
+                                        );
+                                      },
+                                    )}
+                                  </VList>
                                 </CardContent>
                               </Card>
                             )}
