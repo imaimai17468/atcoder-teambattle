@@ -24,11 +24,9 @@ export const useExpectedTeamContent = ({
   const [clickedTeamIndex, setClickedTeamIndex] = useState(-1);
 
   const suggestedUsers = useMemo(() => {
-    return keyword.length
-      ? users.filter((user) => {
-          return user.name.toLowerCase().includes(keyword.toLowerCase());
-        })
-      : [];
+    return users.filter((user) => {
+      return user.name.toLowerCase().includes(keyword.toLowerCase());
+    });
   }, [users, keyword]);
 
   const ref = useRef(null);

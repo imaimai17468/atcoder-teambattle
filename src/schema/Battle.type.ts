@@ -16,7 +16,7 @@ const DESCRIPTION_MAX_LENGTH = 1000;
 
 export const BattleSchema = z
   .object({
-    id: z.string().uuid(),
+    id: z.string(),
     title: z
       .string()
       .min(1, { message: charMinLimitError("Title", 1) })

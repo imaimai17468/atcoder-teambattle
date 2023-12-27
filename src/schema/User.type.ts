@@ -15,7 +15,7 @@ export const UserLinksSchema = z.object({
 });
 
 export const UserSchema = z.object({
-  id: z.string().uuid(),
+  id: z.string(),
   atcoderId: z
     .string()
     .min(1, { message: charMinLimitError("AtCoder ID", 1) })

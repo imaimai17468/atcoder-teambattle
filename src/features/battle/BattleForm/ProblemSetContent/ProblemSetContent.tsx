@@ -23,12 +23,13 @@ export const ProblemSetContent: React.FC<ProblemSetContentProps> = ({
 }: ProblemSetContentProps) => {
   const {
     isOpenSuggestedProblemList,
+    setIsOpenSuggestedProblemList,
     keyword,
     setKeyword,
     selectedProblems,
     setSelectedProblems,
     suggestedProblems,
-    openSuggestedProblemList,
+    ref,
   } = useProblemSetContent({ problems, value });
 
   useEffect(() => {
@@ -47,15 +48,17 @@ export const ProblemSetContent: React.FC<ProblemSetContentProps> = ({
         <div className="relative">
           <SearchInput
             keyword={keyword}
-            onClick={openSuggestedProblemList}
+            onClick={() => setIsOpenSuggestedProblemList(true)}
             onChange={(e) => setKeyword(e.target.value)}
-            placeholder="Please enter at least 1 character"
+            placeholder="Search problems"
           />
           {isOpenSuggestedProblemList && (
-            <ProblemSuggestCard
-              suggestedProblems={suggestedProblems}
-              setSelectedProblems={setSelectedProblems}
-            />
+            <div ref={ref}>
+              <ProblemSuggestCard
+                suggestedProblems={suggestedProblems}
+                setSelectedProblems={setSelectedProblems}
+              />
+            </div>
           )}
         </div>
       </div>
