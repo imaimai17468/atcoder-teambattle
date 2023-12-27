@@ -12,6 +12,8 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
+import { ThemeSwitch } from "../ThemeSwitch";
+
 import { UserAvatar } from "@/components/common/UserAvatar";
 import { Button } from "@/components/ui/button";
 import {
@@ -42,7 +44,7 @@ export const Header: React.FC = () => {
             AtCoder Team Battle
           </Link>
         </div>
-        <div className=" hidden gap-2 md:flex">
+        <div className="hidden items-center gap-4 md:flex">
           <Button
             variant="ghost"
             className="flex gap-2"
@@ -61,14 +63,33 @@ export const Header: React.FC = () => {
           </Button>
         </div>
       </div>
-      {isLogin ? (
-        <DropdownMenu>
-          <DropdownMenuTrigger>
-            <UserAvatar user={currentUser} withoutCard />
-          </DropdownMenuTrigger>
-          <DropdownMenuContent className="mr-4">
-            <div className="block md:hidden">
-              <DropdownMenuLabel>Contents</DropdownMenuLabel>
+      <div className="flex items-center gap-4">
+        <ThemeSwitch className="hidden sm:flex" />
+        {isLogin ? (
+          <DropdownMenu>
+            <DropdownMenuTrigger>
+              <UserAvatar user={currentUser} withoutCard />
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="mr-4">
+              <div className="block md:hidden">
+                <DropdownMenuLabel>Contents</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem
+                  onClick={() => {
+                    router.push(CLIENT_PATH.USER.replace("[userId]", "me"));
+                  }}
+                  className="flex gap-2"
+                >
+                  <RocketIcon />
+                  Battles
+                </DropdownMenuItem>
+                <DropdownMenuItem className="flex gap-2">
+                  <ChatBubbleIcon />
+                  Contact
+                </DropdownMenuItem>
+                <DropdownMenuSeparator />
+              </div>
+              <DropdownMenuLabel>Settings</DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuItem
                 onClick={() => {
@@ -76,51 +97,38 @@ export const Header: React.FC = () => {
                 }}
                 className="flex gap-2"
               >
-                <RocketIcon />
-                Battles
+                <PersonIcon />
+                Profile
               </DropdownMenuItem>
               <DropdownMenuItem className="flex gap-2">
-                <ChatBubbleIcon />
-                Contact
+                <HomeIcon />
+                Team
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                <ThemeSwitch />
               </DropdownMenuItem>
               <DropdownMenuSeparator />
-            </div>
-            <DropdownMenuLabel>Settings</DropdownMenuLabel>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem
-              onClick={() => {
-                router.push(CLIENT_PATH.USER.replace("[userId]", "me"));
-              }}
-              className="flex gap-2"
-            >
-              <PersonIcon />
-              Profile
-            </DropdownMenuItem>
-            <DropdownMenuItem className="flex gap-2">
-              <HomeIcon />
-              Team
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem
-              className="flex gap-2"
-              onClick={() => {
-                setIsLogin(false);
-              }}
-            >
-              <ExitIcon />
-              Logout
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-      ) : (
-        <Button
-          onClick={() => {
-            setIsLogin(true);
-          }}
-        >
-          Login
-        </Button>
-      )}
+              <DropdownMenuItem
+                className="flex gap-2"
+                onClick={() => {
+                  setIsLogin(false);
+                }}
+              >
+                <ExitIcon />
+                Logout
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        ) : (
+          <Button
+            onClick={() => {
+              setIsLogin(true);
+            }}
+          >
+            Login
+          </Button>
+        )}
+      </div>
     </header>
   );
 };
