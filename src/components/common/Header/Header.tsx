@@ -104,7 +104,7 @@ export const Header: React.FC = () => {
                 <HomeIcon />
                 Team
               </DropdownMenuItem>
-              <DropdownMenuItem>
+              <DropdownMenuItem className="block sm:hidden">
                 <ThemeSwitch />
               </DropdownMenuItem>
               <DropdownMenuSeparator />
