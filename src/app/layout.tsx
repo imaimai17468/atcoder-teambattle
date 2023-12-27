@@ -3,6 +3,7 @@ import { Metadata } from "next";
 
 import { MainLayout } from "@/components/layout/MainLayout";
 import { Toaster } from "@/components/ui/toaster";
+import { ThemeProvider } from "@/components/utils/ThemeProvider";
 import { SITE_NAME, SITE_DESCRIPTION } from "@/constants/metadata";
 
 export const metadata: Metadata = {
@@ -23,8 +24,15 @@ export default function HomeLayout({ children }: HomeLayoutProps) {
     <html lang="ja">
       <head />
       <body>
-        <MainLayout>{children}</MainLayout>
-        <Toaster />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <MainLayout>{children}</MainLayout>
+          <Toaster />
+        </ThemeProvider>
       </body>
     </html>
   );
