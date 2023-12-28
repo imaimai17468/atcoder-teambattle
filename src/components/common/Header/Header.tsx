@@ -6,6 +6,7 @@ import {
   ChatBubbleIcon,
   HomeIcon,
   ExitIcon,
+  CookieIcon,
 } from "@radix-ui/react-icons";
 import Image from "next/image";
 import Link from "next/link";
@@ -98,11 +99,22 @@ export const Header: React.FC = () => {
                 className="flex gap-2"
               >
                 <PersonIcon />
-                Profile
+                Your Profile
+              </DropdownMenuItem>
+              <DropdownMenuItem
+                onClick={() => {
+                  router.push(
+                    CLIENT_PATH.USER_BATTLE.replace("[userId]", "me"),
+                  );
+                }}
+                className="flex gap-2"
+              >
+                <CookieIcon />
+                Your Battle
               </DropdownMenuItem>
               <DropdownMenuItem className="flex gap-2">
                 <HomeIcon />
-                Team
+                Your Team
               </DropdownMenuItem>
               <DropdownMenuItem className="block sm:hidden">
                 <ThemeSwitch />
