@@ -1,0 +1,1 @@
+export { UserTeamContent } from "./UserTeamContent";
