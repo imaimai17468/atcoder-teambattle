@@ -5,7 +5,7 @@ import { LoadingAlert } from "@/components/common/LoadingAlert";
 import { UserTeamContent } from "@/features/user/team/UserTeamContent";
 
 export const metadata: Metadata = {
-  title: "Your Team",
+  title: "Your Teams",
 };
 
 export default async function UserTeamPage() {

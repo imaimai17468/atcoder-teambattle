@@ -110,7 +110,7 @@ export const Header: React.FC = () => {
                 className="flex gap-2"
               >
                 <CookieIcon />
-                Your Battle
+                Your Battles
               </DropdownMenuItem>
               <DropdownMenuItem
                 className="flex gap-2"
@@ -119,7 +119,7 @@ export const Header: React.FC = () => {
                 }}
               >
                 <HomeIcon />
-                Your Team
+                Your Teams
               </DropdownMenuItem>
               <DropdownMenuItem className="block sm:hidden">
                 <ThemeSwitch />

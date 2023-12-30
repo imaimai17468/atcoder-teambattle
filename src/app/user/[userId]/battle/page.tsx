@@ -5,7 +5,7 @@ import { LoadingAlert } from "@/components/common/LoadingAlert";
 import { UserBattleContent } from "@/features/user/battle/UserBattleContent";
 
 export const metadata: Metadata = {
-  title: "Your Battle",
+  title: "Your Battles",
 };
 
 export default async function UserBattlePage() {
