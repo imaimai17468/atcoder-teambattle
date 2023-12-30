@@ -2,16 +2,16 @@ import { Metadata } from "next";
 import { Suspense } from "react";
 
 import { LoadingAlert } from "@/components/common/LoadingAlert";
-import { UserBattleContent } from "@/features/user/battle/UserBattleContent";
+import { UserTeamContent } from "@/features/user/team/UserTeamContent";
 
 export const metadata: Metadata = {
-  title: "Your Battles",
+  title: "Your Teams",
 };
 
-export default async function UserBattlePage() {
+export default async function UserTeamPage() {
   return (
     <Suspense fallback={<LoadingAlert />}>
-      <UserBattleContent />
+      <UserTeamContent />
     </Suspense>
   );
 }

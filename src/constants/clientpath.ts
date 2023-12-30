@@ -6,6 +6,7 @@ export const CLIENT_PATH = {
   BATTLE_EDIT: "/battle/edit/[battleId]",
   USER: "/user/[userId]",
   USER_BATTLE: "/user/[userId]/battle",
+  USER_TEAM: "/user/[userId]/team",
   USER_EDIT: "/user/[userId]/edit",
   NOT_FOUND: "/404",
 } as const;

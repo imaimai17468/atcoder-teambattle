@@ -110,11 +110,16 @@ export const Header: React.FC = () => {
                 className="flex gap-2"
               >
                 <CookieIcon />
-                Your Battle
+                Your Battles
               </DropdownMenuItem>
-              <DropdownMenuItem className="flex gap-2">
+              <DropdownMenuItem
+                className="flex gap-2"
+                onClick={() => {
+                  router.push(CLIENT_PATH.USER_TEAM.replace("[userId]", "me"));
+                }}
+              >
                 <HomeIcon />
-                Your Team
+                Your Teams
               </DropdownMenuItem>
               <DropdownMenuItem className="block sm:hidden">
                 <ThemeSwitch />
