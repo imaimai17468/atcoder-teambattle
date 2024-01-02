@@ -1,7 +1,5 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-
 import { useSubmitTeamForm } from "./hooks/useSubmitTeamForm";
 import { SelectMembers } from "./SelectMembers";
 
@@ -23,22 +21,25 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
+  FormMessageMap,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Team } from "@/schema/Team.type";
+import { User } from "@/schema/User.type";
 
 type TeamJoinDialogProps = {
   defaultValues?: Team;
   children: React.ReactNode;
+  users: User[];
 };
 
 export const TeamJoinDialog: React.FC<TeamJoinDialogProps> = ({
   defaultValues,
   children,
+  users,
 }: TeamJoinDialogProps) => {
-  const { onSubmit, form, users } = useSubmitTeamForm({ defaultValues });
+  const { onSubmit, form } = useSubmitTeamForm({ defaultValues });
   const { isDirty, isSubmitting, isValid } = form.formState;
-  const router = useRouter();
 
   return (
     <Dialog>
@@ -77,20 +78,20 @@ export const TeamJoinDialog: React.FC<TeamJoinDialogProps> = ({
                   <FormControl>
                     <SelectMembers users={users} {...field} />
                   </FormControl>
-                  <FormMessage />
+                  <FormMessageMap />
                 </FormItem>
               )}
             />
             <DialogFooter>
-              <DialogClose>
-                <Button
-                  type="submit"
-                  disabled={!isDirty || !isValid || isSubmitting}
-                  onClick={() => router.refresh()}
-                >
+              {!isDirty || !isValid || isSubmitting ? (
+                <Button type="submit" disabled={true}>
                   Save changes
                 </Button>
-              </DialogClose>
+              ) : (
+                <DialogClose asChild>
+                  <Button type="submit">Save changes</Button>
+                </DialogClose>
+              )}
             </DialogFooter>
           </form>
         </Form>
