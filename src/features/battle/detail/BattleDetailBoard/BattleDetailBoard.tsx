@@ -74,7 +74,7 @@ export const BattleDetailBoard = async () => {
           details={battle.description}
         />
       </div>
-      <BattleDetailTabs battle={battle} />
+      <BattleDetailTabs battle={battle} users={users} />
     </div>
   );
 };
