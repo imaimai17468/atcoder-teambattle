@@ -21,7 +21,7 @@ export const UserScoreRow: React.FC<UserScoreRowProps> = ({
       key={userScore.user.name}
       className={clsx("border-none", visible ? "table-row" : "hidden")}
     >
-      <TableCell colSpan={2} />
+      <TableCell colSpan={4} />
       <TableCell>
         <UserAvatar user={userScore.user} />
       </TableCell>

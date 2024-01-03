@@ -45,7 +45,9 @@ export const StandingsTable: React.FC<StandingsTableProps> = ({
       <TableHeader>
         <TableRow>
           <TableHead className="w-16 text-center">Rank</TableHead>
-          <TableHead>Team</TableHead>
+          <TableHead />
+          <TableHead>Name</TableHead>
+          <TableHead>Member</TableHead>
           <TableHead className="w-16 text-center">Score</TableHead>
           {battle.problems.map((problem, index) => {
             return (

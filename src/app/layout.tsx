@@ -12,7 +12,6 @@ export const metadata: Metadata = {
     template: `%s - ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
-  icons: [{ rel: "icon", url: "public/favicon.png" }],
 };
 
 type HomeLayoutProps = {
