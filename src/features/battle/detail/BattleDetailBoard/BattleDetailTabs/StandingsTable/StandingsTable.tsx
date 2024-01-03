@@ -21,14 +21,17 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { Battle } from "@/schema/Battle.type";
+import { User } from "@/schema/User.type";
 
 type StandingsTableProps = {
   battle: Battle;
+  users: User[];
   startDate: number;
 };
 
 export const StandingsTable: React.FC<StandingsTableProps> = ({
   battle,
+  users,
   startDate,
 }: StandingsTableProps) => {
   const { teamScoreList, firstAcceptanceTimes } = useStandingsValue(battle);
@@ -74,6 +77,7 @@ export const StandingsTable: React.FC<StandingsTableProps> = ({
                 index={index}
                 setIsTeamScoreDetailVisible={setIsTeamScoreDetailVisible}
                 startDate={startDate}
+                users={users}
               />
               {battle.scores &&
                 battle.scores

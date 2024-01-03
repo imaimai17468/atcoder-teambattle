@@ -1,10 +1,9 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useMemo } from "react";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { ulid } from "ulidx";
 
 import { useToast } from "@/components/ui/use-toast";
-import { createMockUsers } from "@/repositories/createMockUser";
 import { TeamSchema, Team } from "@/schema/Team.type";
 
 type UseSubmitTeamFormProps = {
@@ -17,10 +16,11 @@ export const useSubmitTeamForm = ({
   const form = useForm<Team>({
     mode: "onChange",
     resolver: zodResolver(TeamSchema),
-    defaultValues,
+    defaultValues: defaultValues || { id: ulid() },
   });
 
   const { toast } = useToast();
+  const router = useRouter();
 
   const onSubmit = (data: Team) => {
     const submitData: Team = data.id ? data : { ...data, id: ulid() };
@@ -30,15 +30,12 @@ export const useSubmitTeamForm = ({
       title: "Success",
       description: "Your team has been created.",
     });
-  };
 
-  const users = useMemo(() => {
-    return createMockUsers(100);
-  }, []);
+    router.refresh();
+  };
 
   return {
     form,
     onSubmit,
-    users,
   };
 };

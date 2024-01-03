@@ -10,9 +10,11 @@ import { TimeProgress } from "@/components/common/TimeProgress";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { createMockBattle } from "@/repositories/createMockBattle";
+import { createMockUsers } from "@/repositories/createMockUser";
 
 export const BattleDetailBoard = async () => {
   const battle = await createMockBattle({ variant: "running" });
+  const users = await createMockUsers(100);
 
   return (
     <div className="flex flex-col gap-8">
@@ -54,7 +56,7 @@ export const BattleDetailBoard = async () => {
       <Separator className="bg-gray-300" />
       <div className="flex gap-4">
         <NavigateToBattleEditButton />
-        <TeamJoinDialog>
+        <TeamJoinDialog users={users}>
           <Button variant="outline">Join</Button>
         </TeamJoinDialog>
         <TwitterShareButton
@@ -72,7 +74,7 @@ export const BattleDetailBoard = async () => {
           details={battle.description}
         />
       </div>
-      <BattleDetailTabs battle={battle} />
+      <BattleDetailTabs battle={battle} users={users} />
     </div>
   );
 };

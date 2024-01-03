@@ -21,6 +21,7 @@ type TeamScoreRowProps = {
   index: number;
   setIsTeamScoreDetailVisible: React.Dispatch<React.SetStateAction<boolean[]>>;
   startDate: number;
+  users: User[];
 };
 
 export const TeamScoreRow: React.FC<TeamScoreRowProps> = ({
@@ -28,6 +29,7 @@ export const TeamScoreRow: React.FC<TeamScoreRowProps> = ({
   index,
   setIsTeamScoreDetailVisible,
   startDate,
+  users,
 }: TeamScoreRowProps) => {
   return (
     <TableRow
@@ -44,7 +46,7 @@ export const TeamScoreRow: React.FC<TeamScoreRowProps> = ({
       <TableCell className="text-center">{index + 1}</TableCell>
       <TableCell>
         <div className="flex items-center justify-between gap-8">
-          <TeamJoinDialog defaultValues={teamScore.team}>
+          <TeamJoinDialog users={users} defaultValues={teamScore.team}>
             <Button
               variant="ghost"
               size="icon"
