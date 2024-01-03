@@ -1,4 +1,4 @@
-import { PlusCircledIcon } from "@radix-ui/react-icons";
+import { PlusCircledIcon, Pencil2Icon } from "@radix-ui/react-icons";
 
 import { UserAvatar } from "@/components/common/UserAvatar";
 import { Button } from "@/components/ui/button";
@@ -34,6 +34,7 @@ export const UserTeamContent = async () => {
       <Table>
         <TableHeader>
           <TableRow>
+            <TableHead />
             <TableHead>Name</TableHead>
             <TableHead>Member</TableHead>
           </TableRow>
@@ -41,6 +42,13 @@ export const UserTeamContent = async () => {
         <TableBody>
           {teams.map((team) => (
             <TableRow key={team.id}>
+              <TableCell className="w-1/12">
+                <TeamJoinDialog users={users} defaultValues={team}>
+                  <Button size="icon" variant="ghost">
+                    <Pencil2Icon />
+                  </Button>
+                </TeamJoinDialog>
+              </TableCell>
               <TableCell>{team.name}</TableCell>
               <TableCell>
                 <div className="flex gap-4">
