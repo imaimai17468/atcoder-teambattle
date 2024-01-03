@@ -45,24 +45,26 @@ export const TeamScoreRow: React.FC<TeamScoreRowProps> = ({
     >
       <TableCell className="text-center">{index + 1}</TableCell>
       <TableCell>
-        <div className="flex items-center justify-between gap-8">
-          <TeamJoinDialog users={users} defaultValues={teamScore.team}>
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={(e) => {
-                e.stopPropagation();
-              }}
-            >
-              <Pencil2Icon />
-            </Button>
-          </TeamJoinDialog>
-          <p className="whitespace-nowrap">{teamScore.team.name}</p>
-          <div className="flex gap-4">
-            {teamScore.team.members.map((member) => {
-              return <UserAvatar key={member.name} user={member} />;
-            })}
-          </div>
+        <TeamJoinDialog users={users} defaultValues={teamScore.team}>
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={(e) => {
+              e.stopPropagation();
+            }}
+          >
+            <Pencil2Icon />
+          </Button>
+        </TeamJoinDialog>
+      </TableCell>
+      <TableCell>
+        <p className="whitespace-nowrap">{teamScore.team.name}</p>
+      </TableCell>
+      <TableCell>
+        <div className="flex gap-4">
+          {teamScore.team.members.map((member) => {
+            return <UserAvatar key={member.name} user={member} />;
+          })}
         </div>
       </TableCell>
       <TableCell className="text-center">{teamScore.totalScore}</TableCell>
