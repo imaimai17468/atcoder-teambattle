@@ -27,8 +27,10 @@ export const BattleListTable: React.FC<BattleListTableProps> = ({
       <DataTable<Battle>
         data={battles}
         columns={columns}
-        onRowClick={(id) => {
-          router.push(CLIENT_PATH.BATTLE_DETAIL.replace("[battleId]", id));
+        onRowClick={(battle) => {
+          router.push(
+            CLIENT_PATH.BATTLE_DETAIL.replace("[battleId]", battle.id),
+          );
         }}
       />
     </>
