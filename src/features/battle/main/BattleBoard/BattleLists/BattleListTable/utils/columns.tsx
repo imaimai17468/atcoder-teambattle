@@ -6,10 +6,13 @@ import { Battle } from "@/schema/Battle.type";
 const columnHelper = createColumnHelper<Battle>();
 
 export const columns = [
-  columnHelper.accessor("title", {
+  columnHelper.display({
+    id: "title",
     header: "Title",
+    cell: ({ row }) => row.original.title,
   }),
-  columnHelper.accessor("description", {
+  columnHelper.display({
+    id: "description",
     header: "Description",
     cell: ({ row }) => <div className="w-96">{row.original.description}</div>,
   }),
