@@ -1,7 +1,9 @@
+import { RocketIcon } from "lucide-react";
+
 import { BattleListTable } from "./BattleListTable";
 import { CreateBattleButton } from "../CreateBattleButton";
 
-import { NextArrow } from "@/components/common/NextArrow";
+import { SeparatorIcon } from "@/components/common/SeparatorIcon";
 import { Battle } from "@/schema/Battle.type";
 
 type BattleListsProps = {
@@ -19,9 +21,9 @@ export const BattleLists: React.FC<BattleListsProps> = ({
     <div className="flex flex-col gap-4">
       <CreateBattleButton />
       <BattleListTable battles={runningBattles} title="Running Battles" />
-      <NextArrow className="my-8" />
+      <SeparatorIcon text="Let's Battle!" icon={<RocketIcon />} />
       <BattleListTable battles={upcomingBattles} title="Upcoming Battles" />
-      <NextArrow className="my-8" />
+      <SeparatorIcon text="Let's Battle!" icon={<RocketIcon />} />
       <BattleListTable battles={recentBattles} title="Recent Battles" />
     </div>
   );
