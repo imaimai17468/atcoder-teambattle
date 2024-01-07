@@ -6,11 +6,11 @@ import { createMockBattles } from "@/repositories/createMockBattle";
 
 export const UserBattleContent = async () => {
   const joinedBattles = await createMockBattles({
-    count: 5,
+    count: 15,
     variant: "recent",
   });
   const createdBattles = await createMockBattles({
-    count: 5,
+    count: 15,
     variant: "recent",
   });
 

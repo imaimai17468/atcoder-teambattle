@@ -65,15 +65,15 @@ export const createMockAllTimeBattle = (): {
   runningBattles: Battle[];
 } => {
   const upcomingBattles = createMockBattles({
-    count: faker.number.int({ min: 3, max: 10 }),
+    count: 20,
     variant: "upcoming",
   });
   const recentBattles = createMockBattles({
-    count: faker.number.int({ min: 3, max: 10 }),
+    count: 20,
     variant: "recent",
   });
   const runningBattles = createMockBattles({
-    count: faker.number.int({ min: 3, max: 10 }),
+    count: 20,
     variant: "running",
   });
 
