@@ -1,4 +1,6 @@
-import { NextArrow } from "@/components/common/NextArrow";
+import { RocketIcon } from "lucide-react";
+
+import { SeparatorIcon } from "@/components/common/SeparatorIcon";
 import { BattleListTable } from "@/features/battle/main/BattleBoard/BattleLists/BattleListTable";
 import { createMockBattles } from "@/repositories/createMockBattle";
 
@@ -15,7 +17,7 @@ export const UserBattleContent = async () => {
   return (
     <div>
       <BattleListTable battles={joinedBattles} title="Joined Battles" />
-      <NextArrow className="my-8" />
+      <SeparatorIcon text="Let's Battle!" icon={<RocketIcon />} />
       <BattleListTable battles={createdBattles} title="Created Battles" />
     </div>
   );
