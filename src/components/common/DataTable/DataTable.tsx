@@ -109,6 +109,13 @@ export const DataTable = <T,>({
               ))}
             </TableRow>
           ))}
+          {table.getRowModel().rows.length === 0 && (
+            <TableRow>
+              <TableCell>
+                <p>No data</p>
+              </TableCell>
+            </TableRow>
+          )}
         </TableBody>
       </Table>
       <div className="flex items-center gap-2">
