@@ -39,7 +39,7 @@ import {
 type DataTableProps<T> = {
   data: T[];
   columns: ColumnDef<T>[];
-  onRowClick: (id: T) => void;
+  onRowClick?: (id: T) => void;
 };
 
 export const DataTable = <T,>({
@@ -98,7 +98,9 @@ export const DataTable = <T,>({
             <TableRow
               key={row.id}
               className="cursor-pointer hover:bg-gray-800/10"
-              onClick={() => onRowClick(row.original)}
+              onClick={() => {
+                if (onRowClick) onRowClick(row.original);
+              }}
             >
               {row.getVisibleCells().map((cell) => (
                 <TableCell key={cell.id}>
