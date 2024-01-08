@@ -13,5 +13,12 @@ export const ProblemSetTable: React.FC<ProblemSetTableProps> = ({
   setProblems,
 }: ProblemSetTableProps) => {
   const columns = useColumns({ setProblems });
-  return <DataTable<Problem> data={problems} columns={columns} draggable />;
+  return (
+    <DataTable<Problem>
+      data={problems}
+      columns={columns}
+      draggable
+      setData={setProblems}
+    />
+  );
 };
