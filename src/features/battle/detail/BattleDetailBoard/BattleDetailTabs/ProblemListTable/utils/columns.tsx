@@ -5,6 +5,7 @@ import { Problem } from "@/schema/Problem.type";
 
 export const columns: ColumnDef<Problem>[] = [
   {
+    id: "index",
     header: "index",
     cell: ({ row }) => row.index + 1,
   },
