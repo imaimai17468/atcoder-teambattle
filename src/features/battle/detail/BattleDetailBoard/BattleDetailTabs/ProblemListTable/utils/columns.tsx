@@ -1,9 +1,7 @@
-import { createColumnHelper, ColumnDef } from "@tanstack/react-table";
+import { ColumnDef } from "@tanstack/react-table";
 
 import { DifficultMark } from "@/components/common/DifficultMark";
 import { Problem } from "@/schema/Problem.type";
-
-const columnHelper = createColumnHelper<Problem>();
 
 export const columns: ColumnDef<Problem>[] = [
   {
