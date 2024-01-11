@@ -1,6 +1,22 @@
 "use client";
 
 import {
+  useSensors,
+  useSensor,
+  PointerSensor,
+  DragEndEvent,
+  closestCenter,
+  DndContext,
+  DragOverlay,
+} from "@dnd-kit/core";
+import {
+  SortableContext,
+  verticalListSortingStrategy,
+  useSortable,
+  arrayMove,
+} from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
+import {
   ArrowLeftIcon,
   ArrowRightIcon,
   DoubleArrowLeftIcon,
@@ -15,6 +31,7 @@ import {
   getPaginationRowModel,
   ColumnDef,
   SortingState,
+  Row,
 } from "@tanstack/react-table";
 import { useState } from "react";
 
@@ -40,12 +57,51 @@ type DataTableProps<T> = {
   data: T[];
   columns: ColumnDef<T>[];
   onRowClick?: (id: T) => void;
+  draggable?: boolean;
+  setData?: (data: T[]) => void;
+};
+
+type DataTableRowProps<T> = {
+  row: Row<T>;
+  onRowClick?: (id: T) => void;
+};
+
+const SortableDataTableRow = <T,>({
+  row,
+  onRowClick,
+}: DataTableRowProps<T>) => {
+  const { attributes, listeners, setNodeRef, transform, transition } =
+    useSortable({
+      id: row.id,
+    });
+
+  return (
+    <TableRow
+      key={row.id}
+      className="cursor-pointer hover:bg-gray-800/10"
+      onClick={() => {
+        if (onRowClick) onRowClick(row.original);
+      }}
+      ref={setNodeRef}
+      style={{ transform: CSS.Transform.toString(transform), transition }}
+      {...attributes}
+      {...listeners}
+    >
+      {row.getVisibleCells().map((cell) => (
+        <TableCell key={cell.id}>
+          {flexRender(cell.column.columnDef.cell, cell.getContext())}
+        </TableCell>
+      ))}
+    </TableRow>
+  );
 };
 
 export const DataTable = <T,>({
   data,
   columns,
   onRowClick,
+  draggable = false,
+  setData,
 }: DataTableProps<T>) => {
   const [sorting, setSorting] = useState<SortingState>([]);
 
@@ -60,6 +116,15 @@ export const DataTable = <T,>({
     getSortedRowModel: getSortedRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
   });
+
+  const sensors = useSensors(useSensor(PointerSensor));
+
+  const handleDragEnd = (event: DragEndEvent) => {
+    const { active, over } = event;
+
+    if (setData && over)
+      setData(arrayMove(data, Number(active.id), Number(over.id)));
+  };
 
   return (
     <div className="flex w-full flex-col gap-4 overflow-x-scroll">
@@ -93,30 +158,62 @@ export const DataTable = <T,>({
             </TableRow>
           ))}
         </TableHeader>
-        <TableBody>
-          {table.getRowModel().rows.map((row) => (
-            <TableRow
-              key={row.id}
-              className="cursor-pointer hover:bg-gray-800/10"
-              onClick={() => {
-                if (onRowClick) onRowClick(row.original);
-              }}
+        {draggable ? (
+          <DndContext
+            sensors={sensors}
+            collisionDetection={closestCenter}
+            onDragEnd={handleDragEnd}
+            autoScroll={false}
+          >
+            <SortableContext
+              strategy={verticalListSortingStrategy}
+              items={table.getRowModel().rows.map((row) => row.id)}
             >
-              {row.getVisibleCells().map((cell) => (
-                <TableCell key={cell.id}>
-                  {flexRender(cell.column.columnDef.cell, cell.getContext())}
+              <TableBody>
+                {table.getRowModel().rows.map((row) => (
+                  <SortableDataTableRow
+                    key={row.id}
+                    row={row}
+                    onRowClick={onRowClick}
+                  />
+                ))}
+                {table.getRowModel().rows.length === 0 && (
+                  <TableRow>
+                    <TableCell>
+                      <p>No data</p>
+                    </TableCell>
+                  </TableRow>
+                )}
+              </TableBody>
+            </SortableContext>
+            <DragOverlay />
+          </DndContext>
+        ) : (
+          <TableBody>
+            {table.getRowModel().rows.map((row) => (
+              <TableRow
+                key={row.id}
+                className="cursor-pointer hover:bg-gray-800/10"
+                onClick={() => {
+                  if (onRowClick) onRowClick(row.original);
+                }}
+              >
+                {row.getVisibleCells().map((cell) => (
+                  <TableCell key={cell.id}>
+                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                  </TableCell>
+                ))}
+              </TableRow>
+            ))}
+            {table.getRowModel().rows.length === 0 && (
+              <TableRow>
+                <TableCell>
+                  <p>No data</p>
                 </TableCell>
-              ))}
-            </TableRow>
-          ))}
-          {table.getRowModel().rows.length === 0 && (
-            <TableRow>
-              <TableCell>
-                <p>No data</p>
-              </TableCell>
-            </TableRow>
-          )}
-        </TableBody>
+              </TableRow>
+            )}
+          </TableBody>
+        )}
       </Table>
       <div className="flex items-center gap-2">
         <Button
