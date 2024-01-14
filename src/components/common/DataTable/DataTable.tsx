@@ -12,10 +12,8 @@ import {
 import {
   SortableContext,
   verticalListSortingStrategy,
-  useSortable,
   arrayMove,
 } from "@dnd-kit/sortable";
-import { CSS } from "@dnd-kit/utilities";
 import {
   ArrowLeftIcon,
   ArrowRightIcon,
@@ -31,9 +29,10 @@ import {
   getPaginationRowModel,
   ColumnDef,
   SortingState,
-  Row,
 } from "@tanstack/react-table";
 import { useState } from "react";
+
+import { SortableDataTableRow } from "./SortableDataTableRow";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -59,41 +58,6 @@ type DataTableProps<T> = {
   onRowClick?: (id: T) => void;
   draggable?: boolean;
   setData?: (data: T[]) => void;
-};
-
-type DataTableRowProps<T> = {
-  row: Row<T>;
-  onRowClick?: (id: T) => void;
-};
-
-const SortableDataTableRow = <T,>({
-  row,
-  onRowClick,
-}: DataTableRowProps<T>) => {
-  const { attributes, listeners, setNodeRef, transform, transition } =
-    useSortable({
-      id: row.id,
-    });
-
-  return (
-    <TableRow
-      key={row.id}
-      className="cursor-pointer hover:bg-gray-800/10"
-      onClick={() => {
-        if (onRowClick) onRowClick(row.original);
-      }}
-      ref={setNodeRef}
-      style={{ transform: CSS.Transform.toString(transform), transition }}
-      {...attributes}
-      {...listeners}
-    >
-      {row.getVisibleCells().map((cell) => (
-        <TableCell key={cell.id}>
-          {flexRender(cell.column.columnDef.cell, cell.getContext())}
-        </TableCell>
-      ))}
-    </TableRow>
-  );
 };
 
 export const DataTable = <T,>({
