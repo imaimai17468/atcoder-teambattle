@@ -3,7 +3,7 @@ import { Suspense } from "react";
 
 import { BattleDetailBoard } from "../../../../features/battle/detail/BattleDetailBoard";
 
-import { LoadingBattleDetailBoard } from "@/features/battle/detail/LoadingBattleDetailBoard";
+import { LoadingAlert } from "@/components/common/LoadingAlert";
 
 export const metadata: Metadata = {
   title: "Detail Battle",
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default async function BattleDetailPage() {
   return (
-    <Suspense fallback={<LoadingBattleDetailBoard />}>
+    <Suspense fallback={<LoadingAlert />}>
       <BattleDetailBoard />
     </Suspense>
   );
