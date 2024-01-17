@@ -13,7 +13,7 @@ jobs:
         uses: oven-sh/setup-bun@v1
 
       - name: Use GitHub Actions Cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: |
             ~/.npm
