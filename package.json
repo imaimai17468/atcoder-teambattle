@@ -42,7 +42,7 @@
     "lucide-react": "^0.309.0",
     "moment": "^2.29.4",
     "next": "latest",
-    "next-themes": "^0.2.1",
+    "next-themes": "^0.3.0",
     "react": "latest",
     "react-day-picker": "^8.9.1",
     "react-dom": "latest",
