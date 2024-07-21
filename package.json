@@ -44,7 +44,7 @@
     "next": "latest",
     "next-themes": "^0.2.1",
     "react": "latest",
-    "react-day-picker": "^8.9.1",
+    "react-day-picker": "^9.0.0",
     "react-dom": "latest",
     "react-hook-form": "^7.48.2",
     "react-use": "^17.4.2",
