@@ -38,7 +38,7 @@
     "cmdk": "^0.2.0",
     "date-fns": "^3.0.0",
     "eslint-plugin-import": "^2.29.1",
-    "eslint-plugin-unused-imports": "^3.0.0",
+    "eslint-plugin-unused-imports": "^4.0.0",
     "lucide-react": "^0.309.0",
     "moment": "^2.29.4",
     "next": "latest",
